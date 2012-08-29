@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- http://www.phpunit.de/manual/current/en/appendixes.configuration.html -->
+<phpunit
+    backupGlobals               = "false"
+    backupStaticAttributes      = "false"
+    colors                      = "true"
+    convertErrorsToExceptions   = "true"
+    convertNoticesToExceptions  = "true"
+    convertWarningsToExceptions = "true"
+    processIsolation            = "false"
+    stopOnFailure               = "false"
+    syntaxCheck                 = "false"
+    bootstrap                   = "bootstrap.php.cache" >
+
+    <testsuites>
+        <testsuite name="Project Test Suite">
+            <directory>../src/*/*/*Bundle/Tests</directory>
+            <directory>../src/*/*Bundle/Tests</directory>
+            <directory>../src/*/Bundle/*Bundle/Tests</directory>
+            <directory>../src/*/*Bundle/Tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <!--
+    <php>
+        <server name="KERNEL_DIR" value="/path/to/your/app/" />
+    </php>
+    -->
+
+    <filter>
+      <whitelist addUncoveredFilesFromWhitelist="true" >
+           <directory>../src</directory>
+        <!--
+          <directory>../src/*/*/*Bundle/Manager</directory>
+          <directory>../src/*/*/*Bundle/Entity</directory>
+          <directory>../src/*/*/*Bundle/Controller</directory>
+          <directory>../src/*/*/*Bundle/Repository</directory>
+        -->
+            <exclude>
+                <directory suffix=".php">../src/*/*Bundle/Resources</directory>
+                <directory suffix=".php">../src/*/*Bundle/Tests</directory>
+                <directory suffix=".php">../src/*/Bundle/*Bundle/Resources</directory>
+                <directory suffix=".php">../src/*/*/*Bundle/Tests</directory>
+                <directory suffix=".php">../src/*/*/*Bundle/DependencyInjection</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+
+</phpunit>

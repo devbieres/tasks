@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="UTF-8" />
+      <title>{% block title %} {{ 'site.title'|trans }} {% endblock %} </title>
+       <link href="{{ asset('bundles/devbierestaskwebhtml/css/task.css') }}" type="text/css" rel="stylesheet" />
+       {% block stylesheets %}
+       {% endblock %}
+    </head>
+    <body>
+       <nav id="nav_header" >
+       <ul>
+         <li> <a href="{{ path('web_tache_new') }}" > <img src="{{ asset('bundles/devbierestaskwebhtml/images/addtask.png') }}" /> {{ 'site.nav.taskadd'|trans}} </a> </li>
+         <li> <a href="{{ path('web_tache_somenew') }}" > <img src="{{ asset('bundles/devbierestaskwebhtml/images/addtask.png') }}" /> {{ 'site.nav.taskaddsome'|trans}} </a> </li>
+
+         <!--         
+         <li> <a href="{{ path('web_trash') }}" > <img src="{{ asset('bundles/devbierestaskwebhtml/images/trash.png')}}" /> {{ 'site.nav.trash'|trans}} </a> </li>
+          -->
+           <li>{% render "DevBieresTaskWebHtmlBundle:Trash:navMenu" %} </li>
+
+         <li> <a href="{{ path('web_projet_index') }}" id="nav_projet" > <img src="{{ asset('bundles/devbierestaskwebhtml/images/projects.png')}}" /> {{ 'site.nav.projets'|trans}} </a> </li>
+         <li> <a href="{{ path('fos_user_security_logout') }}" > <img src="{{ asset('bundles/devbierestaskwebhtml/images/logout.png')}}" /> {{ 'user.logout'|trans}} </a></li>
+       </ul>
+       </nav>
+    <header>
+       {% block header %}
+       <h1> 
+         <a href="{{ path('web_home') }} " > {{ 'site.title'|trans }} </a>
+       </h1>
+       {% endblock %}
+    </header>
+
+    {% block page %}
+    <div id="content" > 
+      <h2> {% block content_title %} {% endblock %} </h2>
+      {% block flash %}
+      <div class="flash" >
+          <ul>
+          {% for flashMessage in app.session.flashbag.get('flash') %}
+          <li> {{ flashMessage }} </li>
+          {% endfor %}
+      </div>
+      {% endblock %}
+      {% block content %}
+      {% endblock %}
+    </div>
+    {% endblock %}
+
+      <footer>
+          <nav id="nav_footer" >
+                <ul>
+                  <li> <a href="mailto:thierry<at>lafamillebn<point>#<net>" > {{ 'site.nav.contact'|trans }}</a></li> 
+                  <li> <a href="{{ path('web_apropos') }}" > {{ 'site.nav.about'|trans }}</a></li> 
+                  <li> <a href="{{ path('web_user_preference_edit') }}"  > <img src="{{ asset('bundles/devbierestaskwebhtml/images/user_preferences.png')}}" /> {{ 'site.nav.preference'|trans}} </a></li> 
+                  <li> <a href="{{ path('web_user_destroy') }}" id="user_destroy" > <img src="{{ asset('bundles/devbierestaskwebhtml/images/user_destroy.png')}}" /> {{ 'site.nav.destroy'|trans}} </a></li> 
+                </ul>
+          </nav>
+      {% block footer %}
+      <div> Copyleft 2012 - thierry / devbieres / Licence BeerWare </div>
+       {% endblock %}
+       </footer>
+
+    </body>
+</html>
+

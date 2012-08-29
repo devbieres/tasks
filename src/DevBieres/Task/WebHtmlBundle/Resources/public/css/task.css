@@ -1,0 +1,167 @@
+html {
+  background-color: lightgray;
+ /* height:100%; */
+}
+
+body {
+  margin: 0;
+ /* height:80%; */
+}
+
+img {
+   border:0;
+   vertical-align:middle;
+}
+
+h1, h2, h3, h4 { padding:0; margin:0; }
+
+ul { list-style: none; }
+
+header, footer {
+  /*background-color: #888888;*/
+  background-color: black; 
+  color: white;
+}
+header {
+  padding: 10px 10px 10px 10px;
+  
+}
+footer {
+  height: 50px;
+  text-align:center;
+}
+footer div {
+  padding-top:10px;
+
+}
+
+
+header a, header a:visited, header a:hover {
+  color: white;
+}
+
+/**
+ * Gestion des navigations
+ */
+nav li { 
+  display:inline; 
+  margin-left: 5px;
+  background-color:white;
+  border-radius: 5px;
+}
+nav a, nav a:visited, nav a:hover { 
+   /*color:#888888; */
+   color: black;
+   text-decoration:none; 
+   font-size:x-small;
+}
+#nav_header { 
+    float:right; 
+    padding-right:15px; 
+    width:500px;
+}
+#nav_header li {
+  padding: 50px 5px 10px 5px;
+}
+#nav_footer { float:left; padding:0 0 0 2%; margin:0;  }
+#nav_footer li {
+  padding: 5px 5px 11px 5px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+/**
+ * Content = le contenu de la page
+ */
+#content {
+  border-radius: 5px;
+  background-color:white;
+  height:100%;
+  width:80%;
+  margin: 1% 10% 1% 10%;
+  padding-bottom:35px;
+}
+
+#content h2 {
+   text-align:center;
+   border-bottom: 1px #888888 solid;
+   height: 35px;
+}
+#content h2 a, #content h2 a:visited, #content h2 a:hover {
+   font-size:medium;
+   color:black;
+   text-decoration: none;
+}
+#content .content_title_action {
+  float:right;
+  padding-right: 45px;
+}
+#content .liste {
+   margin-left: 5%;
+}
+#content .liste a, #content .liste a:hover, #content .liste a:visited {
+  color: black;
+  text-decoration: none;
+}
+#content .liste .item_action {
+  float: right;
+  padding-right: 45px;
+}
+#content .liste  .item_titre {
+   border-bottom: 1px solid black;
+   margin-bottom: 15px;
+}
+#content .liste li {
+  padding-top: 1px;
+  padding-left: 10px;
+  height: 32px;
+  font-size:small;
+}
+#content .liste .item:hover {
+    background-color: lightgray;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+#content .liste .tache_projet {
+   font-size:x-small;
+}
+
+#content .formulaire {
+   width:500px;
+   margin-top:5%;
+   margin-left: 15%;
+}
+
+#content .formulaire li { margin-top: 10px; }
+#content .formulaire label { display: inline-block; width:200px; }
+#content .formulaire input, #content .formulaire select { width: 240px; margin:0; }
+#content .formulaire textarea { width:440px; min-height:200px; }
+
+#content .flash {
+   font-weight:bold;
+   color:white;
+   background-color: lightgray;
+   text-align:center;
+}
+#content .flash ul { margin-top: 0; } 
+
+.annule {
+   text-decoration: line-through;
+   font-style: italic;
+}
+.fait {
+   font-style: italic;
+}
+
+#filtre {
+ width:100%;
+ text-align:right;
+}
+#filtre, #filtre input, #filtre submit {
+ font-size: x-small;
+}
+#explication {
+ margin-top:25%;
+ float:right;
+ font-size: x-small;
+}

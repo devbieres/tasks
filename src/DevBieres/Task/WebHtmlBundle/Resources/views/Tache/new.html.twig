@@ -1,0 +1,19 @@
+{% extends "DevBieresTaskWebHtmlBundle::layout.html.twig" %}
+
+{% block content_title %}
+   <div class="content_title_action" >
+        <a href="{{ path('web_home') }}" >
+            {{ 'site.back'|trans }}
+            <img src="{{ asset('bundles/devbierestaskwebhtml/images/back.png') }}" alt="{{ 'site.back'|trans }}" />
+        </a>
+   </div>
+   {{ 'site.task.new'|trans }}
+{% endblock %}
+
+{% block content %}
+   <div id="newtask" class="formulaire"  >
+
+     {% include 'DevBieresTaskWebHtmlBundle:Tache:form.html.twig' with { 'form' : form, 'path': path('web_tache_create') } %}
+
+   </div>
+{% endblock %}

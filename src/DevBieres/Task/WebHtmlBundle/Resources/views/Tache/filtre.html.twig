@@ -1,0 +1,18 @@
+     <form action="{{ path }}" method="post" {{ form_enctype(form) }}>
+       <ul>
+         <li class="error" >
+             {{ form_errors(form) }}
+         </li>
+         <li class="error" >
+             {{ form_errors(form.filtre) }}
+         </li>
+         <li>
+              {{ form_label(form.filtre) }}
+              {{ form_widget(form.filtre) }}
+              <input type="submit" value="{{ 'site.filter_valid'|trans }}" />
+              <a href='{{ path }}' title='{{'site.filter_clear'|trans}}' > {{ 'site.filter_clear'|trans}} </a>
+         </li>
+
+         {{ form_rest(form) }}
+        </ul>
+      </form>

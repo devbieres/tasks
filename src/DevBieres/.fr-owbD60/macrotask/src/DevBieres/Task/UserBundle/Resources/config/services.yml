@@ -1,0 +1,8 @@
+parameters:
+    dvb.task.mng.user: DevBieres\Task\UserBundle\Manager\UserManager
+
+services:
+    dvb.mng_user:
+        class: %dvb.task.mng.user%
+        arguments: [@doctrine.orm.entity_manager]
+

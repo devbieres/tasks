@@ -1,0 +1,76 @@
+site:
+    title: Tasks
+    nav:
+       projets: Projects
+       taskadd: '+1'
+       taskaddsome: '+N'
+       trash: Trash
+       contact: Mail
+       about: About
+       preference: Preferences
+       destroy: Delete Account
+    task:
+       yourtasks: Job that's need to be done 
+       nothingtodo: There is nothing to do : Time for a beer !
+       unknown: Unknown task
+       oneproject: You need at least one project to create a task
+       new: New task
+       label: Title
+       priority: Priority
+       project: Project
+       done: Done
+       done_continue: Done and follow
+       cancel: Cancel
+       multinewok: Task(s) created 
+       reactive: Restore
+    help:
+       taskhighlevel: '+To create high task'
+       tasknormallevel: 'Nothing to create normal task'
+       tasklowlevel: '-To create low lew task'
+    project:
+       yourproject: Your projects
+       nothingtodo: No project ... Time for a beer ?
+       new: New project
+       label: Label
+    trash:
+       title: Trash
+    destroy: Delete
+    new: New
+    back: Back
+    valid: Submit
+    confirm: Are you sure ?
+    destroy_confirmed: Delete done
+    edit: Edit
+    empty_all: Empty All
+    filter: Filter
+    filter_valid: OK
+    filter_clear: Clear
+    about:
+        title: About
+        frenchlaw: Conformément aux dispositions des articles 6-III et 19 de la loi pour la Confiance dans l'Economie Numérique, nous vous communiquons les éléments suivants :
+        property: Property of
+        mail: Contact
+        license: License
+        license_text: thierry wrote this file. As long as you retain this notice you can do whatever you want with this stuff. If we meet some day, and you think this stuff is worth it, you can buy me a beer in return.
+        credits:
+             donewith: Done with
+             image: Images are from
+             image_info: Some may have been manipulated : colord change and size.
+             title: Credits
+    user:
+       preference:
+         title: Preferences
+         locale: Language
+         days: Days before empty trash
+         updated: Preferences updated
+       destroy: Delete Account
+user:
+    title_connect: Connection
+    title_register: New Account
+    back: Back
+    message_confirmation: You're ready to create tasks :)
+    logout: Log Out
+    preferences: Preferences
+
+
+

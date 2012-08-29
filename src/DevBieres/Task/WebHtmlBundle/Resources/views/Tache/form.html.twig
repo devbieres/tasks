@@ -1,0 +1,34 @@
+     <form action="{{ path }}" method="post" {{ form_enctype(form) }}>
+       <ul>
+         <li class="error" >
+             {{ form_errors(form) }}
+         </li>
+         <li class="error" >
+             {{ form_errors(form.libelle) }}
+         </li>
+         <li>
+              {{ form_label(form.libelle) }}
+              {{ form_widget(form.libelle) }}
+         </li>
+         <li class="error" >
+             {{ form_errors(form.priorite) }}
+         </li>
+         <li>
+              {{ form_label(form.priorite) }}
+              {{ form_widget(form.priorite) }}
+         </li>
+         <li class="error" >
+             {{ form_errors(form.projet) }}
+         </li>
+         <li>
+              {{ form_label(form.projet) }}
+              {{ form_widget(form.projet) }}
+         </li>
+         <li>
+              <label></label>
+              <input type="submit" value="{{ 'site.valid'|trans }}" />
+         </li>
+
+         {{ form_rest(form) }}
+        </ul>
+      </form>

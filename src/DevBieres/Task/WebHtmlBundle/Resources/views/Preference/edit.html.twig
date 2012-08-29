@@ -1,0 +1,45 @@
+{% extends "DevBieresTaskWebHtmlBundle::layout.html.twig" %}
+
+{% block content_title %}
+   <div class="content_title_action" >
+        <a href="{{ path('web_home') }}" >
+            {{ 'site.back'|trans }}
+            <img src="{{ asset('bundles/devbierestaskwebhtml/images/back.png') }}" alt="{{ 'site.back'|trans }}" />
+        </a>
+   </div>
+   {{ 'site.edit'|trans }} {{'site.user.preference.title'|trans}}
+{% endblock %}
+
+{% block content %}
+   <div id="newtask" class="formulaire"  >
+
+     <form action="{{ path('web_user_preference_update') }}" method="post" {{ form_enctype(form) }}>
+       <ul>
+         <li class="error" >
+             {{ form_errors(form) }}
+         </li>
+         <li class="error" >
+             {{ form_errors(form.locale) }}
+         </li>
+         <li>
+              {{ form_label(form.locale) }}
+              {{ form_widget(form.locale) }}
+         </li>
+         <li class="error" >
+             {{ form_errors(form.nbjours) }}
+         </li>
+         <li>
+              {{ form_label(form.nbjours) }}
+              {{ form_widget(form.nbjours) }}
+         </li>
+         <li>
+              <label></label>
+              <input type="submit" value="{{ 'site.valid'|trans }}" />
+         </li>
+
+         {{ form_rest(form) }}
+        </ul>
+      </form>
+
+   </div>
+{% endblock %}

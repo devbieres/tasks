@@ -1,0 +1,6 @@
+services:
+   login_listener:
+      class: DevBieres\Task\WebHtmlBundle\Listener\LoginListener
+      arguments: [@security.context, @doctrine, @session, @dvb.mng_user, @dvb.mng_tachesimple]
+      tags:
+          - { name: kernel.event_listener, event: security.interactive_login }

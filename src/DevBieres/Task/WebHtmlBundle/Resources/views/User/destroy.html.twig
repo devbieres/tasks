@@ -1,0 +1,30 @@
+{% extends "DevBieresTaskWebHtmlBundle::layout.html.twig" %}
+
+{% block content_title %}
+   <div class="content_title_action" >
+        <a href="{{ path('web_projet_index') }}" >
+            {{ 'site.back'|trans }}
+            <img src="{{ asset('bundles/devbierestaskwebhtml/images/back.png') }}" alt="{{ 'site.back'|trans }}" />
+        </a>
+   </div>
+   {{ 'site.user.destroy'|trans }} 
+{% endblock %}
+
+{% block content %}
+   <div id="destroyaccount" class="formulaire"  >
+
+     <form action="{{ path('web_user_destroy_confirmed') }}" method="post" >
+       <ul>
+         <li>
+             {{ 'site.confirm'|trans }}
+         </li>
+         <li>
+              <label></label>
+              <input type="submit" value="{{ 'site.valid'|trans }}" />
+         </li>
+
+        </ul>
+      </form>
+
+   </div>
+{% endblock %}

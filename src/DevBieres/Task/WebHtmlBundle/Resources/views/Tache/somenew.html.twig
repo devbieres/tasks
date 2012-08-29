@@ -1,0 +1,52 @@
+{% extends "DevBieresTaskWebHtmlBundle::layout.html.twig" %}
+
+{% block content_title %}
+   <div class="content_title_action" >
+        <a href="{{ path('web_home') }}" >
+            {{ 'site.back'|trans }}
+            <img src="{{ asset('bundles/devbierestaskwebhtml/images/back.png') }}" alt="{{ 'site.back'|trans }}" />
+        </a>
+   </div>
+   {{ 'site.task.new'|trans }}
+{% endblock %}
+
+{% block content %}
+    <div id="explication" >
+      <ul>
+         <li> {{ 'site.help.taskhighlevel'|trans }} </li>
+         <li> {{ 'site.help.tasknormallevel'|trans }} </li>
+         <li> {{ 'site.help.tasklowlevel'|trans }} </li>
+      </ul>
+    </div>
+
+   <div id="somenewtask" class="formulaire"  >
+     <form action="{{ path('web_tache_somecreate') }}" method="post" {{ form_enctype(form) }}>
+       <ul>
+         <li class="error" >
+             {{ form_errors(form) }}
+         </li>
+         <li class="error" >
+             {{ form_errors(form.projet) }}
+         </li>
+         <li>
+              {{ form_label(form.projet) }}
+              {{ form_widget(form.projet) }}
+         </li>
+         <li class="error">
+             {{ form_errors(form.contenu) }}
+         </li>
+         <li>
+              {{ form_label(form.contenu) }}
+         </li>
+         <li>
+              {{ form_widget(form.contenu) }}
+         </li>
+         <li>
+              <label></label>
+              <input type="submit" value="{{ 'site.valid'|trans }}" />
+         </li>
+         {{ form_rest(form) }}
+     </form>
+
+   </div>
+{% endblock %}

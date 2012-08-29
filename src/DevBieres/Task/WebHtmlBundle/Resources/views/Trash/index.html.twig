@@ -1,0 +1,20 @@
+{% extends "DevBieresTaskWebHtmlBundle::layout.html.twig" %}
+
+{% block content_title %}
+   <div class="content_title_action" >
+        <a href="{{ path('web_trash_emptyall') }}" >
+            {{ 'site.empty_all'|trans }}
+            <img src="{{ asset('bundles/devbierestaskwebhtml/images/destroy.png') }}" alt="{{ 'site.empty_all'|trans }}" />
+        </a>
+   </div>
+   {{ 'site.trash.title'|trans }}
+{% endblock %}
+
+{% block content %}
+   <div id="filtre" >
+       {% render "DevBieresTaskWebHtmlBundle:Tache:filterForm" with { 'uri' : app.request, 'path': path('web_trash') } %}
+   </div>
+   <div id="yourtasks" class="liste" >
+        {% render "DevBieresTaskWebHtmlBundle:Tache:listTrash" with { 'uri' : app.request } %}
+   </div>
+{% endblock %}

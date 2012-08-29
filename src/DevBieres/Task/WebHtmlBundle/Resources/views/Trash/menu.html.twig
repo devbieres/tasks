@@ -1,0 +1,8 @@
+<a href="{{ path('web_trash') }}" >
+    {% if nombre <= 0 %}
+      <img src="{{ asset('bundles/devbierestaskwebhtml/images/trash.png')}}" /> 
+    {% else %}
+      <img src="{{ asset('bundles/devbierestaskwebhtml/images/trash_full.png')}}" /> 
+    {% endif %}
+    {{ 'site.nav.trash'|trans}}({{ nombre }})
+</a> 

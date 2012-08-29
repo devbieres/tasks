@@ -1,0 +1,39 @@
+{% extends "DevBieresTaskWebHtmlBundle::layout.html.twig" %}
+
+{% block content_title %}
+   {{ 'site.about.title'|trans }}
+{% endblock %}
+
+{% block content %}
+   <div id="about" >
+        <section id="general" >
+            <h3> {{ 'site.about.title'|trans }}</h3>
+            <p>
+                {{ 'site.about.frenchlaw'|trans }}
+            </p>
+            <ul>
+                <li> {{ 'site.about.property'|trans }} : Thierry GLIN </li>
+                <li> {{ 'site.about.mail'|trans }} : thierry{aett}lafamillebn[acotedu:][pas]net </li>
+            </ul>
+        </section>
+
+        <section id="license" >
+        <h3> {{ 'site.about.license'|trans }} </h3>
+        <p>  {{ 'site.about.license_text'|trans }} </p>
+        </section>
+
+        <section id="credits" >
+        <h3> {{ 'site.about.credits.title'|trans }} </h3>
+        <ul>
+            <li> {{ 'site.about.credits.donewith'|trans }} : <a href="http://symfony.com" > Symfony 2.1 (rc) </a> </li>
+            <li> 
+                {{ 'site.about.credits.image'|trans }} : <a href="http://iconmonstr.com" > Iconmonstr </a> 
+                <ul>
+                    <li> {{ 'site.about.credits.image_info'|trans }} </li>
+                </ul>
+            <li>
+        </ul>
+        </section>
+
+   </div>
+{% endblock %}

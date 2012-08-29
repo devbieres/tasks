@@ -1,0 +1,143 @@
+web_tache_create:
+    pattern: /tache/create
+    defaults: { _controller: DevBieresTaskWebHtmlBundle:Tache:new }
+    requirements:
+        method: POST
+
+web_tache_somecreate:
+    pattern: /tache/somecreate
+    defaults: { _controller: DevBieresTaskWebHtmlBundle:Tache:somenew }
+    requirements:
+        method: POST 
+
+web_tache_new:
+    pattern: /tache/new
+    defaults: { _controller: DevBieresTaskWebHtmlBundle:Tache:new }
+    requirements:
+        method: GET 
+
+web_tache_somenew:
+    pattern: /tache/somenew
+    defaults: { _controller: DevBieresTaskWebHtmlBundle:Tache:somenew }
+    requirements:
+        method: GET 
+
+web_tache_update:
+    pattern: /tache/update/{tache}
+    defaults: { _controller: DevBieresTaskWebHtmlBundle:Tache:edit }
+    requirements:
+        method: POST
+
+web_tache_edit:
+    pattern: /tache/edit/{tache}
+    defaults: { _controller: DevBieresTaskWebHtmlBundle:Tache:edit }
+    requirements:
+        method: GET 
+
+web_tache_done:
+    pattern: /tache/done/{tache}
+    defaults: { _controller: DevBieresTaskWebHtmlBundle:Tache:changeState, continue: 0, state:2 }
+    requirements:
+        method: GET
+
+web_tache_done_continue:
+    pattern: /tache/done_continue/{tache}
+    defaults: { _controller: DevBieresTaskWebHtmlBundle:Tache:changeState, continue: 1, state:2 }
+    requirements:
+        method: GET
+
+web_tache_cancel:
+    pattern: /tache/cancel/{tache}
+    defaults: { _controller: DevBieresTaskWebHtmlBundle:Tache:changeState, continue: 0, state:1 }
+    requirements:
+        method: GET
+
+web_tache_reactive:
+    pattern: /tache/reactive/{tache}
+    defaults: { _controller: DevBieresTaskWebHtmlBundle:Tache:changeState, continue:0, state:0 }
+    requirements:
+         method: GET
+
+web_tache_destroy:
+    pattern: /tache/destroy/{tache}
+    defaults: { _controller: DevBieresTaskWebHtmlBundle:Tache:destroy }
+    requirements:
+         method: GET
+
+web_trash_emptyall:
+    pattern: /tache/emptyall
+    defaults: { _controller: DevBieresTaskWebHtmlBundle:Trash:emptyAll }
+    requirements:
+         method: GET
+
+web_trash_emptyallconfirmed:
+    pattern: /tache/emptyallConfirmed
+    defaults: { _controller: DevBieresTaskWebHtmlBundle:Trash:emptyAllConfirmed }
+    requirements:
+         method: POST
+
+
+web_projet_new:
+   pattern: /projet/new
+   defaults: { _controller: DevBieresTaskWebHtmlBundle:Projet:new }
+   requirements:
+         method: GET
+
+web_projet_create:
+   pattern: /projet/create
+   defaults: { _controller: DevBieresTaskWebHtmlBundle:Projet:new }
+   requirements:
+         method: POST
+
+web_projet_destroy:
+   pattern: /projet/destroy/{projet}
+   defaults: { _controller: DevBieresTaskWebHtmlBundle:Projet:destroy }
+   requirements:
+         method: GET 
+
+web_projet_destroy_confirmed:
+   pattern: /projet/destroy_confirmed
+   defaults: { _controller: DevBieresTaskWebHtmlBundle:Projet:destroyConfirmed }
+   requirements:
+         method: POST
+
+web_projet_index:
+    pattern: /projet
+    defaults: { _controller: DevBieresTaskWebHtmlBundle:Projet:index }
+
+web_trash:
+    pattern: /trash
+    defaults: { _controller: DevBieresTaskWebHtmlBundle:Trash:index }
+
+web_apropos:
+    pattern: /apropos
+    defaults: { _controller: DevBieresTaskWebHtmlBundle:Default:apropos }
+
+web_user_preference_update:
+    pattern: /preferences/update
+    defaults: { _controller:DevBieresTaskWebHtmlBundle:Preference:edit }
+    requirements:
+         method: POST
+
+web_user_preference_edit:
+    pattern: /preferences/edit
+    defaults: { _controller:DevBieresTaskWebHtmlBundle:Preference:edit }
+    requirements:
+         method: GET	
+
+web_user_destroy:
+    pattern: /user/destroy
+    defaults: { _controller:DevBieresTaskWebHtmlBundle:User:destroy }
+    requirements:
+         method: GET 
+
+web_user_destroy_confirmed:
+    pattern: /user/destroyConfirmed
+    defaults: { _controller:DevBieresTaskWebHtmlBundle:User:destroyConfirmed }
+    requirements:
+         method: POST
+
+web_home:
+    pattern:  /
+    defaults: { _controller: DevBieresTaskWebHtmlBundle:Default:index }
+

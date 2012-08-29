@@ -1,0 +1,72 @@
+site:
+    title: Task
+    nav:
+       projets: Projets
+       taskadd: '+1'
+       taskaddsome: '+N'
+       trash: Corbeille 
+       contact: Mail
+       about: A propos
+       preference: Préférences
+       destroy: Supprimer compte
+    task:
+       yourtasks: Ce qu'il reste à faire
+       nothingtodo: Il ne reste plus qu'à prendre une bière.
+       oneproject: Il faut au moins un projet pour créer une tâche.
+       unknown: Tâche inconnue
+       new: Nouvelle tâche 
+       label: Titre
+       priority: Priorité
+       project: Projet
+       done: Fait 
+       done_continue: Fait et suite
+       cancel: Annuler 
+       multilineok: Tâche(s) crée(s)
+       reactive: Restaurer
+    help:
+       taskhighlevel: '+Pour priorité haute'
+       tasknormallevel: 'Rien pour priorité normal'
+       tasklowlevel: '-Pour priorité basse'
+    project:
+       yourproject: Vos projets
+       nothingtodo: Pas de projets, pas de sous, pas de bières ! 
+       new: Nouveau projet (nouvelles emm***)
+       label: Titre
+    trash:
+       title: Corbeille
+    destroy: Supprimer
+    new: Nouveau
+    back: Retour
+    valid: Valider
+    confirm: Êtes-vous sur ?
+    destroy_confirmed: Element supprimé 
+    edit: Mettre à jour
+    empty_all: Vider tout
+    filter: Filtre
+    filter_valid: Go
+    filter_clear: Vider
+    about:
+        title: A propos
+        frenchlaw: Conformément aux dispositions des articles 6-III et 19 de la loi pour la Confiance dans l'Economie Numérique, nous vous communiquons les éléments suivants :
+        property: C'est de sa faute  
+        mail: Contact
+        license: Licence
+        license_text: Le source du site est placé sous Licence Beerware. En gros, tout le monde est autorisé à faire ce qu'il veut du moment qu'il conserve la licence. Si vous pensez que tout cela en veut la peine, vous pouvez me payer une bière en retour.
+        credits:
+             donewith: Fait avec
+             image: Les images viennent de 
+             image_info: Certaines ont été manipulées : taille et couleur.
+             title: Crédits
+    user:
+       preference:
+         title: Préférences
+         locale: Langue
+         days: Jours avant suppression dans la corbeille
+         updated: Préférences mises à jour
+       destroy: Supprimer compte
+
+user:
+    title_connect: Connexion
+    title_register: Créer un compte
+    back: Retour
+    message_confirmation: Vous êtes prêt à créer vos tâches. Les faire par contre ... :)

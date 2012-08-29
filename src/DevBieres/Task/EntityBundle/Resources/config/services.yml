@@ -1,0 +1,15 @@
+parameters:
+    dvb.task.mng.priorite: DevBieres\Task\EntityBundle\Manager\PrioriteManager
+    dvb.task.mng.projet: DevBieres\Task\EntityBundle\Manager\ProjetManager
+    dvb.task.mng.tachesimple: DevBieres\Task\EntityBundle\Manager\TacheSimpleManager
+
+services:
+    dvb.mng_priorite:
+        class: %dvb.task.mng.priorite%
+        arguments: [@doctrine.orm.entity_manager]
+    dvb.mng_projet:
+        class: %dvb.task.mng.projet%
+        arguments: [@doctrine.orm.entity_manager]
+    dvb.mng_tachesimple:
+        class: %dvb.task.mng.tachesimple%
+        arguments: [@doctrine.orm.entity_manager]

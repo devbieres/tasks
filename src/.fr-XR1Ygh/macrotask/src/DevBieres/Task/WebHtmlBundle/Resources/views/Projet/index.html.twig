@@ -1,0 +1,17 @@
+{% extends "DevBieresTaskWebHtmlBundle::layout.html.twig" %}
+
+{% block content_title %}
+   <div class="content_title_action" >
+        <a href="{{ path('web_projet_new') }}" >
+            {{ 'site.new'|trans }}
+            <img src="{{ asset('bundles/devbierestaskwebhtml/images/add.png') }}" alt="{{ 'site.new'|trans }}" />
+        </a>
+   </div>
+   {{ 'site.project.yourproject'|trans }}
+{% endblock %}
+
+{% block content %}
+   <div id="yourproject" class="liste"  >
+        {% include "DevBieresTaskWebHtmlBundle:Projet:list.html.twig" with {'col':col}  %}
+   </div>
+{% endblock %}

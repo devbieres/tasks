@@ -1,0 +1,7 @@
+imports:
+    - { resource: security.yml }
+
+#security:
+#    encoders:
+#        Symfony\Component\Security\Core\User\User: plaintext
+

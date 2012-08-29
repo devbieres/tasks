@@ -1,0 +1,7 @@
+parameters:
+#    dev_bieres_common_base.example.class: DevBieres\Common\BaseBundle\Example
+
+services:
+#    dev_bieres_common_base.example:
+#        class: %dev_bieres_common_base.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

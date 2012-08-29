@@ -1,0 +1,57 @@
+html {
+  background-color: lightgray; 
+}
+
+img {
+   border:0;
+   vertical-align:middle;
+}
+
+.formulaire_connexion {
+  width:500px;
+  margin-left:-250px;
+  left:50%;
+  position: absolute;
+  margin-top:5%;
+  border: 1px solid black;
+  border-radius: 15px;
+  background-color: black;
+}
+
+.formulaire_connexion h2 {
+   text-align: center;
+   margin:0;
+  padding: 0;
+   color: white;
+}
+
+.formulaire_connexion h3 {
+   background-color: white;
+   margin:0; padding:0;
+   text-align:center;
+}
+
+.formulaire_connexion_content {
+   background-color: white;
+   padding: 10px 0px 10px 0px;
+}
+
+.formulaire_connexion_content p { padding: 0 1% 0 1%; }
+
+.formulaire_connexion ul { list-style: none outside none; }
+.formulaire_connexion li { margin-top: 10px; }
+.formulaire_connexion label {
+    display: inline-block;
+    width: 200px;
+}
+.formulaire_connexion input {
+   width: 240px;
+   margin: 0;
+}
+
+.formulaire_connexion_footer {
+   text-align: center;
+}
+.formulaire_connexion_footer a, .formulaire_connexion_footer a:visited, .formulaire_connexion_footer a:hover {
+    color:white;
+}

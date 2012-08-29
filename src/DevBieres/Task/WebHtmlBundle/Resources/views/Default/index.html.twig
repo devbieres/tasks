@@ -1,0 +1,14 @@
+{% extends "DevBieresTaskWebHtmlBundle::layout.html.twig" %}
+
+{% block content_title %}
+   {{ 'site.task.yourtasks'|trans }}
+{% endblock %}
+
+{% block content %}
+   <div id="filtre" >
+       {% render "DevBieresTaskWebHtmlBundle:Tache:filterForm" with { 'uri' : app.request, 'path': path('web_home') } %}
+   </div>
+   <div id="yourtasks" class="liste" >
+        {% render "DevBieresTaskWebHtmlBundle:Tache:list" with { 'uri' : app.request } %}
+   </div>
+{% endblock %}
