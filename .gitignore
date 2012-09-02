@@ -9,3 +9,4 @@
 /app/config/deploy.rb
 /Capfile
 /.fr-f8UbnA
+/app/config/parameters.yml
