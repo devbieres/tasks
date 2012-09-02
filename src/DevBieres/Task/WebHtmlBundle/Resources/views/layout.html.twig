@@ -10,8 +10,8 @@
     <body>
        <nav id="nav_header" >
        <ul>
-         <li> <a href="{{ path('web_tache_new') }}" > <img src="{{ asset('bundles/devbierestaskwebhtml/images/addtask.png') }}" /> {{ 'site.nav.taskadd'|trans}} </a> </li>
-         <li> <a href="{{ path('web_tache_somenew') }}" > <img src="{{ asset('bundles/devbierestaskwebhtml/images/addtask.png') }}" /> {{ 'site.nav.taskaddsome'|trans}} </a> </li>
+         <li> <a href="{{ path('web_tache_new') }}" id="nav_newtask"> <img src="{{ asset('bundles/devbierestaskwebhtml/images/addtask.png') }}" /> {{ 'site.nav.taskadd'|trans}} </a> </li>
+         <li> <a href="{{ path('web_tache_somenew') }}" id="nav_newmultitask" > <img src="{{ asset('bundles/devbierestaskwebhtml/images/addtask.png') }}" /> {{ 'site.nav.taskaddsome'|trans}} </a> </li>
 
          <!--         
          <li> <a href="{{ path('web_trash') }}" > <img src="{{ asset('bundles/devbierestaskwebhtml/images/trash.png')}}" /> {{ 'site.nav.trash'|trans}} </a> </li>
@@ -51,7 +51,7 @@
                 <ul>
                   <li> <a href="mailto:thierry<at>lafamillebn<point>#<net>" > {{ 'site.nav.contact'|trans }}</a></li> 
                   <li> <a href="{{ path('web_apropos') }}" > {{ 'site.nav.about'|trans }}</a></li> 
-                  <li> <a href="{{ path('web_user_preference_edit') }}"  > <img src="{{ asset('bundles/devbierestaskwebhtml/images/user_preferences.png')}}" /> {{ 'site.nav.preference'|trans}} </a></li> 
+                  <li> <a href="{{ path('web_user_preference_edit') }}" id="nav_preferences"  > <img src="{{ asset('bundles/devbierestaskwebhtml/images/user_preferences.png')}}" /> {{ 'site.nav.preference'|trans}} </a></li> 
                   <li> <a href="{{ path('web_user_destroy') }}" id="user_destroy" > <img src="{{ asset('bundles/devbierestaskwebhtml/images/user_destroy.png')}}" /> {{ 'site.nav.destroy'|trans}} </a></li> 
                 </ul>
           </nav>

@@ -6,3 +6,6 @@
 /app/config/parameters.ini
 /cov/*
 /sauv/*
+/app/config/deploy.rb
+/Capfile
+/.fr-f8UbnA

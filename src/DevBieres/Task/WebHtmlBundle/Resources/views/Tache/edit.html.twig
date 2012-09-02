@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block content %}
-   <div id="newtask" class="formulaire"  >
+   <div id="edittask" class="formulaire"  >
 
      {% include 'DevBieresTaskWebHtmlBundle:Tache:form.html.twig' with { 'form' : form, 'path': path('web_tache_update', {'tache':obj.id }) } %}
 

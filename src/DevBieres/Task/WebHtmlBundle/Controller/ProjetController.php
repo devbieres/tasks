@@ -119,25 +119,17 @@ class ProjetController extends BaseController
 
     // -1-
     $form = $request->get('form');
-    //var_dump($request);
-    var_dump($form);
     $id = $form['id'];
-    var_dump($id);
 
     // -2- Récupération du projet
     $projet = $this->getProjetManager()->findOneById($id);
-    var_dump($id);
     if($projet == null) { 
-      var_dump("null");
       $this->storeFlash( $this->trans('site.project.unknown')); 
       return $this->redirect( $this->generateUrl('web_projet_index')); 
     }
 
     // -3- Validation que l'utilisateur est bien celui supprime
     // TODO : mettre dans le manager
-    var_dump($projet->getCode());
-    var_dump($projet->getUser()->getCode());
-    var_dump($this->getUser()->getCode());
     if($projet->getUser()->getCode() != $this->getUser()->getCode()) {
         $this->storeFlash( $this->trans('site.project.wronguser')); 
         return $this->redirect( $this->generateUrl('web_projet_index')); 

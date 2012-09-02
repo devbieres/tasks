@@ -102,9 +102,6 @@ class ProjetControllerTest extends ConnecteControllerTest {
         $p1a->setLibelle('p2a'); 
         $p1a->setUser($u2); 
         $mngProjet->persist($p1a);
-        //var_dump($p1a);
-        var_dump("ProjetControllerTest");
-        var_dump($p1a->getId());
 
         $crawler = $this->client->request('POST','/html/projet/destroy_confirmed', array("form" => array("id" => "" . $p1a->getId())));
         $crawler = $this->client->followRedirect();   // redirection vers /html/projet

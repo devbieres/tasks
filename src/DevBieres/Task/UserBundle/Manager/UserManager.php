@@ -30,6 +30,8 @@ class UserManager extends BaseManager {
    */
   protected function getFullName() {  return "DevBieresTaskUserBundle:User"; }
 
+  public function findOneByUsername($username) { return $this->getRepo()->findOneByUsername($username); }
+
   protected function getUPRepo() { return $this->getRepo("DevBieresTaskUserBundle:UserPreference"); }
 
   /**

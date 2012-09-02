@@ -79,7 +79,7 @@ class TrashController extends BaseController
        }
 
        // -4-
-       return $this->redirect($this->generateUrl('web_home'));
+       return $this->redirectToHome();
 
     } // Fin d'emptyAllConfirmedAction
 }
