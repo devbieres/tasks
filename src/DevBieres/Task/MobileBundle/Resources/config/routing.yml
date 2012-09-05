@@ -1,0 +1,18 @@
+mobile_tache_new:
+    pattern: /tache/new
+    defaults: { _controller: DevBieresTaskMobileBundle:Tache:new }
+    requirements:
+        method: GET 
+
+mobile_tache_show:
+    pattern: /tache/show/{id}
+    defaults: { _controller: DevBieresTaskMobileBundle:Tache:show }
+
+
+mobile_projet_index:
+    pattern: /projet
+    defaults: { _controller: DevBieresTaskMobileBundle:Projet:index }
+
+mobile_home:
+    pattern:  /
+    defaults: { _controller: DevBieresTaskMobileBundle:Default:index }

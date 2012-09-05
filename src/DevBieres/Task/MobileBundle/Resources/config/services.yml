@@ -1,0 +1,7 @@
+parameters:
+#    dev_bieres_task_mobile.example.class: DevBieres\Task\MobileBundle\Example
+
+services:
+#    dev_bieres_task_mobile.example:
+#        class: %dev_bieres_task_mobile.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

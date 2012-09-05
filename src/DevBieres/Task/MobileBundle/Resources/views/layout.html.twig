@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="UTF-8" />
+      <title>{% block title %} {{ 'site.title'|trans }} {% endblock %} </title>
+       <link href="{{ asset('bundles/devbierescommonjquerymobile/css/jquery.mobile-1.1.1.css') }}" type="text/css" rel="stylesheet" />
+       <link href="{{ asset('bundles/devbierestaskmobile/css/task.css') }}" type="text/css" rel="stylesheet" />
+       {% block stylesheets %}
+       {% endblock %}
+       <script src="{{ asset('bundles/devbierescommonjquerymobile/js/jquery-1.8.1.min.js') }}" type="text/javascript" ></script>
+       <script src="{{ asset('bundles/devbierescommonjquerymobile/js/jquery.mobile-1.1.1.min.js') }}" type="text/javascript" ></script>
+       {% block js %}
+       {% endblock %}
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+
+    {% block page %}
+    <div data-role="page" > 
+       <header data-role="header" >
+         <h2> {% block content_title %} {% endblock %} </h2>
+        </header>
+       <nav data-role="navbar" >
+            <ul>
+              <li> <a href="{{ path('mobile_tache_new') }}" id="nav_newtask"> <img src="{{ asset('bundles/devbierestaskwebhtml/images/addtask.png') }}" /> {{ 'site.nav.taskadd'|trans}} </a> </li>
+              <li>{% render "DevBieresTaskWebHtmlBundle:Trash:navMenu" %} </li>
+              <li> <a href="{{ path('mobile_projet_index') }}" id="nav_projet" > <img src="{{ asset('bundles/devbierestaskwebhtml/images/projects.png')}}" /> {{ 'site.nav.projets'|trans}} </a> </li>
+              <li> <a href="{{ path('fos_user_security_logout') }}" > <img src="{{ asset('bundles/devbierestaskwebhtml/images/logout.png')}}" /> {{ 'user.logout'|trans}} </a></li>
+            </ul> 
+       </nav>
+
+       <div data-role="content" >
+          {% block content %}
+          {% endblock %}
+        </div>
+
+        <footer data-role="footer" >
+            {% block footer %}
+            {% endblock %}
+            <p>{{ 'site.title'|trans }} </p>
+        </footer>
+    </div>
+    {% endblock %}
+
+
+
+    </body>
+</html>
+

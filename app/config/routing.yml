@@ -1,3 +1,7 @@
+DevBieresTaskMobileBundle:
+    resource: "@DevBieresTaskMobileBundle/Resources/config/routing.yml"
+    prefix:   /mobile
+
 DevBieresProjetWebHtmlBundle:
     resource: "@DevBieresTaskWebHtmlBundle/Resources/config/routing.yml"
     prefix:   /html

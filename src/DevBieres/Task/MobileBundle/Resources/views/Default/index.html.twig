@@ -1,0 +1,15 @@
+{% extends "DevBieresTaskMobileBundle::layout.html.twig" %}
+
+
+{% block content_title %}
+   {{ 'site.task.yourtasks'|trans }}
+{% endblock %}
+
+
+{% block content %}
+   <div id="yourtasks" class="liste" >
+        {% render "DevBieresTaskMobileBundle:Tache:list" with { 'uri' : app.request } %}
+   </div>
+{% endblock %}
+
+
