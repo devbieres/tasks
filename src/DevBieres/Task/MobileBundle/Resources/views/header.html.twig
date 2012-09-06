@@ -1,0 +1,12 @@
+       <header data-role="header" >
+         <h2> {{ title|trans }} </h2>
+        </header>
+       <nav data-role="navbar" >
+            <ul>
+              <li> <a href="{{ path('mobile_tache_new') }}" id="nav_newtask"> <img src="{{ asset('bundles/devbierestaskwebhtml/images/addtask.png') }}" /> {{ 'site.nav.taskadd'|trans}} </a> </li>
+              <li>{% render "DevBieresTaskWebHtmlBundle:Trash:navMenu" %} </li>
+              <li> <a href="{{ path('mobile_projet_index') }}" id="nav_projet" > <img src="{{ asset('bundles/devbierestaskwebhtml/images/projects.png')}}" /> {{ 'site.nav.projets'|trans}} </a> </li>
+              <li> <a href="{{ path('fos_user_security_logout') }}" > <img src="{{ asset('bundles/devbierestaskwebhtml/images/logout.png')}}" /> {{ 'user.logout'|trans}} </a></li>
+            </ul> 
+       </nav>
+

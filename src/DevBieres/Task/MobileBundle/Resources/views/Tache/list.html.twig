@@ -1,19 +1,40 @@
-<ul data-role="listview" data-theme="d" data-divider-theme="d">
-   {% for key,col in arr %}
-      <li class="item_titre" data-role="list-divider"  > 
-          {% include 'DevBieresTaskWebHtmlBundle:Priorite:img.html.twig' with { 'code' : key } %}
-          {{ key|trans|upper }}
-      </li>
-      {% for obj in col %}
-           <li class="item {{ obj.getEtatLibelle() }}" 
-                       data-icon="arrow-r" data-iconpos="right" > 
-                <a href="{{ path('mobile_tache_show', { 'id' : obj.id }) }}" 
-                          data-rel="dialog" data-transition="slidedown"  >
-                <span class="tache_projet"> [ {{ obj.projet.libelle }}] </span> {{ obj.libelle }} 
-                </a>
-           </li>
-      {% endfor %}
-   {% else %}
-     <li> {{ 'site.task.nothingtodo'|trans }} </li>
-   {% endfor %}
-</ul>
+{% for key,col in arr %}
+   <div data-role="page" id="{{ key }}" >
+        {%  
+             include "DevBieresTaskMobileBundle::header.html.twig" 
+             with {
+                     'title' : 'site.task.yourtasks'
+                  }
+         %}
+         <ul data-role="listview" data-theme="d" data-divider-theme="d">
+               <li class="item_titre" data-role="list-divider"  > 
+                    {% include 'DevBieresTaskWebHtmlBundle:Priorite:img.html.twig' with { 'code' : key } %}
+                    {{ key|trans|upper }}
+               </li>
+               {% for obj in col %}
+                    <li class="item {{ obj.getEtatLibelle() }}" 
+                        data-icon="arrow-r" data-iconpos="right" > 
+                        <a href="{{ path('mobile_tache_show', { 'id' : obj.id }) }}" 
+                              data-rel="dialog" data-transition="slidedown"  >
+                              <span class="tache_projet"> [ {{ obj.projet.libelle }}] </span> {{ obj.libelle }}
+                        </a>
+                    </li>
+               {% endfor %}
+         </ul>
+        {%  
+             include "DevBieresTaskMobileBundle::footer.html.twig" 
+        %}
+    </div>
+{% else %}
+   <div data-role="page" id="empty" >
+        {%  
+             include "DevBieresTaskMobileBundle::header.html.twig" 
+             with {
+                     'title' : 'site.task.yourtasks'
+                  }
+        %}
+        <p>
+            {{ 'site.task.nothingtodo'|trans }}
+        </p>
+    </div>
+{% endfor %}
