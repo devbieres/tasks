@@ -55,3 +55,26 @@ img {
 .formulaire_connexion_footer a, .formulaire_connexion_footer a:visited, .formulaire_connexion_footer a:hover {
     color:white;
 }
+
+
+/* Smartphones (portrait and landscape) ----------- */
+@media screen
+and (max-width: 480px) {
+  /* Styles */
+  .formulaire_connexion {
+     width:100%;
+     left:0;
+     margin-left:0px;
+     margin-top: 0px;
+     border-radius: 0px;
+  }
+ .formulaire_connexion li { text-align:center; }
+ .formulaire_connexion label {
+    display: block;
+ }
+ .formulaire_connexion input {
+   width: 80%;
+ }
+
+}
+

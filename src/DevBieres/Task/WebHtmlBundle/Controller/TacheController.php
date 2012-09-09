@@ -105,7 +105,7 @@ class TacheController extends BaseController
     // -2-
     if(! $this->getProjetManager()->hasOneProjet($this->getUser())) {
       $this->storeFlash($this->trans('site.task.oneproject'));
-      return $this->redirect($this->generateUrl('web_home'));
+      return $this->redirectToHome(); // $this->redirect($this->generateUrl('web_home'));
     }
 
     // -3- Default Data
@@ -132,7 +132,7 @@ class TacheController extends BaseController
        );
        // Retour
        $this->storeFlash( sprintf('%s:%s', $this->trans('site.task.multinewok'), $count));
-       return $this->redirect($this->generateUrl('web_home'));
+       return $this->redirectToHome(); // $this->redirect($this->generateUrl('web_home'));
     }
     
 
@@ -155,7 +155,7 @@ class TacheController extends BaseController
     // -2-
     if(! $this->getProjetManager()->hasOneProjet($this->getUser())) {
       $this->storeFlash($this->trans('site.task.oneproject'));
-      return $this->redirect($this->generateUrl('web_home'));
+      return $this->redirectToHome(); // $this->redirect($this->generateUrl('web_home'));
     } // Fin de -2-
 
     // -3-
@@ -178,7 +178,7 @@ class TacheController extends BaseController
     $tache = $this->getTacheManager()->findOneById($tache);
     if($tache == null) {
       $this->storeFlash($this->trans('site.task.unknown'));
-      return $this->redirect($this->generateUrl('web_home'));
+      return $this->redirectToHome(); // $this->redirect($this->generateUrl('web_home'));
     }
 
     // -3-
@@ -196,7 +196,7 @@ class TacheController extends BaseController
     // -1-
     if(! $this->getTacheManager()->checkUserTache($tache, $this->getUser())) {
        $this->storeFlash($this->trans('site.forbiden'));
-       return $this->redirect($this->generateUrl('web_home'));
+       return $this->redirectToHome(); // $this->redirect($this->generateUrl('web_home'));
     }
   }
 
@@ -238,7 +238,7 @@ class TacheController extends BaseController
         // --> Sauvegarde
         $this->getTacheManager()->persist($tache);
         // --> redirection
-        return $this->redirect($this->generateUrl('web_home'));
+        return $this->redirectToHome(); // $this->redirect($this->generateUrl('web_home'));
       } // Fin de -5.2-
 
     } // Fin de -5-
@@ -260,7 +260,7 @@ class TacheController extends BaseController
     $tache = $this->getTacheManager()->findOneById($tache);
     if($tache == null) {
       $this->storeFlash($this->trans('site.task.unknown'));
-      return $this->redirect($this->generateUrl('web_home'));
+      return $this->redirectToHome(); // $this->redirect($this->generateUrl('web_home'));
     }
 
     // -3-
@@ -274,7 +274,7 @@ class TacheController extends BaseController
     if($continue) { return $this->__showFormulaire($request, $tache, 'new'); }
 
     // -6-
-    return $this->redirect($this->generateUrl('web_home'));
+    return $this->redirectToHome(); // $this->redirect($this->generateUrl('web_home'));
  
   } // Fin de changeStateAction
 
@@ -289,7 +289,7 @@ class TacheController extends BaseController
     $tache = $this->getTacheManager()->findOneById($tache);
     if($tache == null) {
       $this->storeFlash($this->trans('site.task.unknown'));
-      return $this->redirect($this->generateUrl('web_trash'));
+      return $this->redirectToTrash(); // $this->redirect($this->generateUrl('web_trash'));
     }
 
     // -3-
@@ -299,7 +299,7 @@ class TacheController extends BaseController
     $this->getTacheManager()->remove($tache);
 
     // -5-
-    return $this->redirect($this->generateUrl('web_trash'));
+    return $this->redirectToTrash(); // $this->redirect($this->generateUrl('web_trash'));
 
   } // Fin de destroyAction
 

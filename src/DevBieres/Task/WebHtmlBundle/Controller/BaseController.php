@@ -48,6 +48,15 @@ class BaseController extends SecuredBaseController
   protected function redirectToHome() {
     return $this->redirect($this->generateUrl('web_home'));
   }
+
+
+  /**
+   * Centralise le redirect vers la page de la corbeille
+   */
+  protected function redirectToTrash() {
+     return $this->redirect($this->generateUrl('web_trash'));
+  }
+
 }
 
 ?>

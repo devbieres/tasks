@@ -1,8 +1,8 @@
-<a href="{{ path('web_trash') }}" id="nav_trash" >
+<a href="{{ path(route) }}" id="nav_trash"  title="{{ 'site.nav.trash'|trans}}">
     {% if nombre <= 0 %}
       <img src="{{ asset('bundles/devbierestaskwebhtml/images/trash.png')}}" /> 
     {% else %}
       <img src="{{ asset('bundles/devbierestaskwebhtml/images/trash_full.png')}}" /> 
     {% endif %}
-    {{ 'site.nav.trash'|trans}}({{ nombre }})
+    <span class="nav_title" > {{ 'site.nav.trash'|trans}}</span> ({{ nombre }}) 
 </a> 

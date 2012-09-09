@@ -23,6 +23,7 @@ site:
        cancel: Cancel
        multinewok: Task(s) created 
        reactive: Restore
+       created: Created
     help:
        taskhighlevel: '+To create high task'
        tasknormallevel: 'Nothing to create normal task'

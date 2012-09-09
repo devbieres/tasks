@@ -1,0 +1,16 @@
+{% extends "DevBieresTaskMobileBundle::layout.html.twig" %}
+
+{% block page %}
+   <div id="newtask" class="formulaire" data-role="page"  >
+        {%  
+             include "DevBieresTaskMobileBundle::header.html.twig" 
+             with {
+                     'title' : 'site.task.new',
+                     'back'  : 'true'
+                  }
+         %}
+   
+     {% include 'DevBieresTaskMobileBundle:Tache:form.html.twig' with { 'form' : form, 'path': path('mobile_tache_create') } %}
+
+   </div>
+{% endblock %}

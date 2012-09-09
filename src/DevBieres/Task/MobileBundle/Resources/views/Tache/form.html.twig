@@ -1,0 +1,32 @@
+     <form action="{{ path }}" method="post" {{ form_enctype(form) }} data-ajax="false" >
+         <div class="error" >
+             {{ form_errors(form) }}
+         </div>
+         <div class="error" >
+             {{ form_errors(form.libelle) }}
+         </div>
+         <div data-role="fielcontain">
+              {{ form_label(form.libelle) }}
+              {{ form_widget(form.libelle) }}
+         </div>
+         <div cilass="error" >
+             {{ form_errors(form.priorite) }}
+         </div>
+         <div data-role="fielcontain">
+              {{ form_label(form.priorite) }}
+              {{ form_widget(form.priorite) }}
+         </div>
+         <div class="error" >
+             {{ form_errors(form.projet) }}
+         </div>
+         <div data-role="fielcontain">
+              {{ form_label(form.projet) }}
+              {{ form_widget(form.projet) }}
+         </div>
+         <div data-role="fielcontain">
+              <label></label>
+              <input type="submit" value="{{ 'site.valid'|trans }}" id="submit" />
+         </div>
+
+         {{ form_rest(form) }}
+      </form>

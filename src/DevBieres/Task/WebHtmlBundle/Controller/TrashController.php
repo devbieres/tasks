@@ -29,14 +29,14 @@ class TrashController extends BaseController
     /**
      * Gestion d'une action gérant le rendu du menu corbeille
      */
-    public function navMenuAction() {
+    public function navMenuAction($route = 'web_trash') {
 
        // -1- Récupération du nombre d'éléments dans la corbeille
        $nb = $this->getTacheManager()->getNbElementsTrash($this->getUser());
 
        // -2-
        return $this->render($this->getViewPath('Trash:menu'),
-                            array('nombre' => $nb)
+                            array('nombre' => $nb, 'route' => $route)
                            );
 
     }

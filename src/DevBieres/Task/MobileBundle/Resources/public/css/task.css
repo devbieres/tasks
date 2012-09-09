@@ -13,7 +13,11 @@ img {
    vertical-align:middle;
 }
 
-h1, h2, h3, h4 { padding:0; margin:0; }
+h1, h2, h4 { padding:0; margin:0; }
+h3 { 
+  width:100%;
+  text-align:center;
+}
 
 ul { list-style: none; }
 
@@ -24,3 +28,12 @@ footer {
 .item_titre {
  padding-left: 35px;
 }
+
+
+@media screen
+and (max-width:480px) {
+   .nav_title, .action_title, .tache_projet { display:none;  }
+   #page_title { width:100%; margin-left:0; }
+
+}
+

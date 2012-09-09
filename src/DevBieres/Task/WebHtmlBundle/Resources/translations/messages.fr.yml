@@ -23,6 +23,7 @@ site:
        cancel: Annuler 
        multilineok: Tâche(s) crée(s)
        reactive: Restaurer
+       created: Crée le
     help:
        taskhighlevel: '+Pour priorité haute'
        tasknormallevel: 'Rien pour priorité normal'

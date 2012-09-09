@@ -1,17 +1,68 @@
+mobile_tache_create:
+    pattern: /tache/create
+    defaults: { _controller: DevBieresTaskMobileBundle:MobileTache:new }
+    requirements:
+        method: POST
+
 mobile_tache_new:
     pattern: /tache/new
-    defaults: { _controller: DevBieresTaskMobileBundle:Tache:new }
+    defaults: { _controller: DevBieresTaskMobileBundle:MobileTache:new }
     requirements:
         method: GET 
 
 mobile_tache_show:
     pattern: /tache/show/{id}
-    defaults: { _controller: DevBieresTaskMobileBundle:Tache:show }
+    defaults: { _controller: DevBieresTaskMobileBundle:MobileTache:show }
 
+mobile_tache_update:
+    pattern: /tache/update/{tache}
+    defaults: { _controller: DevBieresTaskMobileBundle:MobileTache:edit }
+    requirements:
+        method: POST
+
+mobile_tache_edit:
+    pattern: /tache/edit/{tache}
+    defaults: { _controller: DevBieresTaskMobileBundle:MobileTache:edit }
+    requirements:
+        method: GET 
+
+mobile_tache_done:
+    pattern: /tache/done/{tache}
+    defaults: { _controller: DevBieresTaskMobileBundle:MobileTache:changeState, continue: 0, state:2 }
+    requirements:
+        method: GET
+
+mobile_tache_done_continue:
+    pattern: /tache/done_continue/{tache}
+    defaults: { _controller: DevBieresTaskMobileBundle:MobileTache:changeState, continue: 1, state:2 }
+    requirements:
+        method: GET
+
+mobile_tache_cancel:
+    pattern: /tache/cancel/{tache}
+    defaults: { _controller: DevBieresTaskMobileBundle:MobileTache:changeState, continue: 0, state:1 }
+    requirements:
+        method: GET
+
+mobile_tache_reactive:
+    pattern: /tache/reactive/{tache}
+    defaults: { _controller: DevBieresTaskMobileBundle:MobileTache:changeState, continue:0, state:0 }
+    requirements:
+         method: GET
+
+mobile_tache_destroy:
+    pattern: /tache/destroy/{tache}
+    defaults: { _controller: DevBieresTaskMobileBundle:MobileTache:destroy }
+    requirements:
+         method: GET
 
 mobile_projet_index:
     pattern: /projet
-    defaults: { _controller: DevBieresTaskMobileBundle:Projet:index }
+    defaults: { _controller: DevBieresTaskMobileBundle:MobileProjet:index }
+
+mobile_trash:
+    pattern:  /trash
+    defaults: { _controller: DevBieresTaskMobileBundle:MobileTrash:index }
 
 mobile_home:
     pattern:  /

@@ -23,31 +23,21 @@ use Doctrine\ORM\EntityRepository;
 use DevBieres\Common\BaseBundle\Controller\SecuredController;
 
 use Symfony\Component\HttpFoundation\Request;
+use DevBieres\Task\WebHtmlBundle\Controller\TacheController;
 
-class TacheController extends BaseController 
+class MobileTacheController extends TacheController 
 {
 
+  protected function getViewPath($name) { return sprintf("DevBieresTaskMobileBundle:%s.html.twig", $name); }
+
   /**
-   * Retourne une liste de tâches pour l'utilusateur
+   * Spécialisation de redirectToHome
    */
-  public function listAction($uri) {
-    // -1-
-    $obj = $this->manageUnconnectedUser(); if($obj != null) { return $obj; }
-    $request = $this->getRequest();
-
-    // -2- Gestion d'un eventuel filtre
-    //$filtre = $this->getFiltre($uri);
-
-    // -3-
-    $arr = $this->getTacheManager()->findActiveByUserGroupByPriorite($this->getUser());
-
-    // -4-
-    return $this->render(
-      $this->getViewPath('Tache:list'),
-      array('arr' => $arr)
-    );
-
-  } // Fin de listAction
+  protected function redirectToHome() { return $this->redirect($this->generateUrl('mobile_home')); }
+  /**
+   * Spécialisation de redirectToTrash
+   */
+  protected function redirectToTrash() { return $this->redirect($this->generateUrl('mobile_trash')); }
 
 
   /**
@@ -67,6 +57,7 @@ class TacheController extends BaseController
     );
 
   } // Fin de l'action show
+
 }
 
 ?>

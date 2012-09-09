@@ -53,7 +53,7 @@ nav a, nav a:visited, nav a:hover {
    /*color:#888888; */
    color: black;
    text-decoration:none; 
-   font-size:x-small;
+   font-size:small;
 }
 #nav_header { 
     float:right; 
@@ -115,7 +115,6 @@ nav a, nav a:visited, nav a:hover {
   padding-top: 1px;
   padding-left: 10px;
   height: 32px;
-  font-size:small;
 }
 #content .liste .item:hover {
     background-color: lightgray;
@@ -123,7 +122,7 @@ nav a, nav a:visited, nav a:hover {
     border-bottom-left-radius: 15px;
 }
 #content .liste .tache_projet {
-   font-size:x-small;
+   font-size:small;
 }
 
 #content .formulaire {
@@ -136,6 +135,7 @@ nav a, nav a:visited, nav a:hover {
 #content .formulaire label { display: inline-block; width:200px; }
 #content .formulaire input, #content .formulaire select { width: 240px; margin:0; }
 #content .formulaire textarea { width:440px; min-height:200px; }
+
 
 #content .flash {
    font-weight:bold;
@@ -158,10 +158,8 @@ nav a, nav a:visited, nav a:hover {
  text-align:right;
 }
 #filtre, #filtre input, #filtre submit {
- font-size: x-small;
+ font-size: small;
 }
 #explication {
- margin-top:25%;
- float:right;
- font-size: x-small;
+  margin-left:15%;
 }

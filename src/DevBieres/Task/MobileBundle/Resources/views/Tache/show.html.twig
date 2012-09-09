@@ -1,22 +1,72 @@
-<!DOCTYPE html>
-<html>
-    <head>
-      <meta charset="UTF-8" />
-      <title>{% block title %} {{ 'site.title'|trans }} {% endblock %} </title>
-       <link href="{{ asset('bundles/devbierescommonjquerymobile/css/jquery.mobile-1.1.1.css') }}" type="text/css" rel="stylesheet" />
-       <link href="{{ asset('bundles/devbierestaskmobile/css/task.css') }}" type="text/css" rel="stylesheet" />
-       {% block stylesheets %}
-       {% endblock %}
-       <script src="{{ asset('bundles/devbierescommonjquerymobile/js/jquery-1.8.1.min.js') }}" type="text/javascript" ></script>
-       <script src="{{ asset('bundles/devbierescommonjquerymobile/js/jquery.mobile-1.1.1.min.js') }}" type="text/javascript" ></script>
-       {% block js %}
-       {% endblock %}
-       <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
+{% extends "DevBieresTaskMobileBundle::layout.html.twig" %}
 
-    <body>
-    <div data-role="page" > 
-{{ obj.libelle }}
-    </div>
-    </body>
-</html>
+{% block page %}
+   <div data-role="page" id="{{ obj.id }}" >
+        {%  
+             include "DevBieresTaskMobileBundle::header.html.twig" 
+             with {
+                     'title' : 'site.task.yourtasks',
+                     'back'  : 'true'
+                  }
+         %}
+         <h3> {{ obj.libelle }} </h3>
+         <ul data-role="listview" data-theme="d" data-divider-theme="d" >
+           <li>
+                      <label> {{ 'site.task.project'|trans }} : </label>
+                      <span class="task_info" > {{ obj.projet.libelle }} </span>
+           </li>
+           <li>
+                      <label> {{ 'site.task.priority'|trans }} : </label>
+                      <span class="task_info" > {{ obj.priorite.libelle }} </span> 
+           </li>
+           <li> 
+                      <label> {{ 'site.task.created'|trans }} : </label>
+                      <span class="task_info" > {{ obj.createdat|date("d/m/Y") }} </span>
+           </li>
+         </ul>
+
+         <nav data-role="navbar" >
+         <ul>
+           {% if obj.estAFaire() %}
+             <li>
+                    <a href="{{ path('mobile_tache_edit',  {'tache' : obj.id }) }}" title="{{ 'site.edit'|trans  }}"  >
+                      <img src="{{ asset('bundles/devbierestaskwebhtml/images/edit.png')  }}" alt="{{ 'site.edit'|trans }}" />
+                      <span class="action_title" > {{ 'site.edit'|trans  }} </span>
+                    </a>
+             </li>
+             <li>
+                    <a href="{{ path('mobile_tache_done',  {'tache' : obj.id }) }}" title="{{ 'site.task.done'|trans  }}"  >
+                        <img src="{{ asset('bundles/devbierestaskwebhtml/images/done.png')  }}" alt="{{ 'site.task.done'|trans }}" />
+                        <span class="action_title" > {{ 'site.task.done'|trans  }} </span>
+                    </a>
+             </li>
+             <li>
+                    <a href="{{ path('mobile_tache_done_continue',  {'tache' : obj.id }) }}" title="{{ 'site.task.done_continue'|trans  }}"  >
+                        <img src="{{ asset('bundles/devbierestaskwebhtml/images/done_continue.png')  }}" alt="{{ 'site.task.done_continue'|trans }}" />
+                        <span class="action_title" > {{ 'site.task.done_continue'|trans  }} </span>
+                    </a>
+             </li>
+             <li>
+                    <a href="{{ path('mobile_tache_cancel',  {'tache' : obj.id }) }}" title="{{ 'site.task.cancel'|trans  }}"  >
+                        <img src="{{ asset('bundles/devbierestaskwebhtml/images/cancel.png')  }}" alt="{{ 'site.task.cancel'|trans }}" />
+                        <span class="action_title" > {{ 'site.task.cancel'|trans  }} </span>
+                    </a>
+             </li>
+             {% else %}
+             <li>
+                    <a href="{{ path('mobile_tache_reactive',  {'tache' : obj.id }) }}" title="{{ 'site.task.reactive'|trans  }}"  >
+                        <img src="{{ asset('bundles/devbierestaskwebhtml/images/reactive.png')  }}" alt="{{ 'site.task.cancel'|trans }}" />
+                        <span class="action_title" > {{ 'site.task.reactive'|trans  }} </span>
+                    </a>
+             </li>
+             <li>
+                    <a href="{{ path('mobile_tache_destroy',  {'tache' : obj.id }) }}" title="{{ 'site.destroy'|trans  }}"  >
+                        <img src="{{ asset('bundles/devbierestaskwebhtml/images/destroy.png')  }}" alt="{{ 'site.task.cancel'|trans }}" />
+                        <span class="action_title" > {{ 'site.destroy'|trans  }} </span>
+                    </a>
+             </li>
+             {%endif%}
+           </ul>
+           </nav>
+   </div>
+{% endblock %}

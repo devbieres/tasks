@@ -182,12 +182,6 @@
             "commit-date": "1346926323"
         },
         {
-            "package": "symfony/symfony",
-            "version": "dev-master",
-            "source-reference": "cba2a31e3631ab9043389f8f7df873da0e6c8f47",
-            "commit-date": "1346926365"
-        },
-        {
             "package": "twig/extensions",
             "version": "dev-master",
             "alias-pretty-version": "1.0.x-dev",

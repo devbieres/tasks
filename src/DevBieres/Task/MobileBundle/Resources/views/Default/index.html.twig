@@ -1,11 +1,7 @@
 {% extends "DevBieresTaskMobileBundle::layout.html.twig" %}
 
-     {% block js %}
-     {% endblock %}
-
 {% block page %}
-
-     {% render "DevBieresTaskMobileBundle:Tache:list" with { 'uri' : app.request } %}
+     {% render "DevBieresTaskMobileBundle:MobileTache:list" with { 'uri' : app.request } %}
 {% endblock %}
 
 
