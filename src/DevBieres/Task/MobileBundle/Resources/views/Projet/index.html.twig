@@ -1,0 +1,22 @@
+{% extends "DevBieresTaskMobileBundle::layout.html.twig" %}
+
+{% block page %}
+   <div id="yourproject" class="liste" data-role="page" >
+        {%  
+             include "DevBieresTaskMobileBundle::header.html.twig" 
+             with {
+                     'title' : 'site.project.yourproject',
+                     'back'  : 'true'
+                  }
+         %}
+        <ul data-role="listview" data-theme="d" data-divider-theme="d" 
+                  data-filter="true" data-filter-placeholder="{{ 'site.filter'|trans }}" >
+            {% for obj in col %}
+              <li> {{ obj.libelle }} </li>
+            {% else %}
+              <li class="nothing" > {{ 'site.project.nothingtodo'|trans }} </li>
+            {% endfor %}
+        </ul>
+   </div>
+
+{% endblock %}

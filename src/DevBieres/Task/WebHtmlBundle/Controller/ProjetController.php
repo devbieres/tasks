@@ -27,6 +27,13 @@ class ProjetController extends BaseController
 {
 
   /**
+   * Centralisation de l'appel à la redirection vers la page "home" des projets
+   */
+  protected function redirectToProjectHome() {
+        return $this->redirect( $this->generateUrl('web_projet_index')); 
+  }
+
+  /**
    * Retourne la liste des projets de l'utilisateur
    */
   public function indexAction() {
@@ -72,7 +79,8 @@ class ProjetController extends BaseController
         $projet->setUser($this->getUser());
         // TODO : Gérer le contrôle d'unicite
         $this->getProjetManager()->persist($projet);
-        return $this->redirect( $this->generateUrl('web_projet_index')); 
+        //return $this->redirect( $this->generateUrl('web_projet_index')); 
+        return $this->redirectToProjectHome();
       } // Fin de -4.2-
 
     } // Fin de -4-
@@ -94,7 +102,8 @@ class ProjetController extends BaseController
     // -1-
     $projet = $this->getProjetManager()->findOneById($projet);
     if($projet == null) { 
-      return $this->redirect( $this->generateUrl('web_projet_index')); 
+        return $this->redirectToProjectHome();
+        //return $this->redirect( $this->generateUrl('web_projet_index')); 
     }
 
     // -2-
@@ -125,14 +134,16 @@ class ProjetController extends BaseController
     $projet = $this->getProjetManager()->findOneById($id);
     if($projet == null) { 
       $this->storeFlash( $this->trans('site.project.unknown')); 
-      return $this->redirect( $this->generateUrl('web_projet_index')); 
+      //return $this->redirect( $this->generateUrl('web_projet_index')); 
+      return $this->redirectToProjectHome();
     }
 
     // -3- Validation que l'utilisateur est bien celui supprime
     // TODO : mettre dans le manager
     if($projet->getUser()->getCode() != $this->getUser()->getCode()) {
         $this->storeFlash( $this->trans('site.project.wronguser')); 
-        return $this->redirect( $this->generateUrl('web_projet_index')); 
+        //  return $this->redirect( $this->generateUrl('web_projet_index')); 
+        return $this->redirectToProjectHome();
     } 
 
     // -4-
@@ -141,7 +152,8 @@ class ProjetController extends BaseController
         $this->storeFlash( $this->trans('site.destroy_confirmed')); 
     } // -4-
 
-    return $this->redirect( $this->generateUrl('web_projet_index')); 
+      //return $this->redirect( $this->generateUrl('web_projet_index')); 
+      return $this->redirectToProjectHome();
   } // destroyConfirmedAction
 
 }
