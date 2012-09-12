@@ -1,10 +1,15 @@
-       <header data-role="header" data-add-back-btn="{{ back }}"
-              data-back-btn-text="{{ 'site.back'|trans }}"
-              >
+       <header data-role="header" >
          <h2 id="page_title" > {{ title|trans }} </h2>
         </header>
-       <nav data-role="navbar" >
+       {% if hidenav is not defined %}
+          <nav data-role="navbar" >
             <ul>
+             {% if home is defined %}
+              <li> <a href="{{ path('mobile_home') }}" id="nav_home" title="{{ 'site.home'|trans}} " > 
+                        <img src="{{ asset('bundles/devbierestaskwebhtml/images/home.png') }}" /> 
+                        <span class="nav_title" >{{ 'site.home'|trans}} </span>
+              </a> </li>
+             {% endif %}
               <li> <a href="{{ path('mobile_tache_new') }}" id="nav_newtask" title="{{ 'site.nav.taskadd'|trans}} " > 
                         <img src="{{ asset('bundles/devbierestaskwebhtml/images/addtask.png') }}" /> 
                         <span class="nav_title" >{{ 'site.nav.taskadd'|trans}} </span>
@@ -19,5 +24,6 @@
                         <span class="nav_title" >{{ 'user.logout'|trans}} </span>
                    </a></li>
             </ul> 
-       </nav>
+         </nav>
+      {% endif %}
 

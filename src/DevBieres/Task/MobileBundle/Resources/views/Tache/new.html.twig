@@ -1,12 +1,15 @@
 {% extends "DevBieresTaskMobileBundle::layout.html.twig" %}
 
 {% block page %}
-   <div id="newtask" class="formulaire" data-role="page"  >
+   <div id="newtask" class="formulaire" data-role="page"  
+              data-add-back-btn="true"
+              data-back-btn-text="{{ 'site.back'|trans }}" >
+
         {%  
              include "DevBieresTaskMobileBundle::header.html.twig" 
              with {
                      'title' : 'site.task.new',
-                     'back'  : 'true'
+                     'home'  : 'true'
                   }
          %}
    

@@ -7,22 +7,24 @@
                      'back'  : 'false'
                   }
          %}
-         <ul data-role="listview" data-theme="d" data-divider-theme="d"
+         <div data-role="content" >
+              <ul data-role="listview" data-theme="d" data-divider-theme="d"
                    data-filter="true" data-filter-placeholder="{{ 'site.filter'|trans }}"      >
-               <li class="item_titre" data-role="list-divider"  > 
-                    {% include 'DevBieresTaskWebHtmlBundle:Priorite:img.html.twig' with { 'code' : key } %}
-                    {{ key|trans|upper }}
-               </li>
-               {% for obj in col %}
-                    <li class="item {{ obj.getEtatLibelle() }}" 
-                        data-icon="arrow-r" data-iconpos="right" > 
-                        <a href="{{ path('mobile_tache_show', { 'id' : obj.id }) }}" 
-                              data-transition="slide"  >
+                   <li class="item_titre" data-role="list-divider"  > 
+                         {% include 'DevBieresTaskWebHtmlBundle:Priorite:img.html.twig' with { 'code' : key } %}
+                         {{ key|trans|upper }}
+                   </li>
+                   {% for obj in col %}
+                        <li class="item {{ obj.getEtatLibelle() }}" 
+                            data-icon="arrow-r" data-iconpos="right" > 
+                            <a href="{{ path('mobile_tache_show', { 'id' : obj.id }) }}" 
+                                   data-transition="slide"  >
                               <span class="tache_projet"> [ {{ obj.projet.libelle }}] </span> {{ obj.libelle }}
-                        </a>
-                    </li>
-               {% endfor %}
-         </ul>
+                            </a>
+                        </li>
+                    {% endfor %}
+               </ul>
+         </div>
         {%  
              include "DevBieresTaskMobileBundle::footer.html.twig" 
         %}

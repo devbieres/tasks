@@ -1,4 +1,5 @@
-     <form action="{{ path }}" method="post" {{ form_enctype(form) }} data-ajax="false" >
+      <div data-role="content" >
+      <form action="{{ path }}" method="post" {{ form_enctype(form) }} data-ajax="false" >
          <div class="error" >
              {{ form_errors(form) }}
          </div>
@@ -30,3 +31,4 @@
 
          {{ form_rest(form) }}
       </form>
+      </div> <!-- content -->

@@ -1,12 +1,14 @@
 {% extends "DevBieresTaskMobileBundle::layout.html.twig" %}
 
 {% block page %}
-   <div data-role="page" id="{{ obj.id }}" >
+   <div data-role="page" id="{{ obj.id }}" 
+              data-add-back-btn="true"
+              data-back-btn-text="{{ 'site.back'|trans }}" >
         {%  
              include "DevBieresTaskMobileBundle::header.html.twig" 
              with {
                      'title' : 'site.task.yourtasks',
-                     'back'  : 'true'
+                     'home'  : 'true',
                   }
          %}
          <h3> {{ obj.libelle }} </h3>

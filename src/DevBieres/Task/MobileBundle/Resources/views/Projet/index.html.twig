@@ -1,22 +1,27 @@
 {% extends "DevBieresTaskMobileBundle::layout.html.twig" %}
 
 {% block page %}
-   <div id="yourproject" class="liste" data-role="page" >
-        {%  
-             include "DevBieresTaskMobileBundle::header.html.twig" 
-             with {
-                     'title' : 'site.project.yourproject',
-                     'back'  : 'true'
-                  }
-         %}
-        <ul data-role="listview" data-theme="d" data-divider-theme="d" 
+   <div id="yourproject" class="liste" data-role="page" 
+              data-add-back-btn="true"
+              data-back-btn-text="{{ 'site.back'|trans }}" >
+       <header data-role="header" >
+         <h2 id="page_title" > {{ 'site.project.yourproject'|trans }} </h2>
+         <a href="{{ path("mobile_projet_new") }}" title="{{ 'site.new'|trans }}" data-theme="d" data-icon="new" class="ui-btn-right" > {{ 'site.new'|trans}} </a>
+       </header>
+
+       <div data-role="content" >
+            <ul data-role="listview" data-theme="d" data-divider-theme="d" 
                   data-filter="true" data-filter-placeholder="{{ 'site.filter'|trans }}" >
-            {% for obj in col %}
-              <li> {{ obj.libelle }} </li>
-            {% else %}
-              <li class="nothing" > {{ 'site.project.nothingtodo'|trans }} </li>
-            {% endfor %}
-        </ul>
+                {% for obj in col %}
+                   <li> {{ obj.libelle }} </li>
+                {% else %}
+                   <li class="nothing" > {{ 'site.project.nothingtodo'|trans }} </li>
+                {% endfor %}
+            </ul>
+       </div>
+       {%  
+            include "DevBieresTaskMobileBundle::footer.html.twig" 
+       %}
    </div>
 
 {% endblock %}

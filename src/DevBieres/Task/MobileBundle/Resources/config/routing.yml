@@ -56,6 +56,30 @@ mobile_tache_destroy:
     requirements:
          method: GET
 
+mobile_projet_new:
+   pattern: /projet/new
+   defaults: { _controller: DevBieresTaskMobileBundle:MobileProjet:new }
+   requirements:
+         method: GET
+
+mobile_projet_create:
+   pattern: /projet/create
+   defaults: { _controller: DevBieresTaskMobileBundle:MobileProjet:new }
+   requirements:
+         method: POST
+
+mobile_projet_destroy:
+   pattern: /projet/destroy/{projet}
+   defaults: { _controller: DevBieresTaskMobileBundle:MobileProjet:destroy }
+   requirements:
+         method: GET 
+
+mobile_projet_destroy_confirmed:
+   pattern: /projet/destroy_confirmed
+   defaults: { _controller: DevBieresTaskMobileBundle:MobileProjet:destroyConfirmed }
+   requirements:
+         method: POST
+
 mobile_projet_index:
     pattern: /projet
     defaults: { _controller: DevBieresTaskMobileBundle:MobileProjet:index }

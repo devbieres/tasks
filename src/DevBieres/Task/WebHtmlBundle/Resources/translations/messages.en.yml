@@ -46,6 +46,7 @@ site:
     filter: Filter
     filter_valid: OK
     filter_clear: Clear
+    home: Home
     about:
         title: About
         frenchlaw: Conformément aux dispositions des articles 6-III et 19 de la loi pour la Confiance dans l'Economie Numérique, nous vous communiquons les éléments suivants :
