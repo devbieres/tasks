@@ -39,6 +39,7 @@ site:
     new: New
     back: Back
     valid: Submit
+    cancel: Cancel
     confirm: Are you sure ?
     destroy_confirmed: Delete done
     edit: Edit

@@ -39,6 +39,7 @@ site:
     new: Nouveau
     back: Retour
     valid: Valider
+    cancel: Annuler
     confirm: Êtes-vous sur ?
     destroy_confirmed: Element supprimé 
     edit: Mettre à jour

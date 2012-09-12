@@ -1,0 +1,30 @@
+{% extends "DevBieresTaskMobileBundle::layout.html.twig" %}
+
+{% block page %}
+   <div id="newproject" class="formulaire" data-role="dialog" >
+         <div data-role="header" ><h2> {{ 'site.project.new'|trans }} </h2></div>
+
+         <div data-role="content" data-theme="c" >
+                <form action="{{ path('mobile_projet_create') }}" method="post" {{ form_enctype(form) }} data-ajax="false">
+                     <div class="error" >
+                        {{ form_errors(form) }}
+                     </div>
+                     <div class="error" >
+                         {{ form_errors(form.libelle) }}
+                     </div>
+                     <div data-role="fielcontain">
+                         {{ form_label(form.libelle) }}
+                         {{ form_widget(form.libelle) }}
+                     </div>
+                     <div data-role="fielcontain">
+                          <input type="submit" value="{{ 'site.valid'|trans }}" id="submit" />
+                          <a href="{{ path('mobile_projet_index') }}" 
+                                 data-role="button" data-rel="back" data-theme="c">
+                               {{ 'site.cancel'|trans }}
+                          </a>
+                     </div>
+                     {{ form_rest(form) }}
+                </form>
+         </div> <!-- content -->
+   </div> <!-- page -->
+{% endblock %} 
