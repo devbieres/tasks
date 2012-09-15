@@ -5,21 +5,21 @@
           <nav data-role="navbar" >
             <ul>
              {% if home is defined %}
-              <li> <a href="{{ path('mobile_home') }}" id="nav_home" title="{{ 'site.home'|trans}} " > 
+              <li> <a href="{{ path('mobile_home') }}" id="nav_home" title="{{ 'site.home'|trans}} " data-ajax="false" > 
                         <img src="{{ asset('bundles/devbierestaskwebhtml/images/home.png') }}" /> 
                         <span class="nav_title" >{{ 'site.home'|trans}} </span>
               </a> </li>
              {% endif %}
-              <li> <a href="{{ path('mobile_tache_new') }}" id="nav_newtask" title="{{ 'site.nav.taskadd'|trans}} " > 
+              <li> <a href="{{ path('mobile_tache_new') }}" id="nav_newtask" title="{{ 'site.nav.taskadd'|trans}} " data-ajax="false" > 
                         <img src="{{ asset('bundles/devbierestaskwebhtml/images/addtask.png') }}" /> 
                         <span class="nav_title" >{{ 'site.nav.taskadd'|trans}} </span>
               </a> </li>
-              <li>{% render "DevBieresTaskWebHtmlBundle:Trash:navMenu" with { route: 'mobile_trash' }  %} </li>
-              <li> <a href="{{ path('mobile_projet_index') }}" id="nav_projet" title="{{ 'site.nav.projets'|trans}}"> 
+              <li>{% render "DevBieresTaskWebHtmlBundle:Trash:navMenu" with { route: 'mobile_trash', att:"data-ajax=false" }  %} </li>
+              <li> <a href="{{ path('mobile_projet_index') }}" id="nav_projet" title="{{ 'site.nav.projets'|trans}}" data-ajax="false"> 
                         <img src="{{ asset('bundles/devbierestaskwebhtml/images/projects.png')}}" /> 
                         <span class="nav_title">{{ 'site.nav.projets'|trans}} </span>
               </a> </li>
-              <li> <a href="{{ path('fos_user_security_logout') }}" title="{{ 'user.logout'|trans}} " > 
+              <li> <a href="{{ path('fos_user_security_logout') }}" title="{{ 'user.logout'|trans}} " data-ajax="false" > 
                         <img src="{{ asset('bundles/devbierestaskwebhtml/images/logout.png')}}" /> 
                         <span class="nav_title" >{{ 'user.logout'|trans}} </span>
                    </a></li>

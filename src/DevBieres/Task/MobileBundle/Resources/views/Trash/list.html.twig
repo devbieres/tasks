@@ -1,0 +1,28 @@
+<div data-role="page" > 
+  {%
+        include "DevBieresTaskMobileBundle:Trash:header.html.twig"
+  %}
+   <div data-role="content" >
+       <ul data-role="listview" data-theme="d" data-divider-theme="d" 
+            data-filter="true" data-filter-placeholder="{{ 'site.filter'|trans }}" >
+            {% for key,col in arr %}
+                 <li class="item_titre" data-role="list-divider"  > 
+                      {% include 'DevBieresTaskWebHtmlBundle:Priorite:img.html.twig' with { 'code' : key } %}
+                      {{ key|trans|upper }}
+                 </li>
+                 {% for obj in col %}
+                      <li class="item {{ obj.getEtatLibelle() }}" 
+                               data-icon="arrow-r" data-iconpos="right" > 
+                                   <a href="{{ path('mobile_trash_show', { 'id' : obj.id }) }}" 
+                                        data-transition="slide"  >
+                                        <span class="tache_projet"> [ {{ obj.projet.libelle }}] </span> {{ obj.libelle }}
+                                   </a>
+                       </li>
+                 {% endfor %}
+             {% endfor %}
+         </ul>
+   </div>
+   {%  
+       include "DevBieresTaskMobileBundle::footer.html.twig" 
+   %}
+</div>

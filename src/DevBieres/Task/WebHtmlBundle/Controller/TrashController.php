@@ -29,17 +29,38 @@ class TrashController extends BaseController
     /**
      * Gestion d'une action gérant le rendu du menu corbeille
      */
-    public function navMenuAction($route = 'web_trash') {
+    public function navMenuAction($route = 'web_trash', $att = '') {
 
        // -1- Récupération du nombre d'éléments dans la corbeille
        $nb = $this->getTacheManager()->getNbElementsTrash($this->getUser());
 
        // -2-
        return $this->render($this->getViewPath('Trash:menu'),
-                            array('nombre' => $nb, 'route' => $route)
+                            array('nombre' => $nb, 'route' => $route, 'att' => $att)
                            );
 
     }
+
+    /**
+     * Retourne une liste de tâches corbeille pour l'utilusateur
+     */
+    public function listTrashAction($uri) {
+       // -1-
+       $obj = $this->manageUnconnectedUser(); if($obj != null) { return $obj; }
+
+       // -2- Gestion d'un eventuel filtre
+       $filtre = $this->getFiltre($uri);
+
+       // -3-
+       $arr = $this->getTacheManager()->findTrashGroupByPriorite($this->getUser(), $filtre);
+
+       // -4-
+       return $this->render(
+          $this->getViewPath('Trash:list'),
+          array('arr' => $arr)
+       );
+
+    } // Fin de listAction
 
     /**
      * Action index ==> liste les tâches ANNULE ou FAIT

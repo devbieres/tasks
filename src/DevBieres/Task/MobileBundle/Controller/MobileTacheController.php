@@ -43,7 +43,7 @@ class MobileTacheController extends TacheController
   /**
    * Definit l'action show pour une tache
    */
-  public function showAction($id) {
+  public function showAction($id, $view = "Tache:show") {
     // -1-
     $obj = $this->manageUnconnectedUser(); if($obj != null) { return $obj; }
 
@@ -52,7 +52,7 @@ class MobileTacheController extends TacheController
 
     // -3-
     return $this->render(
-        $this->getViewPath('Tache:show'),
+        $this->getViewPath($view),
         array('obj' => $tache)
     );
 

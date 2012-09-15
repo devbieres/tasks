@@ -15,6 +15,16 @@
        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
+      
+      {% block flash %}
+      <div class="flash" >
+          <ul>
+          {% for flashMessage in app.session.flashbag.get('flash') %}
+          <li> {{ flashMessage }} </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endblock %}
 
     {% block page %}
     {% endblock %}

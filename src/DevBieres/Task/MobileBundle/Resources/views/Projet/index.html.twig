@@ -5,7 +5,7 @@
        <header data-role="header" >
          <a href="{{ path('mobile_home') }}" 
                   title="{{ 'site.home'|trans }}" 
-                  data-icon="home" >
+                  data-icon="home" data-ajax="false"  >
                   {{ 'site.home'|trans }}
          </a>
          <h2 id="page_title" > {{ 'site.project.yourproject'|trans }} </h2>
@@ -17,9 +17,14 @@
 
        <div data-role="content" >
             <ul data-role="listview" data-theme="d" data-divider-theme="d" 
-                  data-filter="true" data-filter-placeholder="{{ 'site.filter'|trans }}" >
+                  data-filter="true" data-filter-placeholder="{{ 'site.filter'|trans }}" 
+                  data-split-icon="delete"
+                  >
                 {% for obj in col %}
-                   <li> {{ obj.libelle }} </li>
+                   <li> 
+                      <a>  {{ obj.libelle }} </a>
+                      <a href="{{ path('mobile_projet_destroy',{'projet': obj.id}) }}" data-rel="dialog"  > {{ 'site.projet.destroy'|trans }} </a>
+                   </li>
                 {% else %}
                    <li class="nothing" > {{ 'site.project.nothingtodo'|trans }} </li>
                 {% endfor %}

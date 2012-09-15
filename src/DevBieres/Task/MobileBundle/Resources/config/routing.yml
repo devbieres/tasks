@@ -84,6 +84,22 @@ mobile_projet_index:
     pattern: /projet
     defaults: { _controller: DevBieresTaskMobileBundle:MobileProjet:index }
 
+mobile_trash_emptyall:
+    pattern: /tache/emptyall
+    defaults: { _controller: DevBieresTaskMobileBundle:MobileTrash:emptyAll }
+    requirements:
+         method: GET
+
+mobile_trash_emptyallconfirmed:
+    pattern: /tache/emptyallConfirmed
+    defaults: { _controller: DevBieresTaskMobileBundle:MobileTrash:emptyAllConfirmed }
+    requirements:
+         method: POST
+
+mobile_trash_show:
+    pattern: /trash/show/{id}
+    defaults: { _controller: DevBieresTaskMobileBundle:MobileTache:show, view:'Trash:show' }
+
 mobile_trash:
     pattern:  /trash
     defaults: { _controller: DevBieresTaskMobileBundle:MobileTrash:index }

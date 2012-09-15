@@ -1,18 +1,11 @@
 {% extends "DevBieresTaskMobileBundle::layout.html.twig" %}
 
 {% block page %}
-   <div id="newtask" class="formulaire" data-role="page"  
-              data-add-back-btn="true"
-              data-back-btn-text="{{ 'site.back'|trans }}" >
+   <div id="newtask" class="formulaire" data-role="page"  >
+         <header data-role="header" >
+             <h2> {{ 'site.task.new'|trans }} </h2>
+         </header>
 
-        {%  
-             include "DevBieresTaskMobileBundle::header.html.twig" 
-             with {
-                     'title' : 'site.task.new',
-                     'home'  : 'true'
-                  }
-         %}
-   
      {% include 'DevBieresTaskMobileBundle:Tache:form.html.twig' with { 'form' : form, 'path': path('mobile_tache_create') } %}
 
    </div>

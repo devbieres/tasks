@@ -2,21 +2,19 @@
 
 {% block page %}
    <div id="newproject" class="formulaire" data-role="dialog" >
-         <div data-role="header" ><h2> {{ 'site.project.new'|trans }} </h2></div>
+         <div data-role="header" ><h2> {{ 'site.destroy'|trans }} </h2></div>
 
          <div data-role="content" data-theme="c" >
-                <form action="{{ path('mobile_projet_create') }}" method="post" {{ form_enctype(form) }} data-ajax="false">
+                <form action="{{ path('mobile_projet_destroy_confirmed') }}" method="post" {{ form_enctype(form) }} data-ajax="false">
                      <div class="error" >
                         {{ form_errors(form) }}
                      </div>
-                     <div class="error" >
-                            {{ form_errors(form.libelle) }}
+                     <div data-role="fieldcontain" >
+                         <label> 
+                             {{ 'site.confirm'|trans }} {{ obj.libelle }}
+                         </label>
                      </div>
-                     <div>
-                            {{ form_label(form.libelle) }}
-                            {{ form_widget(form.libelle) }}
-                     </div>
-                     <div data-role="fieldcontain">
+                     <div data-role="fielcontain">
                           <input type="submit" value="{{ 'site.valid'|trans }}" id="submit" />
                           <a href="{{ path('mobile_projet_index') }}" 
                                  data-role="button" data-rel="back" data-theme="c">

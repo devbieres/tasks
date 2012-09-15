@@ -71,27 +71,6 @@ class TacheController extends BaseController
 
   }
 
-  /**
-   * Retourne une liste de tâches corbeille pour l'utilusateur
-   */
-  public function listTrashAction($uri) {
-    // -1-
-    $obj = $this->manageUnconnectedUser(); if($obj != null) { return $obj; }
-
-    // -2- Gestion d'un eventuel filtre
-    $filtre = $this->getFiltre($uri);
-
-    // -3-
-    $arr = $this->getTacheManager()->findTrashGroupByPriorite($this->getUser(), $filtre);
-
-    // -4-
-    return $this->render(
-      $this->getViewPath('Tache:list'),
-      array('arr' => $arr)
-    );
-
-  } // Fin de listAction
-
 
   /**
    * Action some new

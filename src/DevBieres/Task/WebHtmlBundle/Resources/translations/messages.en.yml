@@ -35,6 +35,7 @@ site:
        label: Label
     trash:
        title: Trash
+       nothingtodo: Trash is empty : go working
     destroy: Delete
     new: New
     back: Back

@@ -1,16 +1,10 @@
 {% extends "DevBieresTaskMobileBundle::layout.html.twig" %}
 
 {% block page %}
-   <div id="edittask" class="formulaire" data-role="page"  
-              data-add-back-btn="true"
-              data-back-btn-text="{{ 'site.back'|trans }}" >
-        {%  
-             include "DevBieresTaskMobileBundle::header.html.twig" 
-             with {
-                     'title' : 'site.edit',
-                     'home'  : 'true'
-                  }
-         %}
+   <div id="edittask" class="formulaire" data-role="page"  >
+         <header data-role="header" >
+             <h2> {{ 'site.edit'|trans }} </h2>
+         </header>
 
      {% include 'DevBieresTaskMobileBundle:Tache:form.html.twig' with { 'form' : form, 'path': path('mobile_tache_update', {'tache':obj.id }) } %}
 

@@ -1,4 +1,6 @@
-<a href="{{ path(route) }}" id="nav_trash"  title="{{ 'site.nav.trash'|trans}}">
+<a href="{{ path(route) }}" id="nav_trash"  title="{{ 'site.nav.trash'|trans}}"
+       {{ att }} 
+    >
     {% if nombre <= 0 %}
       <img src="{{ asset('bundles/devbierestaskwebhtml/images/trash.png')}}" /> 
     {% else %}

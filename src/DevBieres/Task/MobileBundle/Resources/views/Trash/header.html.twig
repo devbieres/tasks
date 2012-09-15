@@ -1,0 +1,12 @@
+       <header data-role="header" >
+         <a href="{{ path('mobile_home') }}" 
+                  title="{{ 'site.home'|trans }}" 
+                  data-icon="home" data-ajax="false"  >
+                  {{ 'site.home'|trans }}
+         </a>
+         <h2 id="page_title" > {{ 'site.trash.title'|trans }} </h2>
+         <a href="{{ path("mobile_trash_emptyall") }}" title="{{ 'site.empty_all'|trans }}" i
+                     data-theme="d" data-icon="delete" class="ui-btn-right" data-rel="dialog"  > 
+                         {{ 'site.empty_all'|trans}} 
+         </a>
+       </header>

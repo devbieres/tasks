@@ -35,6 +35,7 @@ site:
        label: Titre
     trash:
        title: Corbeille
+       nothingtodo: Vide ...
     destroy: Supprimer
     new: Nouveau
     back: Retour
