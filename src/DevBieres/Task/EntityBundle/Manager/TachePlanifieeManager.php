@@ -1,6 +1,5 @@
 <?php
-namespace DevBieres\Task\EntityBundle\Repository;
-
+namespace DevBieres\Task\EntityBundle\Manager;
 /*
  * ----------------------------------------------------------------------------
  * « LICENCE BEERWARE » (Révision 42):
@@ -19,16 +18,20 @@ namespace DevBieres\Task\EntityBundle\Repository;
  * ----------------------------------------------------------------------------
 */
 
-use Doctrine\ORM\EntityRepository;
-use DevBieres\Task\EntityBundle\Entity\TacheBase;
+use DevBieres\Common\BaseBundle\Manager\CodeBaseManager;
+use DevBieres\Task\EntityBundle\Entity\TachePlanifiee;
+use DevBieres\Task\EntityBundle\Entity\Projet;
 
-class TacheSimpleRepository extends TacheBaseRepository 
-{
+class TachePlanifieeManager extends TacheSimpleManager {
 
   /**
-   * Retourne le nom de l'entite
+   * Permet de définir un nom complet par defaut pour un repo 
    */
-  protected function getMainEntityName() { return "TacheSimple"; }
+  protected function getFullName() {  return "DevBieresTaskEntityBundle:TachePlanifiee"; }
 
+  /**
+   * Retourne une nouvelle entite
+   */
+    public function getNew() { return new TachePlanifiee(); }
 
 }

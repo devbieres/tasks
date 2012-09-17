@@ -18,13 +18,13 @@ namespace DevBieres\Task\EntityBundle\Manager;
  * ----------------------------------------------------------------------------
 */
 
-use DevBieres\Common\BaseBundle\Manager\CodeBaseManager;
+use DevBieres\Common\BaseBundle\Manager\BaseManager;
 use DevBieres\Task\EntityBundle\Entity\TacheSimple;
 use DevBieres\Task\EntityBundle\Entity\Projet;
 use DevBieres\Task\EntityBundle\Form\Type\TacheSimpleType;
 use DevBieres\Task\EntityBundle\Form\Type\MultiTacheSimpleType;
 
-class TacheSimpleManager extends CodeBaseManager {
+class TacheSimpleManager extends BaseManager {
 
   /**
    * Permet de définir un nom complet par defaut pour un repo 
@@ -97,7 +97,7 @@ class TacheSimpleManager extends CodeBaseManager {
     /**
      * Retourne un tableau dont la clé est un code de priorite
      */
-    private function groupByPriorite($col) {
+    protected function groupByPriorite($col) {
       // -1-
       $arrReturn = array();
 
