@@ -25,6 +25,9 @@ use Doctrine\ORM\EntityRepository;
 
 class TacheSimpleType extends AbstractType {
 
+    /**
+     *
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
@@ -34,9 +37,18 @@ class TacheSimpleType extends AbstractType {
            ->add('projet', 'entity', array(
                     'class' => 'DevBieres\Task\EntityBundle\Entity\Projet',
                     'query_builder' => function(EntityRepository $er) use ($options) { return $er->findByUserQuery($options['user']);  },
-                ));
+                  ))
+           ->add('planif', 'date', array(
+                    'label' => 'site.task.planif',
+                    'input' => 'datetime',
+                    'widget' => 'choice',
+                    'required' => false,
+                    'empty_value' => '',
+                    'format' => 'dd-MM-yyyy',
+                    'attr'   => array('class' => 'formulaire_date')
+                 )) ;
 
-    }
+    } // fin de buildForm
 
     public function getName()
     {

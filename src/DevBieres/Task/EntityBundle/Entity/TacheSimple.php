@@ -30,5 +30,14 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class TacheSimple extends TacheBase {
 
+
+   /**
+    * @ORM\Column(type="datetime", nullable=true)
+    */
+   protected $planif;
+   public function getPlanif() { return $this->planif; }
+   public function setPlanif($value) { $this->planif = $value; }
+    
+
 }
 

@@ -24,6 +24,7 @@ site:
        multinewok: Task(s) created 
        reactive: Restore
        created: Created
+       planif : Date
     help:
        taskhighlevel: '+To create high task'
        tasknormallevel: 'Nothing to create normal task'
