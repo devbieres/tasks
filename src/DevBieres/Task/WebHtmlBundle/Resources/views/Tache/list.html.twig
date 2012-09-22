@@ -1,38 +1,14 @@
 <ul>
    {% for key,col in arr %}
-      <li class="item_titre"> 
-          {% include 'DevBieresTaskWebHtmlBundle:Priorite:img.html.twig' with { 'code' : key } %}
-          {{ key|trans|upper }}
-      </li>
-      {% for obj in col %}
-           <li class="item {{ obj.getEtatLibelle() }}" > 
-                <div class="item_action" >
-                    {% if obj.estAFaire() %}
-                    <a href="{{ path('web_tache_edit',  {'tache' : obj.id }) }}" title="{{ 'site.edit'|trans  }}"  >
-                        <img src="{{ asset('bundles/devbierestaskwebhtml/images/edit.png')  }}" alt="{{ 'site.edit'|trans }}" />
-                    </a>
-                    <a href="{{ path('web_tache_done',  {'tache' : obj.id }) }}" title="{{ 'site.task.done'|trans  }}"  >
-                        <img src="{{ asset('bundles/devbierestaskwebhtml/images/done.png')  }}" alt="{{ 'site.task.done'|trans }}" />
-                    </a>
-                    <a href="{{ path('web_tache_done_continue',  {'tache' : obj.id }) }}" title="{{ 'site.task.done_continue'|trans  }}"  >
-                        <img src="{{ asset('bundles/devbierestaskwebhtml/images/done_continue.png')  }}" alt="{{ 'site.task.done_continue'|trans }}" />
-                    </a>
-                    <a href="{{ path('web_tache_cancel',  {'tache' : obj.id }) }}" title="{{ 'site.task.cancel'|trans  }}"  >
-                        <img src="{{ asset('bundles/devbierestaskwebhtml/images/cancel.png')  }}" alt="{{ 'site.task.cancel'|trans }}" />
-                    </a>
-                    {% else %}
-                    <a href="{{ path('web_tache_reactive',  {'tache' : obj.id }) }}" title="{{ 'site.task.reactive'|trans  }}"  >
-                        <img src="{{ asset('bundles/devbierestaskwebhtml/images/reactive.png')  }}" alt="{{ 'site.task.cancel'|trans }}" />
-                    </a>
-                    <a href="{{ path('web_tache_destroy',  {'tache' : obj.id }) }}" title="{{ 'site.destroy'|trans  }}"  >
-                        <img src="{{ asset('bundles/devbierestaskwebhtml/images/destroy.png')  }}" alt="{{ 'site.task.cancel'|trans }}" />
-                    </a>
-                    {% endif %}
-                </div>
-                {% if obj.estFait() %} <img src="{{ asset('bundles/devbierestaskwebhtml/images/small_done.png') }}" alt="{{ 'site.done'|trans }}" /> {% endif %}
-                <span class="tache_projet"> [ {{ obj.projet.libelle }}] </span> {{ obj.libelle }} 
-           </li>
-      {% endfor %}
+      {% if col|length > 0 %}
+          <li class="item_titre"> 
+               <img src="{{ asset('bundles/devbierestaskwebhtml/images/' ~ key ~ '.png') }}" alt="{{ key | trans }}" />
+               {{ key|trans|upper }}
+          </li>
+          {% for obj in col %}
+               {% include 'DevBieresTaskWebHtmlBundle:Tache:list_item.html.twig' with { 'obj' : obj } %}
+          {% endfor %}
+      {% endif %}
    {% else %}
      <li> {{ 'site.task.nothingtodo'|trans }} </li>
    {% endfor %}

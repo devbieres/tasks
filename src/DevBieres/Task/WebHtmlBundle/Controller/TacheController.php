@@ -33,13 +33,12 @@ class TacheController extends BaseController
   public function listAction($uri) {
     // -1-
     $obj = $this->manageUnconnectedUser(); if($obj != null) { return $obj; }
-    $request = $this->getRequest();
 
     // -2- Gestion d'un eventuel filtre
     $filtre = $this->getFiltre($uri);
 
     // -3-
-    $arr = $this->getTacheManager()->findActiveByUserGroupByPriorite($this->getUser(), $filtre);
+    $arr = $this->getTacheManager()->findActiveByUserGroupByDate($this->getUser(), $filtre);
 
     // -4-
     return $this->render(
@@ -48,6 +47,7 @@ class TacheController extends BaseController
     );
 
   } // Fin de listAction
+
 
   /**
    * Retourne le formulaire de recherche

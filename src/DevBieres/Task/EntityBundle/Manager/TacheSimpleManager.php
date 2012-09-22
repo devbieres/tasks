@@ -112,6 +112,47 @@ class TacheSimpleManager extends BaseManager {
       return $arrReturn;
     } // Fin de groupByPriorite
 
+    const DATE_LATE = "late";
+    const DATE_TODAY = "today";
+    const DATE_TOMORROW = "tomorrow";
+    const DATE_LATER = "later";
+    const DATE_UNKNOWN = "unknown";
+
+    /**
+     * Retourne un tableau des tâches par date
+     */
+    protected function groupByDate($col) {
+       // -0- Calcul des dates
+       $date = new \DateTime();
+       $dateJ = \DateTime::createFromFormat('Y-m-d H:i:s', $date->format('Y-m-d') . ' 00:00:00');
+       $dateJ1 = \DateTime::createFromFormat('Y-m-d H:i:s', $date->format('Y-m-d') . ' 00:00:00');
+       $dateJ2 = \DateTime::createFromFormat('Y-m-d H:i:s', $date->format('Y-m-d') . ' 00:00:00');
+       $add = new \DateInterval("P1D");
+       $dateJ1 = $dateJ1->add($add);
+       $add = new \DateInterval("P2D");
+       $dateJ2 = $dateJ2->add($add);
+
+       // -1-
+       $arrReturn = array();
+       $arrReturn[TacheSimpleManager::DATE_LATE] = array();
+       $arrReturn[TacheSimpleManager::DATE_TODAY] = array();
+       $arrReturn[TacheSimpleManager::DATE_TOMORROW] = array();
+       $arrReturn[TacheSimpleManager::DATE_LATER] = array();
+       $arrReturn[TacheSimpleManager::DATE_UNKNOWN] = array();
+
+       // -2-
+       foreach($col as $t) {
+          if($t->getPlanif() == NULL) { array_push($arrReturn[TacheSimpleManager::DATE_UNKNOWN], $t); }
+          else if($t->getPlanif() < $dateJ) { array_push($arrReturn[TacheSimpleManager::DATE_LATE], $t); }
+          else if($t->getPlanif() < $dateJ1) { array_push($arrReturn[TacheSimpleManager::DATE_TODAY], $t); }
+          else if($t->getPlanif() < $dateJ2) { array_push($arrReturn[TacheSimpleManager::DATE_TOMORROW], $t); }
+          else { array_push($arrReturn[TacheSimpleManager::DATE_LATER], $t); }
+       } // Fin de -2-
+
+       // -3-
+       return $arrReturn;
+    }// Fin de groupByDate
+
     /**
      * Liste les taches de l'utilisateur
      * @param $user User l'utilisateur
@@ -134,6 +175,19 @@ class TacheSimpleManager extends BaseManager {
       return $this->groupByPriorite($col);
 
     } // Fin de findActiveByUserGroupByPriorite
+
+    /**
+     * Retourne les tâches de l'utilisateur mais groupées par date
+     */
+    public function findActiveByUserGroupByDate($user, $filtre = '') {
+
+      // -1-
+      $col = $this->findActiveByUser($user, $filtre);
+
+      // -2-
+      return $this->groupByDate($col);
+
+    } // Fin de findActiveByUserGroupeByDate
 
     /**
      * Liste les tache de l'utilisateur

@@ -1,7 +1,7 @@
-{%
-    include "DevBieresTaskWebHtmlBundle:Tache:list.html.twig"
-           with {
-                      'arr': arr
-           }
-%}
-
+<ul>
+{% for obj in col %}
+     {% include 'DevBieresTaskWebHtmlBundle:Tache:list_item.html.twig' with { 'obj' : obj } %}
+{% else %}
+     <li> {{ 'site.task.nothingtodo'|trans }} </li>
+{% endfor %}
+</ul>

@@ -52,12 +52,13 @@ class TrashController extends BaseController
        $filtre = $this->getFiltre($uri);
 
        // -3-
-       $arr = $this->getTacheManager()->findTrashGroupByPriorite($this->getUser(), $filtre);
+       $col = $this->getTacheManager()->findTrash($this->getUser(), $filtre);
 
        // -4-
        return $this->render(
           $this->getViewPath('Trash:list'),
-          array('arr' => $arr)
+          array('col' => $col)
+
        );
 
     } // Fin de listAction

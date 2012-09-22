@@ -57,8 +57,8 @@ nav a, nav a:visited, nav a:hover {
 }
 #nav_header { 
     float:right; 
-    padding-right:15px; 
-    width:550px;
+    padding-right:5px; 
+    width:600px;
 }
 #nav_header li {
   padding: 50px 5px 10px 5px;
@@ -110,6 +110,8 @@ nav a, nav a:visited, nav a:hover {
 #content .liste  .item_titre {
    border-bottom: 1px solid black;
    margin-bottom: 15px;
+   margin-top: 15px;
+   background-color: lightgray;
 }
 #content .liste li {
   padding-top: 1px;

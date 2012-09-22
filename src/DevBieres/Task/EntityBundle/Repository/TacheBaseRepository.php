@@ -78,11 +78,12 @@ abstract class TacheBaseRepository extends EntityRepository
    public function findByUser($user, $filtre = '', $etat = TacheBase::ETAT_AFAIRE) {
 
      // -1-
-     $str = sprintf("SELECT ts, p, pt FROM DevBieresTaskEntityBundle:TacheSimple ts
+     $str = sprintf("SELECT ts, p, pt FROM DevBieresTaskEntityBundle:%s ts
                 INNER JOIN ts.priorite p
                 INNER JOIN ts.projet pt
                 WHERE pt.user = :user
-                AND ts.etat = :etat", $this->getMainEntityName());
+                AND ts.etat = :etat",
+                 $this->getMainEntityName());
 
      // -2- Gestion d'un filtre ?
      if(strlen($filtre) > 0) {
@@ -105,8 +106,8 @@ abstract class TacheBaseRepository extends EntityRepository
      // -6-
      return $q->execute();
 
-   } // Fin de findAllByUser
 
+   }
 
    /**
     * Retourne les tâches pour un utilisateur

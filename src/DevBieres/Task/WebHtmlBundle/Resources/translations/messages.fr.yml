@@ -1,3 +1,9 @@
+late: En retard
+today: Aujourd'hui
+tomorrow: Demain
+later: Plus tard
+unknown: Non planifiée(s)
+
 site:
     title: Task
     nav:
