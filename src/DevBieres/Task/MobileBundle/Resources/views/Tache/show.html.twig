@@ -12,6 +12,12 @@
         </header>
          <h3> {{ obj.libelle }} </h3>
          <ul data-role="listview" data-theme="d" data-divider-theme="d" >
+           {% if obj.isPlanif %}
+           <li>
+                      <label> {{ 'site.task.planif'|trans }} : </label>
+                      <span class="task_info" > {{ obj.planif|date("d/m/Y") }} </span>
+           </li>
+           {% endif %}
            <li>
                       <label> {{ 'site.task.project'|trans }} : </label>
                       <span class="task_info" > {{ obj.projet.libelle }} </span>

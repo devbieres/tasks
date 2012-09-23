@@ -30,6 +30,9 @@ class TacheSimpleType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        // -1- Récupération du type de rendu pour le champs date
+        $widget = $options['date_widget'];
+        if($widget == NULL) { $widget = 'choice'; }
 
         $builder
            ->add('libelle', 'text', array('label' => 'site.task.label'))
@@ -41,11 +44,11 @@ class TacheSimpleType extends AbstractType {
            ->add('planif', 'date', array(
                     'label' => 'site.task.planif',
                     'input' => 'datetime',
-                    'widget' => 'choice',
+                    'widget' => $widget,
                     'required' => false,
                     'empty_value' => '',
                     'format' => 'dd-MM-yyyy',
-                    'attr'   => array('class' => 'formulaire_date')
+                    'attr'   => array('class' => 'formulaire_date', 'data-type' => 'date')
                  )) ;
 
     } // fin de buildForm
@@ -60,6 +63,7 @@ class TacheSimpleType extends AbstractType {
         // deux options
         $resolver->setDefaults(array(
             'user' => null,
+            'date_widget' => null,
             'data_class' => 'DevBieres\Task\EntityBundle\Entity\TacheSimple',
         ));
     }

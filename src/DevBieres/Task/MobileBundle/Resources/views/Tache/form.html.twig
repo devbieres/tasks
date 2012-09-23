@@ -1,31 +1,37 @@
       <div data-role="content" >
       <form action="{{ path }}" method="post" {{ form_enctype(form) }} data-ajax="false" >
-         <div data-role="fieldcontain" >
-         <div class="error" >
-             {{ form_errors(form) }}
-         </div>
-         <div class="error" >
-             {{ form_errors(form.libelle) }}
-         </div>
-         <div>
-              {{ form_label(form.libelle) }}
-              {{ form_widget(form.libelle) }}
-         </div>
-         <div class="error" >
-             {{ form_errors(form.priorite) }}
-         </div>
-         <div>
-              {{ form_label(form.priorite) }}
-              {{ form_widget(form.priorite) }}
-         </div>
-         <div class="error" >
-             {{ form_errors(form.projet) }}
-         </div>
-         <div>
-              {{ form_label(form.projet) }}
-              {{ form_widget(form.projet) }}
-         </div>
-         </div>
+             <div class="error" >
+                 {{ form_errors(form) }}
+              </div>
+              <div class="error" >
+                 {{ form_errors(form.libelle) }}
+              </div>
+              <div>
+                 {{ form_label(form.libelle) }}
+                 {{ form_widget(form.libelle) }}
+              </div>
+              <div class="error" >
+                 {{ form_errors(form.priorite) }}
+              </div>
+              <div>
+                 {{ form_label(form.priorite) }}
+                 {{ form_widget(form.priorite) }}
+              </div>
+              <div class="error" >
+                 {{ form_errors(form.projet) }}
+              </div>
+              <div>
+                 {{ form_label(form.projet) }}
+                 {{ form_widget(form.projet) }}
+              </div>
+              <div class="error" >
+                 {{ form_errors(form.planif) }}
+              </div>
+              <div>
+                 {{ form_label(form.planif) }}
+                 <a href="#" id="datenulle" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+                 {{ form_widget(form.planif) }}
+              </div>
          <div>
               <label></label>
               <input type="submit" value="{{ 'site.valid'|trans }}" id="submit" data-theme="a" />

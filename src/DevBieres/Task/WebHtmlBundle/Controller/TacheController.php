@@ -179,7 +179,10 @@ class TacheController extends BaseController
     }
   }
 
-  
+  /**
+   * Retourne le widget pour les dates
+   */
+  protected function getDateWidget() { return "choice"; } 
 
   /**
    * Affiche le formulaire
@@ -192,6 +195,9 @@ class TacheController extends BaseController
     $user = $this->getUser();
 
     // -1-
+    $widget = $this->getDateWidget();
+
+    // -2-
     /*
     $form = $this->createFormBuilder($tache)
               ->add('libelle', 'text', array('label' => 'site.task.label'))
@@ -205,7 +211,7 @@ class TacheController extends BaseController
     $form = $this->createForm(
                      $this->getTacheManager()->getTacheSimpleType(),
                      $tache,
-                     array('user' => $user)
+                     array('user' => $user, 'date_widget' => $widget)
                   );
 
     // -5-

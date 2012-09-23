@@ -142,7 +142,7 @@ class TacheSimpleManager extends BaseManager {
 
        // -2-
        foreach($col as $t) {
-          if($t->getPlanif() == NULL) { array_push($arrReturn[TacheSimpleManager::DATE_UNKNOWN], $t); }
+          if($t->isPlanif() == false) { array_push($arrReturn[TacheSimpleManager::DATE_UNKNOWN], $t); }
           else if($t->getPlanif() < $dateJ) { array_push($arrReturn[TacheSimpleManager::DATE_LATE], $t); }
           else if($t->getPlanif() < $dateJ1) { array_push($arrReturn[TacheSimpleManager::DATE_TODAY], $t); }
           else if($t->getPlanif() < $dateJ2) { array_push($arrReturn[TacheSimpleManager::DATE_TOMORROW], $t); }

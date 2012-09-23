@@ -37,6 +37,11 @@ class TacheSimple extends TacheBase {
    protected $planif;
    public function getPlanif() { return $this->planif; }
    public function setPlanif($value) { $this->planif = $value; }
+
+   public function isPlanif() { 
+       if($this->getPlanif() == NULL) { return false; }
+       else { return true; }
+   }
     
 
 }

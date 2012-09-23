@@ -22,6 +22,10 @@ footer {
  padding-left: 35px;
 }
 
+.formulaire_date {
+ padding-right: 35px;  
+}
+
 
 @media screen
 and (max-width:480px) {

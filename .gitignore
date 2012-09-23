@@ -10,3 +10,6 @@
 /Capfile
 /.fr-f8UbnA
 /app/config/parameters.yml
+/src/DevBieres/Task/WebHtmlBundle/Resources/public/images/basse.old
+/src/DevBieres/Task/WebHtmlBundle/Resources/public/images/normal.old
+/src/DevBieres/Task/WebHtmlBundle/Resources/views/Tache/list.html.old

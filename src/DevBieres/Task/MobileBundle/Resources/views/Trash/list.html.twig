@@ -5,11 +5,6 @@
    <div data-role="content" >
        <ul data-role="listview" data-theme="d" data-divider-theme="d" 
             data-filter="true" data-filter-placeholder="{{ 'site.filter'|trans }}" >
-            {% for key,col in arr %}
-                 <li class="item_titre" data-role="list-divider"  > 
-                      {% include 'DevBieresTaskWebHtmlBundle:Priorite:img.html.twig' with { 'code' : key } %}
-                      {{ key|trans|upper }}
-                 </li>
                  {% for obj in col %}
                       <li class="item {{ obj.getEtatLibelle() }}" 
                                data-icon="arrow-r" data-iconpos="right" > 
@@ -19,7 +14,6 @@
                                    </a>
                        </li>
                  {% endfor %}
-             {% endfor %}
          </ul>
    </div>
    {%  

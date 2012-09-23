@@ -1,5 +1,4 @@
-{% for key,col in arr %}
-   <div data-role="page" id="{{ key }}" >
+   <div data-role="page" >
         {%  
              include "DevBieresTaskMobileBundle::header.html.twig" 
              with {
@@ -8,38 +7,31 @@
                   }
          %}
          <div data-role="content" >
-              <ul data-role="listview" data-theme="d" data-divider-theme="d"
-                   data-filter="true" data-filter-placeholder="{{ 'site.filter'|trans }}"      >
-                   <li class="item_titre" data-role="list-divider"  > 
-                         {% include 'DevBieresTaskWebHtmlBundle:Priorite:img.html.twig' with { 'code' : key } %}
-                         {{ key|trans|upper }}
-                   </li>
-                   {% for obj in col %}
-                        <li class="item {{ obj.getEtatLibelle() }}" 
-                            data-icon="arrow-r" data-iconpos="right" > 
-                            <a href="{{ path('mobile_tache_show', { 'id' : obj.id }) }}" 
+             <div data-role="collapsible-set" >
+                 {% for key,col in arr %}
+                   {% if col|length > 0 %}
+                     <div data-role="collapsible"  >
+                        <h3>
+                          <img src="{{ asset('bundles/devbierestaskwebhtml/images/' ~ key ~ '.png') }}" alt="{{ key | trans }}" />
+                         {{ key|trans|upper }} ({{ col|length}})
+                        </h3>
+                        <ul data-role="listview" data-theme="d" data-divider-theme="d" >
+                        {% for obj in col %}
+                           <li class="item {{ obj.getEtatLibelle() }}" 
+                              data-icon="arrow-r" data-iconpos="right" > 
+                               <a href="{{ path('mobile_tache_show', { 'id' : obj.id }) }}" 
                                    data-transition="slide"  >
-                              <span class="tache_projet"> [ {{ obj.projet.libelle }}] </span> {{ obj.libelle }}
-                            </a>
-                        </li>
-                    {% endfor %}
-               </ul>
-         </div>
+                                   <span class="tache_projet"> [ {{ obj.projet.libelle }}] </span> {{ obj.libelle }}
+                               </a>
+                           </li>
+                        {% endfor %}
+                        </ul>
+                     </div> <!-- fin de la liste des taches -->
+                   {% endif %}
+                 {% endfor %}
+             </div> <!-- Fin du regrouepemement en accordeon -->
+         </div><!-- Fin de date.a role content -->
         {%  
              include "DevBieresTaskMobileBundle::footer.html.twig" 
         %}
     </div>
-{% else %}
-   <div data-role="page" id="empty" >
-        {%  
-             include "DevBieresTaskMobileBundle::header.html.twig" 
-             with {
-                     'title' : 'site.task.yourtasks',
-                     'back'  : 'false'
-                  }
-        %}
-        <p>
-            {{ 'site.task.nothingtodo'|trans }}
-        </p>
-    </div>
-{% endfor %}

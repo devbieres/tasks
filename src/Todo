@@ -1,22 +1,2 @@
-Reste à faire sur la version 0.3
-
-* Faire la version JQueryMobile
-
-Reste à faire sur la version 0.2 (évolutions mineures)
-
-* Gérer le changement de langue ...
-* Ajouter à base controller un service qui retourne directement sur la page d'accueil
-* Gérer une première connexion ==> redirection directe vers les préférences
-* Passer les formulaires des projets
-* Mettre le logger en paramètre des managers
-
-
-Reste à faire sur la version 0.1
-
-
-* Tests unitaires
-
-* Faire un article sur comment j'ai géré le filtre
-
-
+// MobiScroll
 

@@ -39,6 +39,10 @@ class MobileTacheController extends TacheController
    */
   protected function redirectToTrash() { return $this->redirect($this->generateUrl('mobile_trash')); }
 
+  /**
+   * Retourne le widget pour les dates
+   */
+  protected function getDateWidget() { return "single_text"; } 
 
   /**
    * Definit l'action show pour une tache
