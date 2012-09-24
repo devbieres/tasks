@@ -47,8 +47,8 @@ class TacheSimpleType extends AbstractType {
                     'widget' => $widget,
                     'required' => false,
                     'empty_value' => '',
-                    'format' => 'dd-MM-yyyy',
-                    'attr'   => array('class' => 'formulaire_date', 'data-type' => 'date')
+                    'format' => 'yyyy-MM-dd',
+                    'attr'   => array('class' => 'formulaire_date' )
                  )) ;
 
     } // fin de buildForm
