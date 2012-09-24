@@ -1,12 +1,16 @@
 $(document).ready(function() {
-    var picker = $( ".formulaire_date", this );
     ///*
-    picker.mobipick({
-         locale: "fr",
-    });//*/
-
-    $("#datenulle").bind( "tap", function() {
-            picker.mobipick("option", "date", null).mobipick("updateDateInput");
-    });
+    // TODO : pas top car s'applique à toutes les dates ... bonn y'en a qu'une mais quand même ...
+    var picker = $( ".formulaire_date", this );
+    picker.scroller({ 
+                preset: 'date',
+                mode: 'mixed',
+                dateOrder: 'ddmmyyyy'
+          });
     //*/
+
+    $("#cleardate").click(function() {
+        $(".formulaire_date").val('');
+        return false;
+    });
 });

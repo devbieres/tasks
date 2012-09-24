@@ -22,8 +22,11 @@ footer {
  padding-left: 35px;
 }
 
-.formulaire_date {
-  width:100%;
+#TacheSimple_planif, #cleardate {
+  display: inline-block;
+}
+#TacheSimple_planif {
+  margin-right:150px;
 }
 
 
