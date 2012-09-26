@@ -29,7 +29,7 @@ class DefaultAproposControllerTest extends ConnecteControllerTest {
        public function testAPropos() {
 
            // Si tout va bien on est connecté en tant qu'u1
-           $crawler = $this->client->request('GET', '/html/apropos');
+           $crawler = $this->client->request('GET', '/apropos');
 
            // About 
            $this->assertTrue($crawler->filter('#about')->count() > 0);

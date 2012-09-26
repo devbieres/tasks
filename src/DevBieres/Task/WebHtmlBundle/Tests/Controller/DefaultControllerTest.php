@@ -26,7 +26,7 @@ class DefaultControllerTest extends WebTestCase
     public function testIdentificationKO()
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/html');
+        $crawler = $client->request('GET', '/');
         $crawler = $client->followRedirect(); // Normalement, il doit me rediriger vers /login
         $this->assertTrue($crawler->filter('html:contains("Mot de passe")')->count() > 0);
 
@@ -53,7 +53,7 @@ class DefaultControllerTest extends WebTestCase
 
         // -1- Passage par la page login qui contient le lien vers register
         $client = static::createClient();
-        $crawler = $client->request('GET', '/html');
+        $crawler = $client->request('GET', '/');
         $crawler = $client->followRedirect(); // Normalement, il doit me rediriger vers /login
         $this->assertTrue($crawler->filter('html:contains("Mot de passe")')->count() > 0);
 
@@ -90,8 +90,7 @@ class DefaultControllerTest extends WebTestCase
         // "click" sur le boutton OK
         $client->submit($form);
         $crawler = $client->followRedirect();  
-        $crawler = $client->followRedirect();  
-        // Il y a deux redirections ...
+        //$crawler = $client->followRedirect();  
 
         $this->assertTrue($crawler->filter('#yourtasks')->count() > 0);
 

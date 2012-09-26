@@ -29,7 +29,7 @@ class ProjetControllerTest extends ConnecteControllerTest {
        public function testCreationSimple() {
 
             // -1-
-            $crawler = $this->client->request('GET','/html/');
+            $crawler = $this->client->request('GET','/');
             $link = $crawler->filter("#nav_projet")->eq(0)->link();
             $crawler = $this->client->click($link);
             $this->assertTrue($crawler->filter('#yourproject')->count() > 0);
@@ -74,12 +74,12 @@ class ProjetControllerTest extends ConnecteControllerTest {
        public function testIdInconnu() {
 
             // -1-
-            $crawler = $this->client->request('GET','/html/projet/destroy/8');
+            $crawler = $this->client->request('GET','/projet/destroy/8');
             $crawler = $this->client->followRedirect();   // redirection vers /html/projet
             $this->assertTrue($crawler->filter('#yourproject')->count() > 0);
 
             // -2-
-            $crawler = $this->client->request('POST','/html/projet/destroy_confirmed', array('form[id]' => 8));
+            $crawler = $this->client->request('POST','/projet/destroy_confirmed', array('form[id]' => 8));
             $crawler = $this->client->followRedirect();   // redirection vers /html/projet
             $this->assertTrue($crawler->filter('#yourproject')->count() > 0);
 
@@ -103,7 +103,7 @@ class ProjetControllerTest extends ConnecteControllerTest {
         $p1a->setUser($u2); 
         $mngProjet->persist($p1a);
 
-        $crawler = $this->client->request('POST','/html/projet/destroy_confirmed', array("form" => array("id" => "" . $p1a->getId())));
+        $crawler = $this->client->request('POST','/projet/destroy_confirmed', array("form" => array("id" => "" . $p1a->getId())));
         $crawler = $this->client->followRedirect();   // redirection vers /html/projet
         $this->assertTrue($crawler->filter('#yourproject')->count() > 0);
         $this->assertTrue($crawler->filter('html:contains("site.project.wronguser")')->count() > 0);

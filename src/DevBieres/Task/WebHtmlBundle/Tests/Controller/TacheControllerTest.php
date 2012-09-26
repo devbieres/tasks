@@ -88,7 +88,7 @@ class TacheControllerTest extends ConnecteControllerTest {
       public function testCheckUser() {
 
             // -4-
-            $crawler = $this->client->request('GET','/html/tache/destroy/' . $this->tu2->getId());
+            $crawler = $this->client->request('GET','/tache/destroy/' . $this->tu2->getId());
             // Lutilisateur n'a pas de projet, il est donc redirigé vers la page d'accueil
             $crawler = $this->client->followRedirect();  
             $this->assertTrue($crawler->filter('#yourtasks')->count() > 0);
@@ -103,7 +103,7 @@ class TacheControllerTest extends ConnecteControllerTest {
        public function testSimple() {
 
             // -1-
-            $crawler = $this->client->request('GET','/html/');
+            $crawler = $this->client->request('GET','/');
             $this->assertTrue($crawler->filter('#yourtasks')->count() > 0);
             $this->assertTrue($crawler->filter('li.item')->count() == 0);
             $this->assertTrue($crawler->filter('li.item_titre')->count() == 0);
@@ -228,7 +228,7 @@ class TacheControllerTest extends ConnecteControllerTest {
             $this->assertTrue($crawler->filter('li.item')->count() == 0);
 
             // -15-
-            $crawler = $this->client->request('GET','/html/');
+            $crawler = $this->client->request('GET','/');
             $this->assertTrue($crawler->filter('#yourtasks')->count() > 0);
             $this->assertTrue($crawler->filter('li.item')->count() == 0);
             $this->assertTrue($crawler->filter('li.item_titre')->count() == 0);
@@ -238,7 +238,7 @@ class TacheControllerTest extends ConnecteControllerTest {
        public function testSomeNew() {
 
             // -1-
-            $crawler = $this->client->request('GET','/html/');
+            $crawler = $this->client->request('GET','/');
             $this->assertTrue($crawler->filter('#yourtasks')->count() > 0);
             $this->assertTrue($crawler->filter('li.item')->count() == 0);
 

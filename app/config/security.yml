@@ -19,9 +19,9 @@ security:
               provider: fos_userbundle
               csrf_provider: form.csrf_provider
               always_use_default_target_path: true
-              default_target_path: /html
+              default_target_path: /
          logout: 
-              target: /html
+              target: /
          anonymous: true
 
     access_control:

@@ -29,13 +29,13 @@ class TacheSansProjetControllerTest extends ConnecteControllerTest {
        public function testDoitAvoirUnProjet() {
 
             // -1-
-            $crawler = $this->client->request('GET','/html/');
+            $crawler = $this->client->request('GET','/');
             $this->assertTrue($crawler->filter('#yourtasks')->count() > 0);
             $this->assertTrue($crawler->filter('li.item')->count() == 0);
             $this->assertTrue($crawler->filter('.flash ul li')->count() == 0);
 
             // -2-
-            $crawler = $this->client->request('GET','/html/tache/new');
+            $crawler = $this->client->request('GET','/tache/new');
             // Lutilisateur n'a pas de projet, il est donc redirigé vers la page d'accueil
             $crawler = $this->client->followRedirect();  
             $this->assertTrue($crawler->filter('#yourtasks')->count() > 0);
@@ -44,7 +44,7 @@ class TacheSansProjetControllerTest extends ConnecteControllerTest {
 
 
             // -3-
-            $crawler = $this->client->request('GET','/html/tache/somenew');
+            $crawler = $this->client->request('GET','/tache/somenew');
             // Lutilisateur n'a pas de projet, il est donc redirigé vers la page d'accueil
             $crawler = $this->client->followRedirect();  
             $this->assertTrue($crawler->filter('#yourtasks')->count() > 0);
@@ -57,13 +57,13 @@ class TacheSansProjetControllerTest extends ConnecteControllerTest {
        public function testEditTacheInconnue() {
 
             // -1-
-            $crawler = $this->client->request('GET','/html/');
+            $crawler = $this->client->request('GET','/');
             $this->assertTrue($crawler->filter('#yourtasks')->count() > 0);
             $this->assertTrue($crawler->filter('li.item')->count() == 0);
             $this->assertTrue($crawler->filter('.flash ul li')->count() == 0);
 
             // -2-
-            $crawler = $this->client->request('GET','/html/tache/edit/10');
+            $crawler = $this->client->request('GET','/tache/edit/10');
             // Lutilisateur n'a pas de projet, il est donc redirigé vers la page d'accueil
             $crawler = $this->client->followRedirect();  
             $this->assertTrue($crawler->filter('#yourtasks')->count() > 0);
@@ -71,7 +71,7 @@ class TacheSansProjetControllerTest extends ConnecteControllerTest {
             $this->assertTrue($crawler->filter('.flash ul li')->count() == 1);
 
             // -3-
-            $crawler = $this->client->request('GET','/html/tache/done/10');
+            $crawler = $this->client->request('GET','/tache/done/10');
             // Lutilisateur n'a pas de projet, il est donc redirigé vers la page d'accueil
             $crawler = $this->client->followRedirect();  
             $this->assertTrue($crawler->filter('#yourtasks')->count() > 0);
@@ -79,7 +79,7 @@ class TacheSansProjetControllerTest extends ConnecteControllerTest {
             $this->assertTrue($crawler->filter('.flash ul li')->count() == 1);
 
             // -4-
-            $crawler = $this->client->request('GET','/html/tache/destroy/10');
+            $crawler = $this->client->request('GET','/tache/destroy/10');
             // Lutilisateur n'a pas de projet, il est donc redirigé vers la page d'accueil
             $crawler = $this->client->followRedirect();  
             $this->assertTrue($crawler->filter('#yourtrash')->count() > 0);

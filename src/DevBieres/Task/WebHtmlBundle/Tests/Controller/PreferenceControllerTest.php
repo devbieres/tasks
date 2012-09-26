@@ -30,7 +30,7 @@ class PreferenceControllerTest extends ConnecteControllerTest {
        public function testSimple() {
 
             // -1-
-            $crawler = $this->client->request('GET','/html/');
+            $crawler = $this->client->request('GET','/');
             $this->assertTrue($crawler->filter('#yourtasks')->count() > 0);
             $this->assertTrue($crawler->filter('li.item')->count() == 0);
             $this->assertTrue($crawler->filter('li.item_titre')->count() == 0);
