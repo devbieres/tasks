@@ -22,8 +22,13 @@ namespace DevBieres\Task\WebHtmlBundle\Listener;
 */
 
 use Symfony\Component\EventDispatcher\Event;
+use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Component\Security\Core\SecurityContext;
 use Doctrine\Bundle\DoctrineBundle\Registry as Doctrine;
+use Symfony\Component\Routing\Router;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
  * Custom login listener
@@ -33,7 +38,7 @@ class LoginListener {
 
    private $securityContext;
 
-   private $em;
+   private $dispatcher;
 
    private $session;
 
@@ -41,13 +46,18 @@ class LoginListener {
 
    private $mng_tache;
 
-   public function __construct(SecurityContext $context, Doctrine $doctrine,$session, $mng_user, $mng_tache)
+   private $router;
+
+
+  public function __construct(Router $router, SecurityContext $context, EventDispatcher $dispatcher, $session, $mng_user, $mng_tache)
 	{
 		$this->securityContext = $context;
-		$this->em      = $doctrine->getEntityManager();
-                $this->session = $session;
-                $this->mng_user = $mng_user;
-                $this->mng_tache = $mng_tache;
+    $this->session = $session;
+    $this->mng_user = $mng_user;
+    $this->mng_tache = $mng_tache;
+    // Ajout du router
+    $this->router = $router;
+    $this->dispatcher = $dispatcher;
 	}
 
   public function onSecurityInteractiveLogin(Event $event)
@@ -55,11 +65,23 @@ class LoginListener {
 		$user = $this->securityContext->getToken()->getUser();
 
 		// -1- Gestion de la langue
-                $up = $this->mng_user->getUserPreference($user);
-                $this->session->set('_locale', $up->getLocale());
+    $up = $this->mng_user->getUserPreference($user);
+    $this->session->set('_locale', $up->getLocale());
 
-                // -2- Nettoyage de la corbeille (fait également au logout ..)
-                $this->mng_tache->clearTrash($user, $up->getNbJours());
-	}
+    // -2- Nettoyage de la corbeille (fait également au logout ..)
+    $this->mng_tache->clearTrash($user, $up->getNbJours());
+
+    // -3-
+    $detector = new \Mobile_Detect();
+    if($detector->isMobile() || $detector->isTablet()) {
+         $this->dispatcher->addListener(KernelEvents::RESPONSE, array($this, 'onKernelResponse'));
+    }
+
+  } // Fin de OnSecurityContext
+
+  public function onKernelResponse(FilterResponseEvent $event) {
+       $route = "mobile_home"; 
+       $event->setResponse(new RedirectResponse($this->router->generate($route))); 
+  } // Fin de onKernelResponse
 
 }
