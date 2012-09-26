@@ -1,3 +1,0 @@
-DevBieresCommonBaseBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: DevBieresCommonBaseBundle:Default:index }

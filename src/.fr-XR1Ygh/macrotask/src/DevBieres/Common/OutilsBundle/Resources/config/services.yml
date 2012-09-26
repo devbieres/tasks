@@ -1,7 +1,0 @@
-parameters:
-    db.common.outils.mng.param: DevBieres\Common\OutilsBundle\Manager\ParametreManager
-
-services:
-    dvb.mng_parametre:
-        class: %db.common.outils.mng.param%
-        arguments: [@doctrine.orm.entity_manager]

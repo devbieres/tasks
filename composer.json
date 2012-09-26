@@ -19,7 +19,8 @@
         "jms/security-extra-bundle": "1.2.*",
         "jms/di-extra-bundle": "1.1.*",
         "jms/serializer-bundle": "*",
-        "friendsofsymfony/user-bundle": "*"
+        "friendsofsymfony/user-bundle": "*",
+        "suncat/php-mobile-detect": "2.0.9"
     },
     "scripts": {
         "post-install-cmd": [

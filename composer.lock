@@ -1,5 +1,5 @@
 {
-    "hash": "458a08e3d6bc074c736b020db21c3dd2",
+    "hash": "6a878f6005a37bd1dc4929d06f5a3e13",
     "packages": [
         {
             "name": "doctrine/common",
@@ -138,12 +138,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/doctrine/DoctrineBundle.git",
-                "reference": "1b94aa04c933fbf6a96998667a7dd5ff161ac19d"
+                "reference": "065947875fd66b3f89ed01f94859e8600491ada5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/doctrine/DoctrineBundle/zipball/1b94aa04c933fbf6a96998667a7dd5ff161ac19d",
-                "reference": "1b94aa04c933fbf6a96998667a7dd5ff161ac19d",
+                "url": "https://github.com/doctrine/DoctrineBundle/zipball/065947875fd66b3f89ed01f94859e8600491ada5",
+                "reference": "065947875fd66b3f89ed01f94859e8600491ada5",
                 "shasum": ""
             },
             "require": {
@@ -160,7 +160,7 @@
             "suggest": {
                 "doctrine/orm": "The Doctrine ORM integration is optional in the bundle."
             },
-            "time": "1348484241",
+            "time": "1348519642",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -357,7 +357,7 @@
                 "symfony/framework-bundle": "2.*",
                 "jms/cg": "1.0.0"
             },
-            "time": "2012-01-02 11:50:26",
+            "time": "2012-01-02 10:50:26",
             "type": "symfony-bundle",
             "installation-source": "dist",
             "autoload": {
@@ -399,7 +399,7 @@
             "require": {
                 "php": ">=5.3.0"
             },
-            "time": "2012-01-02 11:40:52",
+            "time": "2012-01-02 10:40:52",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -501,7 +501,7 @@
             "require": {
                 "php": ">=5.3.0"
             },
-            "time": "2012-01-02 12:32:49",
+            "time": "2012-01-02 11:32:49",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -924,6 +924,55 @@
             "description": "This bundle generates code for you"
         },
         {
+            "name": "suncat/php-mobile-detect",
+            "version": "v2.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/suncat2000/php-mobile-detect",
+                "reference": "v2.0.9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/suncat2000/php-mobile-detect/zipball/v2.0.9",
+                "reference": "v2.0.9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "time": "2012-07-23 20:25:18",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-0": {
+                    "Mobile_Detect": "lib/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Victor Stanciu",
+                    "email": "vic.stanciu@gmail.com",
+                    "homepage": "https://plus.google.com/112830021345771739573"
+                },
+                {
+                    "name": "Serban Ghita",
+                    "email": "serbanghita@gmail.com",
+                    "homepage": "http://ghita.org"
+                }
+            ],
+            "description": "Lightweight PHP class for detecting mobile devices",
+            "homepage": "https://github.com/suncat2000/php-mobile-detect",
+            "keywords": [
+                "mobile",
+                "mobile detect",
+                "mobile detector",
+                "mobile device"
+            ]
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "dev-master",
             "source": {
@@ -1291,18 +1340,18 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/fabpot/Twig.git",
-                "reference": "b4d1d62b82e83c6fd3d5a6cd46a186de64275bb4"
+                "reference": "b8c917972f74da88f0e930ea32a90566739d87ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/fabpot/Twig/zipball/b4d1d62b82e83c6fd3d5a6cd46a186de64275bb4",
-                "reference": "b4d1d62b82e83c6fd3d5a6cd46a186de64275bb4",
+                "url": "https://github.com/fabpot/Twig/zipball/b8c917972f74da88f0e930ea32a90566739d87ac",
+                "reference": "b8c917972f74da88f0e930ea32a90566739d87ac",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "1347961095",
+            "time": "1348667791",
             "type": "library",
             "extra": {
                 "branch-alias": {
