@@ -20,7 +20,8 @@
         "jms/di-extra-bundle": "1.1.*",
         "jms/serializer-bundle": "*",
         "friendsofsymfony/user-bundle": "*",
-        "suncat/php-mobile-detect": "2.0.9"
+        "suncat/php-mobile-detect": "2.0.9",
+        "friendsofsymfony/jsrouting-bundle": "1.*"
     },
     "scripts": {
         "post-install-cmd": [

@@ -45,6 +45,21 @@ class MobileTacheController extends TacheController
   protected function getDateWidget() { return "single_text"; } 
 
   /**
+   * Action pour passer à la tache suivante
+   */
+  public function nextAction($id) {
+      return $this->showAction($id);
+  } // Fin de nextAction
+
+  /**
+   * Action pour passer à la tache suivante
+   */
+  public function previousAction($id) {
+      return $this->showAction($id);
+  } // Fin de nextAction
+
+
+  /**
    * Definit l'action show pour une tache
    */
   public function showAction($id, $view = "Tache:show") {

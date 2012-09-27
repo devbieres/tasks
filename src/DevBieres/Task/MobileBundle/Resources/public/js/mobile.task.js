@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+    /*
      // Navigation par defaut dans les pages
 	$('div.ui-page').live("swipeleft", function(){
 		var nextpage = $(this).next('div[data-role="page"]');
@@ -15,6 +15,6 @@ $(document).ready(function() {
 			$.mobile.changePage(prevpage, 'slide', true);
 		}
 	});
-
+  */
 
 });

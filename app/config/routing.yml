@@ -2,6 +2,8 @@ DevBieresTaskMobileBundle:
     resource: "@DevBieresTaskMobileBundle/Resources/config/routing.yml"
     prefix:   /mobile
 
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

@@ -1,7 +1,11 @@
 {% extends "DevBieresTaskMobileBundle::layout.html.twig" %}
 
+{% block js %}
+       <script src="{{ asset('bundles/devbierestaskmobile/js/mobile.tache.task.js') }}" type="text/javascript" ></script>
+{% endblock %}
+
 {% block page %}
-   <div data-role="page" id="{{ obj.id }}" >
+   <div data-role="page" data-id="{{ obj.id }}"  >
         <header data-role="header" >
                <a href="{{ path('mobile_home') }}" 
                    title="{{ 'site.home'|trans }}" 

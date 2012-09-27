@@ -10,6 +10,18 @@ mobile_tache_new:
     requirements:
         method: GET 
 
+mobile_tache_next:
+    pattern: /tache/next/{id}
+    defaults: { _controller: DevBieresTaskMobileBundle:MobileTache:next  }
+    options:
+       expose: true
+
+mobile_tache_previous:
+    pattern: /tache/previous/{id}
+    defaults: { _controller: DevBieresTaskMobileBundle:MobileTache:previous  }
+    options:
+       expose: true
+
 mobile_tache_show:
     pattern: /tache/show/{id}
     defaults: { _controller: DevBieresTaskMobileBundle:MobileTache:show }

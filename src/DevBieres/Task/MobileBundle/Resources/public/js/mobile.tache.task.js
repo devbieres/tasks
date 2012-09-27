@@ -1,16 +1,24 @@
 $(document).ready(function() {
-    ///*
-    // TODO : pas top car s'applique à toutes les dates ... bonn y'en a qu'une mais quand même ...
-    var picker = $( ".formulaire_date", this );
-    picker.scroller({ 
-                preset: 'date',
-                mode: 'mixed',
-                dateOrder: 'ddmmyyyy'
-          });
-    //*/
 
-    $("#cleardate").click(function() {
-        $(".formulaire_date").val('');
-        return false;
-    });
+  // Navigation vers la gauche
+  $('div.ui-page').live("swipeleft", function() {
+         // recuperation de l'id
+         var id = this.getAttribute('data-id'); 
+         // calcul de l'url
+         var url = Routing.generate('mobile_tache_next', { 'id' : id });
+         // redirection
+         window.location.href = url;
+  }); // Fin de navigation gauche //
+
+
+  // Navigation vers la droite
+  $('div.ui-page').live("swiperight", function() {
+        // recuperation de l'id
+        var id = this.getAttribute('data-id'); 
+        // calcul de 'url
+        var url = Routing.generate('mobile_tache_previous', { 'id' : id });
+        // redirection
+        window.location.href = url;
+  }); // Fin de navigation droite //
+
 });
