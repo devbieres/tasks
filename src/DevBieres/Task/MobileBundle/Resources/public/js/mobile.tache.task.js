@@ -1,24 +1,18 @@
 $(document).ready(function() {
 
   // Navigation vers la gauche
-  $('div.ui-page').live("swipeleft", function() {
-         // recuperation de l'id
-         var id = this.getAttribute('data-id'); 
-         // calcul de l'url
-         var url = Routing.generate('mobile_tache_next', { 'id' : id });
-         // redirection
-         window.location.href = url;
-  }); // Fin de navigation gauche //
-
+  $('#tache_show').live("swipeleft", function() { slide(this, 'mobile_tache_next', 'slideleft'); });
 
   // Navigation vers la droite
-  $('div.ui-page').live("swiperight", function() {
-        // recuperation de l'id
-        var id = this.getAttribute('data-id'); 
-        // calcul de 'url
-        var url = Routing.generate('mobile_tache_previous', { 'id' : id });
-        // redirection
-        window.location.href = url;
-  }); // Fin de navigation droite //
+  $('#tache_show').live("swiperight", function() { slide(this, 'mobile_tache_previous','slideright'); });
 
 });
+
+function slide(div, route, transition) {
+        // recuperation de l'id
+        var id = div.getAttribute('data-id'); 
+        // calcul de 'url
+        var url = Routing.generate(route, { 'id' : id });
+        // redirection
+        window.location.href = url;
+}
