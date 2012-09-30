@@ -107,7 +107,8 @@ class TacheController extends BaseController
        // --> Appel du service 
        $count = $this->getTacheManager()->createMulti(
               $data['projet'],
-              strip_tags($data['contenu'])
+              strip_tags($data['contenu']),
+              $this->getUser()
        );
        // Retour
        $this->storeFlash( sprintf('%s:%s', $this->trans('site.task.multinewok'), $count));
@@ -221,7 +222,7 @@ class TacheController extends BaseController
       // -5.2-
       if($form->isValid()) {
         // --> Sauvegarde
-        $this->getTacheManager()->persist($tache);
+        $this->getTacheManager()->persist($tache, 1, array('user' => $this->getUser()));
         // --> redirection
         return $this->redirectToHome(); // $this->redirect($this->generateUrl('web_home'));
       } // Fin de -5.2-
@@ -253,7 +254,7 @@ class TacheController extends BaseController
 
     // -4-
     $tache->setEtat($state);
-    $this->getTacheManager()->persist($tache);
+    $this->getTacheManager()->persist($tache, 1, array('user' => $this->getUser()));
 
     // -5-
     if($continue) { return $this->__showFormulaire($request, $tache, 'new'); }
@@ -281,7 +282,7 @@ class TacheController extends BaseController
     $obj = $this->checkUser($tache); if($obj != null) { return $obj; }
 
     // -4-
-    $this->getTacheManager()->remove($tache);
+    $this->getTacheManager()->remove($tache, 1, array('user' => $this->getUser()));
 
     // -5-
     return $this->redirectToTrash(); // $this->redirect($this->generateUrl('web_trash'));

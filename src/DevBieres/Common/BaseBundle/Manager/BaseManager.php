@@ -57,7 +57,7 @@ abstract class BaseManager {
    * @param $entity l'entité à persister
    * @param $flush (par defaut = 1)
    */
-  public function persist($entity, $flush = 1) {
+  public function persist($entity, $flush = 1, $array = array()) {
     $this->getEntityManager()->persist($entity);
     if($flush == 1) { $this->flush(); }
   } // Fin de persist
@@ -68,7 +68,7 @@ abstract class BaseManager {
    * @param $entity l'entité à persister
    * @param $flush (par defaut = 1)
    */
-  public function remove($entity, $flush = 1) {
+  public function remove($entity, $flush = 1, $array = array()) {
     // -1- Appel de la méthode spécialisable beforeRemove()
     $this->beforeRemove($entity);
 

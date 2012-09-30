@@ -57,6 +57,15 @@ abstract class TacheBase extends EntityBase {
   }
 
   /**
+   * Ordre des tâches basées sur la date de planif, l'importance et de la date de creation
+   * @ORM\Column(type="integer")
+   * @Expose
+   */
+  protected $ordre = -1;
+  public function getOrdre() { return $this->ordre; }
+  public function setOrdre($value) { $this->ordre = $value; }
+
+  /**
    * Definit un etat pour la tâche 
    * @ORM\Column(type="integer")
    * @Assert\Choice(callback = "getEtats")

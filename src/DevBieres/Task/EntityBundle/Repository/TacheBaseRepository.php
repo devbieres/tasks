@@ -70,6 +70,44 @@ abstract class TacheBaseRepository extends EntityRepository
 
 
    /**
+    * Recherche la prochaine tache en fonction des paramètres
+    * @param User $user l'utilisateur (obligatoire)
+    * @param DateTime $date une date de filtre
+    * @param int $etat l'état de la tache
+    * @param Priorite $priorite la priorite
+    * @param Projet $projet le projet
+    */
+   public function findNext($user, $date,  $etat = TacheBase::ETAT_AFAIRE) {
+
+     // -1-
+     $q = $this->createQueryBuilder('ts')
+       ->leftjoin('ts.priorite', 'p')
+       ->leftjoin('ts.projet', 'pt')
+       ->where('pt.user = :user')
+       ->andWhere('ts.etat = :etat')
+       ->andWhere('ts.createdAt < :date')
+       ->setParameter('user', $user)
+       ->setParameter('etat', $etat)
+       ->setParameter('date', $date);
+
+
+     // -2-
+     $q->orderBy('p.niveau', 'DESC');
+     $q->orderBy('ts.planif', 'DESC');
+     $q->setMaxResults(1);
+
+     // -3-
+     try {
+       return $q->getQuery()->getSingleResult();
+     }
+     catch (\Doctrine\ORM\NoResultException $e) {
+       return null;
+     } // Fin de -5-
+
+   }
+
+
+   /**
     * Retourne les tâches pour un utilisateur
     * @param $user User l'utilisateur
     * @param $filtre string un filtre de recherche
@@ -91,7 +129,7 @@ abstract class TacheBaseRepository extends EntityRepository
      }
 
      // -3- Gestion d'un ordre
-     $str .= " ORDER BY p.niveau DESC, ts.updatedAt DESC";
+     $str .= " ORDER BY ts.planif DESC, p.niveau desc,  ts.createdAt DESC";
 
      // -4-
      $q = $this->getEntityManager()->createQuery($str);
@@ -105,8 +143,6 @@ abstract class TacheBaseRepository extends EntityRepository
 
      // -6-
      return $q->execute();
-
-
    }
 
    /**

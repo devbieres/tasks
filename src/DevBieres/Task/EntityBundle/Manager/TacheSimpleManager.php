@@ -37,9 +37,64 @@ class TacheSimpleManager extends BaseManager {
     public function getNew() { return new TacheSimple(); }
 
     /**
+     * Spécialisation du service de persistance
+     */
+    public function persist($entity, $flush = 1, $array = array()) {
+      parent::persist($entity, $flush, $array);
+
+      // Gestion de l'ordre
+      if(array_key_exists('user', $array)) {
+            $this->handleOrdre($array['user']);
+      }
+    } // Fin de persist
+
+   
+    public function remove($entity, $flush = 1, $array = array()) {
+      parent::remove($entity, $flush, $array);
+      // Gestion de l'ordre
+      if(array_key_exists('user', $array)) {
+            $this->handleOrdre($array['user']);
+      }
+    }
+
+   /**
+    * Boucle sur chaque tâche pour remetre en ordre les tâches
+    */
+   protected function handleOrdre($user) {
+     // -1-
+     $col = $this->findActiveByUser($user);
+
+     // -2-
+     $i = 0;
+     foreach($col as $t) {
+       $t->setOrdre($i);
+       // On appelle le niveau parent
+          parent::persist($t);
+          $i++;
+     }
+   } // fin d'handleOrdre
+
+    /**
+     * Recherche de la tache suivante
+     * @param User $user
+     * @param TacheSimple $tache
+     */
+    public function findOneNext($user, $tache) {
+
+      // -1-
+      $obj = $this->getRepo()->findNext($user, $tache->getCreatedAt(),
+        $tache->getEtat()
+      );
+      // -2-
+      return $obj; 
+
+    } // Fin de getNext
+
+    /**
      * Création d'une liste de tâche sur la base d'une chaîne de caractère
      * @param $projet Projet le projet
      * @param $contenu string une chaîne contenant une liste de tache à créer
+     * @param $user User
      */
     public function createMulti($projet, $contenu) {
            // -0-
@@ -87,7 +142,7 @@ class TacheSimpleManager extends BaseManager {
         $obj->setPriorite($p);
         $obj->setProjet($projet);
         $obj->setLibelle($ligne);
-        $this->persist($obj);        
+        $this->persist($obj, 1, array('user' => $projet->getUser() ));
 
         // -3-
         return 1;
@@ -177,7 +232,7 @@ class TacheSimpleManager extends BaseManager {
     } // Fin de findActiveByUserGroupByPriorite
 
     /**
-     * Retourne les tâches de l'utilisateur mais groupées par date
+     * Retourne les tâches de l'utiliks.lafamillebn.netateur mais groupées par date
      */
     public function findActiveByUserGroupByDate($user, $filtre = '') {
 
