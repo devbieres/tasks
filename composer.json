@@ -21,7 +21,8 @@
         "jms/serializer-bundle": "*",
         "friendsofsymfony/user-bundle": "*",
         "suncat/php-mobile-detect": "2.0.9",
-        "friendsofsymfony/jsrouting-bundle": "1.*"
+        "friendsofsymfony/jsrouting-bundle": "1.*",
+        "beberlei/DoctrineExtensions": "*"
     },
     "scripts": {
         "post-install-cmd": [

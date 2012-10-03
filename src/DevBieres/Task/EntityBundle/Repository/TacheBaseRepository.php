@@ -72,12 +72,10 @@ abstract class TacheBaseRepository extends EntityRepository
    /**
     * Recherche la prochaine tache en fonction des paramètres
     * @param User $user l'utilisateur (obligatoire)
-    * @param DateTime $date une date de filtre
+    * @param int $ordre une date de filtre
     * @param int $etat l'état de la tache
-    * @param Priorite $priorite la priorite
-    * @param Projet $projet le projet
     */
-   public function findNext($user, $date,  $etat = TacheBase::ETAT_AFAIRE) {
+   public function findNextPrevious($user, $ordre,  $etat = TacheBase::ETAT_AFAIRE, $sens = ">") {
 
      // -1-
      $q = $this->createQueryBuilder('ts')
@@ -85,15 +83,14 @@ abstract class TacheBaseRepository extends EntityRepository
        ->leftjoin('ts.projet', 'pt')
        ->where('pt.user = :user')
        ->andWhere('ts.etat = :etat')
-       ->andWhere('ts.createdAt < :date')
+       ->andWhere(sprintf('ts.ordre %s :ordre',$sens))
        ->setParameter('user', $user)
        ->setParameter('etat', $etat)
-       ->setParameter('date', $date);
+       ->setParameter('ordre', $ordre);
 
 
      // -2-
-     $q->orderBy('p.niveau', 'DESC');
-     $q->orderBy('ts.planif', 'DESC');
+     $q->orderBy('ts.ordre', 'ASC');
      $q->setMaxResults(1);
 
      // -3-
@@ -115,28 +112,36 @@ abstract class TacheBaseRepository extends EntityRepository
     */
    public function findByUser($user, $filtre = '', $etat = TacheBase::ETAT_AFAIRE) {
 
+     // -0-
+     /*
+      * $config = $this->getEntityManager()->getConfiguration();
+     $config->addCustomStringFunction('IFNULL', 'DoctrineExtensions\Query\Mysql\IfNull');
+     $config->addCustomNumericFunction('DEGREES', 'DoctrineExtensions\Query\Mysql\Degrees');
+      */
+
      // -1-
-     $str = sprintf("SELECT ts, p, pt FROM DevBieresTaskEntityBundle:%s ts
+     // Le mot clé HIDDEN doit permettre de faire un calcul sans que la valeur ne soit mappée
+     $str = sprintf("SELECT ts, p, pt, IFNULL(ts.planif,'31/12/2999') AS HIDDEN planif_null  FROM DevBieresTaskEntityBundle:%s ts
                 INNER JOIN ts.priorite p
                 INNER JOIN ts.projet pt
-                WHERE pt.user = :user
-                AND ts.etat = :etat",
+                WHERE pt.user = :user",
                  $this->getMainEntityName());
 
      // -2- Gestion d'un filtre ?
+     if($etat != -1) { $str .= "  AND ts.etat = :etat"; }
      if(strlen($filtre) > 0) {
              $str .= " AND (ts.libelle like :filtre OR pt.libelle like :filtre)";
      }
 
      // -3- Gestion d'un ordre
-     $str .= " ORDER BY ts.planif DESC, p.niveau desc,  ts.createdAt DESC";
+     $str .= " ORDER BY planif_null ASC, p.niveau desc, ts.createdAt DESC, ts.etat ASC";
 
      // -4-
      $q = $this->getEntityManager()->createQuery($str);
                  $q->setParameter('user', $user);
-                 $q->setParameter('etat', $etat);
 
      // -5-
+     if($etat != -1) { $q->setParameter('etat', $etat); }
      if(strlen($filtre) > 0) {
          $q = $q->setParameter('filtre', '%' . $filtre . '%');
      }
@@ -166,7 +171,7 @@ abstract class TacheBaseRepository extends EntityRepository
      }
 
      // -3- Tri
-     $str .= " ORDER BY p.niveau DESC, ts.updatedAt DESC";
+     $str .= " ORDER BY ts.planif ASC, p.niveau desc,  ts.createdAt DESC, ts.etat ASC";
 
      // -4-
      $q = $this->getEntityManager()->createQuery($str)

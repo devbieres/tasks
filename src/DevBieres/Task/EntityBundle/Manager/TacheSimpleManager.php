@@ -61,8 +61,8 @@ class TacheSimpleManager extends BaseManager {
     * Boucle sur chaque tâche pour remetre en ordre les tâches
     */
    protected function handleOrdre($user) {
-     // -1-
-     $col = $this->findActiveByUser($user);
+     // -1- Toutes les tâches quelque soit l'état
+     $col = $this->findActiveByUser($user,'',-1);
 
      // -2-
      $i = 0;
@@ -80,15 +80,19 @@ class TacheSimpleManager extends BaseManager {
      * @param TacheSimple $tache
      */
     public function findOneNext($user, $tache) {
+       return $this->getRepo()->findNextPrevious($user, $tache->getOrdre(), $tache->getEtat());
+    } // Fin de findOneNext 
 
-      // -1-
-      $obj = $this->getRepo()->findNext($user, $tache->getCreatedAt(),
-        $tache->getEtat()
-      );
-      // -2-
-      return $obj; 
+    /**
+     * Recherche de la tache suivante
+     * @param User $user
+     * @param TacheSimple $tache
+     */
+    public function findOnePrevious($user, $tache) {
+      // TODO : Mettre une constante
+       return $this->getRepo()->findNextPrevious($user, $tache->getOrdre(), $tache->getEtat(), "<");
+    } // Fin de findOneNext 
 
-    } // Fin de getNext
 
     /**
      * Création d'une liste de tâche sur la base d'une chaîne de caractère

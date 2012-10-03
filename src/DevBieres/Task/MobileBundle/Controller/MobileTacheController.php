@@ -48,29 +48,37 @@ class MobileTacheController extends TacheController
    * Action pour passer à la tache suivante
    */
   public function nextAction($id) {
+      return $this->moveAction($id);
+  } // Fin de nextAction
+
+  /**
+   * Action pour passer à la tache precedente
+   */
+  public function previousAction($id) {
+      return $this->moveAction($id,0);
+  } // Fin de nextAction
+
+  protected function moveAction($id, $next = 1) {
+
        // -1-
        $obj = $this->manageUnconnectedUser(); if($obj != null) { return $obj; }
        // -2-
        $origine = $this->getTacheManager()->findOneById($id);
        // -3-
-       $tache = $this->getTacheManager()->findOneNext($this->getUser(), $origine);
+       if($next) {
+          $tache = $this->getTacheManager()->findOneNext($this->getUser(), $origine);
+       } else {
+          $tache = $this->getTacheManager()->findOnePrevious($this->getUser(), $origine);
+       }
        if($tache==null) { $tache = $origine; }
 
        // -3- // Todo : centraliser
        return $this->render(
           $this->getViewPath("Tache:show"),
           array('obj' => $tache)
-       );
+        ); // fin de -3-
 
-  } // Fin de nextAction
-
-  /**
-   * Action pour passer à la tache suivante
-   */
-  public function previousAction($id) {
-      return $this->showAction($id);
-  } // Fin de nextAction
-
+  } // Fin de moveAction
 
   /**
    * Definit l'action show pour une tache

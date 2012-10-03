@@ -2,6 +2,7 @@
 
 use Doctrine\Common\Annotations\AnnotationRegistry;
 
+
 $loader = require __DIR__.'/../vendor/autoload.php';
 
 // intl
@@ -12,5 +13,9 @@ if (!function_exists('intl_get_error_code')) {
 }
 
 AnnotationRegistry::registerLoader(array($loader, 'loadClass'));
+
+// Enregistrement des extensions doctrine
+$classLoader = new \Doctrine\Common\ClassLoader('DoctrineExtensions', __DIR__ . '/../vendor/beberlei/DoctrineExtensions/lib');
+$classLoader->register();
 
 return $loader;
