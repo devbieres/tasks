@@ -116,6 +116,22 @@ mobile_trash:
     pattern:  /trash
     defaults: { _controller: DevBieresTaskMobileBundle:MobileTrash:index }
 
+mobile_apropos:
+    pattern: /apropos
+    defaults: { _controller: DevBieresTaskMobileBundle:Default:apropos }
+
+mobile_user_preference_update:
+    pattern: /preferences/update
+    defaults: { _controller:DevBieresTaskMobileBundle:Preference:edit }
+    requirements:
+         method: POST
+
+mobile_user_preference_edit:
+    pattern: /preferences/edit
+    defaults: { _controller:DevBieresTaskMobileBundle:Preference:edit }
+    requirements:
+         method: GET	
+
 mobile_home:
     pattern:  /
     defaults: { _controller: DevBieresTaskMobileBundle:Default:index }

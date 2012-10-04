@@ -1,3 +1,19 @@
        <footer data-role="footer" >
                {{ 'site.title'|trans }}
        </footer>
+       {% if menu is defined %}
+              <nav data-role="navbar" >
+              <ul>
+                  <li>
+                      <a href="{{ path('mobile_apropos') }}" id="nav_apropos" title="{{ 'site.nav.about'|trans }}" >
+                            <img src="{{ asset('bundles/devbierestaskwebhtml/images/info.png')}}" /> {{ 'site.nav.about'|trans}} </a>
+                      </a>
+                   </li>
+                   <li>
+                      <a href="{{ path('mobile_user_preference_edit') }}" id="nav_preferences" title="{{ 'site.nav.about'|trans }}" >
+                            <img src="{{ asset('bundles/devbierestaskwebhtml/images/user_preferences.png')}}" /> {{ 'site.nav.preference'|trans}} </a>
+                      </a>
+                   </li>
+               </ul>
+               </nav>
+        {% endif %}

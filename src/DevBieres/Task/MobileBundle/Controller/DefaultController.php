@@ -10,4 +10,8 @@ class DefaultController extends Controller
     {
         return $this->render('DevBieresTaskMobileBundle:Default:index.html.twig');
     }
+
+    public function aproposAction() {
+   	    return $this->render('DevBieresTaskMobileBundle:Default:apropos.html.twig');
+    }
 }

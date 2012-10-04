@@ -50,7 +50,7 @@
           <nav id="nav_footer" >
                 <ul>
                   <li> <a href="mailto:thierry<at>lafamillebn<point>#<net>" > {{ 'site.nav.contact'|trans }}</a></li> 
-                  <li> <a href="{{ path('web_apropos') }}" > {{ 'site.nav.about'|trans }}</a></li> 
+                  <li> <a href="{{ path('web_apropos') }}" ><img src="{{ asset('bundles/devbierestaskwebhtml/images/info.png')}}" /> {{ 'site.nav.about'|trans }}</a></li> 
                   <li> <a href="{{ path('web_user_preference_edit') }}" id="nav_preferences"  > <img src="{{ asset('bundles/devbierestaskwebhtml/images/user_preferences.png')}}" /> {{ 'site.nav.preference'|trans}} </a></li> 
                   <li> <a href="{{ path('web_user_destroy') }}" id="user_destroy" > <img src="{{ asset('bundles/devbierestaskwebhtml/images/user_destroy.png')}}" /> {{ 'site.nav.destroy'|trans}} </a></li> 
                 </ul>

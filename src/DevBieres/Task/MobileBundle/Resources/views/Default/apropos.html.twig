@@ -1,0 +1,47 @@
+{% extends "DevBieresTaskMobileBundle::layout.html.twig" %}
+
+{% block page %}
+   <div id="about" data-role="page" >
+        <header data-role="header" >
+               <a href="{{ path('mobile_home') }}" 
+                   title="{{ 'site.home'|trans }}" 
+                   data-icon="home" data-ajax="false" >
+                   {{ 'site.home'|trans }}
+               </a>
+               <h2> {{  'site.nav.about'|trans }} </h2>
+        </header>
+        <div data-role="content" >
+            <section id="general" >
+               <p>
+                   {{ 'site.about.frenchlaw'|trans }}
+               </p>
+               <p>
+                  {{ 'site.about.property'|trans }} : Thierry GLIN 
+               </p>
+               <p>
+                  {{ 'site.about.mail'|trans }} : thierry{aett}lafamillebn[acotedu:][pas]net
+               </p>
+             </section>
+             <section id="license" >
+               <h3> {{ 'site.about.license'|trans }} </h3>
+               <p>  {{ 'site.about.license_text'|trans }} </p>
+             </section>
+
+             <section id="credits" >
+               <h3> {{ 'site.about.credits.title'|trans }} </h3>
+               <p> 
+                  {{ 'site.about.credits.donewith'|trans }} : <a href="http://symfony.com" > Symfony 2.1 (rc) </a>
+               </p>
+               <p> 
+                  {{ 'site.about.credits.image'|trans }} : <a href="http://iconmonstr.com" > Iconmonstr </a>
+               </p>
+               <p>
+                  {{ 'site.about.credits.image_info'|trans }}
+               </p>
+             </section>
+        </div> <!-- Fin du content -->
+        {%  
+             include "DevBieresTaskMobileBundle::footer.html.twig" 
+        %}
+   </div>
+{% endblock %}
