@@ -1,0 +1,46 @@
+{% extends "DevBieresTaskMobileBundle::layout.html.twig" %}
+
+{% block page %}
+   <div id="preferences" class="formulaire" data-role="page" >
+         <header data-role="header" >
+             <h2> {{ 'site.nav.preference'|trans }} </h2>
+         </header>
+
+         <div data-role="content" data-theme="c" >
+                <form action="{{ path('mobile_user_preference_update') }}" method="post" {{ form_enctype(form) }} data-ajax="false">
+                     <div class="error" >
+                        {{ form_errors(form) }}
+                     </div>
+                     <div class="error" >
+                         {{ form_errors(form.locale) }}
+                     </div>
+                     <div>
+                         {{ form_label(form.locale) }}
+                         {{ form_widget(form.locale) }}
+                     </div>
+                     <div class="error" >
+                         {{ form_errors(form.nbjours) }}
+                     </div>
+                     <div>
+                         {{ form_label(form.nbjours) }}
+                         {{ form_widget(form.nbjours) }}
+                     </div>
+                     <div class="error" >
+                        {{ form_errors(form.modeecran) }}
+                     </div>
+                     <div>
+                       {{ form_label(form.modeecran) }}
+                       {{ form_widget(form.modeecran) }}
+                     </div>
+                     <div>
+                          <input type="submit" value="{{ 'site.valid'|trans }}" id="submit" data-theme="a" />
+                          <a href="{{ path('mobile_home') }}" 
+                                 data-role="button" data-rel="back" data-theme="c">
+                               {{ 'site.cancel'|trans }}
+                          </a>
+                     </div>
+                     {{ form_rest(form) }}
+                </form>
+         </div> <!-- content -->
+   </div> <!-- page -->
+{% endblock %} 

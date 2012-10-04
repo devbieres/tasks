@@ -122,13 +122,13 @@ mobile_apropos:
 
 mobile_user_preference_update:
     pattern: /preferences/update
-    defaults: { _controller:DevBieresTaskMobileBundle:Preference:edit }
+    defaults: { _controller:DevBieresTaskMobileBundle:MobilePreference:edit }
     requirements:
          method: POST
 
 mobile_user_preference_edit:
     pattern: /preferences/edit
-    defaults: { _controller:DevBieresTaskMobileBundle:Preference:edit }
+    defaults: { _controller:DevBieresTaskMobileBundle:MobilePreference:edit }
     requirements:
          method: GET	
 
