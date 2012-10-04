@@ -128,15 +128,15 @@ nav a, nav a:visited, nav a:hover {
 }
 
 #content .formulaire {
-   width:500px;
+   width:70%;
    margin-top:5%;
    margin-left: 15%;
 }
 
 #content .formulaire li { margin-top: 10px; }
 #content .formulaire label { display: inline-block; width:200px; }
-#content .formulaire input, #content .formulaire select { width: 240px; margin:0; }
-#content .formulaire textarea { width:440px; min-height:200px; }
+#content .formulaire input, #content .formulaire select { width: 100%; margin:0; }
+#content .formulaire textarea { width:100%; min-height:200px; }
 #content .formulaire li.date select { width:75px; }
 .formulaire_date { display:inline; }
 
