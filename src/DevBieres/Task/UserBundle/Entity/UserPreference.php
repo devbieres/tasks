@@ -77,7 +77,26 @@ class UserPreference
    */
   protected $nbjours = 5;
   public function getNbJours() { return $this->nbjours; }
-  public function setNbJours($valeur) { return $this->nbjours = $valeur; }
+    public function setNbJours($valeur) { return $this->nbjours = $valeur; }
 
+  const HTML = "HTML";
+  const MOBILE = "MOBILE";
+
+  /**
+   * Definit le mode par defaut quand l'utilisateur se connecte à une interface "normale"
+   * @ORM\Column(type="string", length=9)
+   * @Assert\Choice(callback = "getListeModeEcran")
+   */
+  protected $modeecran = UserPreference::HTML;
+  public function getModeEcran() { return $this->modeecran; }
+    public function setModeEcran($value) { $this->modeecran = $value; }
+    public function isModeEcranMobile() { return ($this->modeecran == UserPreference::MOBILE); }
+
+    /**
+     * Liste des valeurs possibles
+     * */
+    public static function getListeModeEcran() {
+      return array(UserPreference::HTML, UserPreference::MOBILE);
+    }
 
 }

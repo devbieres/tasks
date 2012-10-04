@@ -32,6 +32,14 @@
               {{ form_label(form.nbjours) }}
               {{ form_widget(form.nbjours) }}
          </li>
+         <li class="error" >
+             {{ form_errors(form.modeecran) }}
+         </li>
+         <li>
+              {{ form_label(form.modeecran) }}
+              {{ form_widget(form.modeecran) }}
+         </li>
+         <li>
          <li>
               <label></label>
               <input type="submit" value="{{ 'site.valid'|trans }}" id="submit"/>

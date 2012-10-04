@@ -69,6 +69,7 @@ site:
          locale: Language
          days: Days before empty trash
          updated: Preferences updated
+         screen: Web screen mode
        destroy: Delete Account
 user:
     title_connect: Connection

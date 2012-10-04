@@ -62,7 +62,7 @@ class LoginListener {
 
   public function onSecurityInteractiveLogin(Event $event)
 	{
-		$user = $this->securityContext->getToken()->getUser();
+    $user = $this->securityContext->getToken()->getUser();
 
 		// -1- Gestion de la langue
     $up = $this->mng_user->getUserPreference($user);
@@ -73,7 +73,7 @@ class LoginListener {
 
     // -3-
     $detector = new \Mobile_Detect();
-    if($detector->isMobile() || $detector->isTablet()) {
+    if($up->isModeEcranMobile() || $detector->isMobile() || $detector->isTablet()) {
          $this->dispatcher->addListener(KernelEvents::RESPONSE, array($this, 'onKernelResponse'));
     }
 

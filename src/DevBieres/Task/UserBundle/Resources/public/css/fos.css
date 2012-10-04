@@ -71,9 +71,14 @@ and (max-width: 480px) {
  .formulaire_connexion li { text-align:center; }
  .formulaire_connexion label {
     display: block;
+    width: 100%;
  }
  .formulaire_connexion input {
-   width: 80%;
+   width: 95%;
+ }
+ .formulaire_connexion_content ul {
+   padding:0;
+   margin:0;
  }
 
 }

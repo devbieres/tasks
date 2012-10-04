@@ -33,6 +33,12 @@ class UserPreferenceType extends AbstractType {
                    )
                 );
         $builder->add('nbjours', null, array('label' => 'site.user.preference.days'));
+        $builder->add('modeecran', 'choice', 
+                   array(
+                       'label'   => 'site.user.preference.screen',
+                       'choices' => array('HTML' => 'site.user.preference.html', 'MOBILE' => 'site.user.preference.mobile' )
+                   )
+                );
     }
 
     public function getName()

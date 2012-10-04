@@ -72,6 +72,9 @@ site:
          locale: Langue
          days: Jours avant suppression dans la corbeille
          updated: Préférences mises à jour
+         screen: Ecran Navigateur
+         html: Standard
+         mobile: Mobile
        destroy: Supprimer compte
 
 user:
