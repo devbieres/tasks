@@ -3,10 +3,20 @@
 {% block page %}
    <div id="preferences" class="formulaire" data-role="page" >
          <header data-role="header" >
+             <a href="{{ path('mobile_home') }}" 
+                   title="{{ 'site.home'|trans }}" 
+                   data-icon="home" data-ajax="false" >
+                   {{ 'site.home'|trans }}
+             </a>
              <h2> {{ 'site.nav.preference'|trans }} </h2>
          </header>
 
          <div data-role="content" data-theme="c" >
+             <div class="flash" >
+                  {% for flashMessage in app.session.flashbag.get('flash') %}
+                    <p>{{ flashMessage }} </p>
+                  {% endfor %}
+             </div>
                 <form action="{{ path('mobile_user_preference_update') }}" method="post" {{ form_enctype(form) }} data-ajax="false">
                      <div class="error" >
                         {{ form_errors(form) }}
@@ -34,10 +44,6 @@
                      </div>
                      <div>
                           <input type="submit" value="{{ 'site.valid'|trans }}" id="submit" data-theme="a" />
-                          <a href="{{ path('mobile_home') }}" 
-                                 data-role="button" data-rel="back" data-theme="c">
-                               {{ 'site.cancel'|trans }}
-                          </a>
                      </div>
                      {{ form_rest(form) }}
                 </form>

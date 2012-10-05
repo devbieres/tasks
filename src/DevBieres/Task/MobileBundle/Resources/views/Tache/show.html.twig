@@ -14,7 +14,16 @@
                </a>
                <h2> {{  'site.title'|trans }} </h2>
         </header>
-         <h3> {{ obj.libelle }} </h3>
+         <h3> 
+              <a href="{{path('mobile_tache_previous', {'id' : obj.id }) }}" title="{{ 'site.previous'|trans }}" data-transition="slide" data-direction="reverse" >
+                  <img src="{{ asset('bundles/devbierestaskwebhtml/images/previous.png') }}" alt="{{ 'site.previous'|trans  }}" />
+              </a>
+              {{ obj.libelle }} 
+
+              <a href="{{path('mobile_tache_next', {'id' : obj.id }) }}" title="{{ 'site.next'|trans }}" data-transition="slide" >
+                   <img src="{{ asset('bundles/devbierestaskwebhtml/images/next.png') }}" alt="{{ 'site.next'|trans  }}"  />
+              </a>
+         </h3>
          <ul data-role="listview" data-theme="d" data-divider-theme="d" >
            {% if obj.isPlanif %}
            <li>
