@@ -28,6 +28,7 @@ class AppKernel extends Kernel
             new DevBieres\Task\WebHtmlBundle\DevBieresTaskWebHtmlBundle(),
             new DevBieres\Common\JQueryMobileBundle\DevBieresCommonJQueryMobileBundle(),
             new DevBieres\Task\MobileBundle\DevBieresTaskMobileBundle(),
+            new DevBieres\Task\CommandBundle\DevBieresTaskCommandBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

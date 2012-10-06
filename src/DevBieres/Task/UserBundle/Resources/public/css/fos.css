@@ -12,10 +12,21 @@ img {
   margin-left:-250px;
   left:50%;
   position: absolute;
-  margin-top:5%;
+  margin-top:10px;
   border: 1px solid black;
   border-radius: 15px;
   background-color: black;
+}
+
+.formulaire_connexion_demo {
+  color:white;
+  font-size:small;
+}
+.formulaire_connexion_demo ul {
+   column-count: 2;
+   -moz-column-count: 2;
+   -webkit-column-count: 2; 
+   column-gap: 2px;
 }
 
 .formulaire_connexion h2 {
@@ -79,6 +90,13 @@ and (max-width: 480px) {
  .formulaire_connexion_content ul {
    padding:0;
    margin:0;
+ }
+ .formulaire_connexion_demo ul {
+   margin-left:0;
+   padding-left:0;
+   column-count: 1;
+   -moz-column-count: 1;
+   -webkit-column-count: 1; 
  }
 
 }
