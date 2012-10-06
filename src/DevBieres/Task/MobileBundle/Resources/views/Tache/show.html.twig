@@ -14,16 +14,21 @@
                </a>
                <h2> {{  'site.title'|trans }} </h2>
         </header>
-         <h3> 
-              <a href="{{path('mobile_tache_previous', {'id' : obj.id }) }}" title="{{ 'site.previous'|trans }}" data-transition="slide" data-direction="reverse" >
-                  <img src="{{ asset('bundles/devbierestaskwebhtml/images/previous.png') }}" alt="{{ 'site.previous'|trans  }}" />
+        <div data-role="header" data-theme="c" >
+              <a href="{{path('mobile_tache_previous', {'id' : obj.id }) }}" title="{{ 'site.previous'|trans }}" 
+                      data-role="button" data-icon="arrow-l" data-iconpos="notext" 
+                      data-transition="slide" data-direction="reverse" >
+                  <!-- <img src="{{ asset('bundles/devbierestaskwebhtml/images/previous.png') }}" alt="{{ 'site.previous'|trans  }}" /> -->
+                  &nbsp;
               </a>
-              {{ obj.libelle }} 
-
-              <a href="{{path('mobile_tache_next', {'id' : obj.id }) }}" title="{{ 'site.next'|trans }}" data-transition="slide" >
-                   <img src="{{ asset('bundles/devbierestaskwebhtml/images/next.png') }}" alt="{{ 'site.next'|trans  }}"  />
+              <h2> {{ obj.libelle }} </h2> 
+              <a href="{{path('mobile_tache_next', {'id' : obj.id }) }}" title="{{ 'site.next'|trans }}" 
+                      data-role="button" data-icon="arrow-r" data-iconpos="notext"
+                      data-transition="slide" >
+                   <!-- <img src="{{ asset('bundles/devbierestaskwebhtml/images/next.png') }}" alt="{{ 'site.next'|trans  }}"  /> -->
+                  &nbsp;
               </a>
-         </h3>
+         </div>
          <ul data-role="listview" data-theme="d" data-divider-theme="d" >
            {% if obj.isPlanif %}
            <li>

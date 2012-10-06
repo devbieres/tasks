@@ -43,6 +43,8 @@ site:
     back: Back
     valid: Submit
     cancel: Cancel
+    previous: Previous
+    next: Next
     confirm: Are you sure ?
     destroy_confirmed: Delete done
     edit: Edit

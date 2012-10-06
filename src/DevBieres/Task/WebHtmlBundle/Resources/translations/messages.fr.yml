@@ -43,6 +43,8 @@ site:
        title: Corbeille
        nothingtodo: Vide ...
     destroy: Supprimer
+    previous: Précédent
+    next: Suivant
     new: Nouveau
     back: Retour
     valid: Valider
