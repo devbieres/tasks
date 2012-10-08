@@ -85,15 +85,15 @@ class DemoCommand extends BaseCommand
        $mngUser->persist($up);
 
        // --> Compte de demo web
-       $user = $mngUser->findOneByUserName('demomobile');
+       $user = $mngUser->findOneByUserName('demobile');
        if($user == null) {
          // Création
          $user = $mngUser->getNew();
-         $user->setUserName("demomobile"); 
-         $user->setUsernameCanonical("demomobile"); 
-         $user->setEmail("demomobile@test.com"); 
-         $user->setEmailCanonical("demomobile@test.com"); 
-         $user->setPlainPassword("demomobile");
+         $user->setUserName("demobile"); 
+         $user->setUsernameCanonical("demobile"); 
+         $user->setEmail("demobile@test.com"); 
+         $user->setEmailCanonical("demobile@test.com"); 
+         $user->setPlainPassword("demobile");
          $user->setEnabled(true);
          $mngUser->persist($user);
        } else {
