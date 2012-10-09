@@ -96,11 +96,10 @@ class TacheSimpleManager extends BaseManager {
 
     /**
      * Création d'une liste de tâche sur la base d'une chaîne de caractère
-     * @param $projet Projet le projet
+     * @param $user l'utilisateur
      * @param $contenu string une chaîne contenant une liste de tache à créer
-     * @param $user User
      */
-    public function createMulti($projet, $contenu) {
+    public function createMulti($user, $contenu) {
            // -0-
            $return = 0;
            // -1- Découpage du contenu en lignes
@@ -113,7 +112,7 @@ class TacheSimpleManager extends BaseManager {
              // --> Trim de la ligne
              $ligne = trim($ligne);
              // --> Appel du service en mode unitaire
-             $return += $this->createFromString($projet, $ligne);
+             $return += $this->createFromString($user, $ligne);
            }
 
            // -3-
@@ -125,28 +124,44 @@ class TacheSimpleManager extends BaseManager {
      * @param $projet Projet le projet
      * @param $contenu string une chaîne contenant une liste de tache à créer
      */
-    public function createFromString($projet, $ligne, $mng = NULL) {
+    public function createFromString($user, $ligne, $mngPriorite = NULL, $mngProjet = NULL) {
 
         // -0-
-        if(is_null($mng)) { 
-            $mng = new PrioriteManager($this->getEntityManager());
+        if(is_null($mngPriorite)) { 
+            $mngPriorite = new PrioriteManager($this->getEntityManager());
+        }
+        if(is_null($mngProjet)) { 
+            $mngProjet = new ProjetManager($this->getEntityManager());
         }
 
         // -1- Calcul du niveau
         $p = NULL;
         $pc = substr($ligne,0,1);
         switch($pc) {
-            case '+': $p = $mng->getPrioriteHaute(); $ligne = substr($ligne,1); break;
-            case '-': $p = $mng->getPrioriteBasse(); $ligne = substr($ligne,1); break;
-            default : $p = $mng->getPrioriteNormale(); break;
+            case '+': $p = $mngPriorite->getPrioriteHaute(); $ligne = substr($ligne,1); break;
+            case '-': $p = $mngPriorite->getPrioriteBasse(); $ligne = substr($ligne,1); break;
+            default : $p = $mngPriorite->getPrioriteNormale(); break;
         }
 
-        // -2-
+        // -2- Gestion du projet (doit être saisie entre le debut et :)
+        $pos = strpos($ligne, ":");
+        if($pos === FALSE) { $projet = $mngProjet->getDefault($user); }
+        else {
+          // Decoupage des lignes
+          $code = Projet::CalculerProjetCode($user, substr($ligne,0, $pos));
+          var_dump($code);
+            $ligne = substr($ligne, $pos + 1);
+            // Recherche du projet
+            $projet = $mngProjet->findOneByCodeAndUser($user, $code);
+            if( is_null($projet)) { $projet = $mngProjet->getDefault($user); }
+        }
+
+        // -3-
         $obj = $this->getNew();
         $obj->setPriorite($p);
         $obj->setProjet($projet);
         $obj->setLibelle($ligne);
-        $this->persist($obj, 1, array('user' => $projet->getUser() ));
+        $this->persist($obj, 1, array('user' => $user));
 
         // -3-
         return 1;

@@ -29,11 +29,11 @@ class MultiTacheSimpleType extends AbstractType {
     {
 
         $builder
-           ->add('projet', 'entity', array(
-                    'class' => 'DevBieres\Task\EntityBundle\Entity\Projet',
-                    'query_builder' => function(EntityRepository $er) use ($options) { return $er->findByUserQuery($options['user']);  },
-                ))
-           ->add('contenu', 'textarea');
+           //->add('projet', 'entity', array(
+           //         'class' => 'DevBieres\Task\EntityBundle\Entity\Projet',
+           //         'query_builder' => function(EntityRepository $er) use ($options) { return $er->findByUserQuery($options['user']);  },
+           //     ))
+           ->add('contenu', 'textarea', array('label' => 'site.task.multi'));
 
     }
 

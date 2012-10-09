@@ -106,9 +106,8 @@ class TacheController extends BaseController
        $data = $form->getData();
        // --> Appel du service 
        $count = $this->getTacheManager()->createMulti(
-              $data['projet'],
-              strip_tags($data['contenu']),
-              $this->getUser()
+              $this->getUser(),
+              strip_tags($data['contenu'])
        );
        // Retour
        $this->storeFlash( sprintf('%s:%s', $this->trans('site.task.multinewok'), $count));

@@ -51,6 +51,40 @@ class ProjetManager extends CodeBaseManager {
     } // Fin de findByUser 
 
     /**
+     * Recherche un projet par code pour l'utilisateur
+     * @param $user l'utilisateur
+     * @param $code le code
+     * */
+    public function findOneByCodeAndUser($user, $code) {
+        return $this->getRepo()->findOneByCodeAndUser($user, $code);
+    } // Fin de findOneByCode
+
+    /**
+     * Retourne le projet par defaut pour l'utilisateur (c'est pas un choix :)
+     * @param $user l'utilisateur
+     */ 
+    public function getDefault($user) {
+
+      // -0-
+      $code = Projet::CalculerProjetCode($user, "default");
+
+      // -1-
+      // TODO : mettre en constante
+      $projet = $this->findOneByCodeAndUser($user, $code);
+      if(! is_null($projet)) { return $projet; }
+
+      // -2-
+      $projet = $this->getNew();
+      $projet->setLibelle("Default");
+      $projet->setUser($user);
+      $this->persist($projet);
+
+      // -3-
+      return $projet;
+
+    } // Fin de getDefault();
+
+    /**
      * Retourne vrai si l'utilisateur a au moins un projet
      * @param $user User l'utilisateur
      */
@@ -63,6 +97,8 @@ class ProjetManager extends CodeBaseManager {
     } // hasOneProject
 
 
+
+
     /**
      * Supprime les projets de l'utilisateur en paramètre
      * @param $user User l'utilisateur
@@ -73,7 +109,6 @@ class ProjetManager extends CodeBaseManager {
 
          // -2-
          foreach($col as $p) { $this->remove($p); }
-
-    }
+    } // fin de deleteUserProject
 
 } // fin de ProjetManager

@@ -47,7 +47,18 @@ class Projet extends CodeLibelleBase {
   /**
    * Spécialisation du calcul de code
    */
-  protected function __calculerCode() { return sprintf('%s_%s', $this->getUser()->getCode(), parent::__calculerCode()); }
+  protected function __calculerCode() { 
+    return Projet::CalculerProjetCode( $this->getUser(), parent::__calculerCode()); 
+  }
+
+  /**
+   * @param $user l'utilisateur
+   * @param $code le code
+   */
+  public static function CalculerProjetCode($user, $code) {
+    return sprintf('%s_%s', $user->getCode(), $code);
+
+  } // Fin de CalculerCode
 
 }
 

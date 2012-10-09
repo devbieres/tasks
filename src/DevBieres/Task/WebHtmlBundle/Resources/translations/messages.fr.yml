@@ -21,6 +21,7 @@ site:
        oneproject: Il faut au moins un projet pour créer une tâche.
        unknown: Tâche inconnue
        new: Nouvelle tâche 
+       multi: Lister toutes les tâches
        label: Titre
        priority: Priorité
        project: Projet

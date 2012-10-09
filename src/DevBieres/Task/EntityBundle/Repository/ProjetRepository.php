@@ -33,6 +33,10 @@ class ProjetRepository extends EntityRepository
         return $this->findByUserQuery($user)->getQuery()->execute(); //getResult();
   }
 
+  /**
+   * Retourne la query associé à la recherche pour un utilisateur
+   * @param $user l'utilisateur
+   */
   public function findByUserQuery($user) {
 
     // -1-
@@ -48,7 +52,36 @@ class ProjetRepository extends EntityRepository
     // -4-
     return $q;
 
-  }
+  } /* findByUserQuery */
+
+
+  /**
+   * Retourne un projet par code pour l'utilisateur
+   * @param $user l'utilisateur
+   * @param $code le code
+   * */
+  public function findOneByCodeAndUser($user, $code) {
+    // -1-
+    $q = $this->createQueryBuilder('p');
+
+    // -2-
+    $q->where('p.user = :user');
+    $q->andWhere(' p.code = :code ');
+    $q->orderBy('p.code');
+
+    // -3-
+    $q->setParameter('user', $user);
+    $q->setParameter('code', $code);
+
+     // -4-
+     try {
+       return $q->getQuery()->getSingleResult();
+     }
+     catch (\Doctrine\ORM\NoResultException $e) {
+       return null;
+     } // Fin de -5-
+
+  } // Fin de findOneByCode
 
 
 }
