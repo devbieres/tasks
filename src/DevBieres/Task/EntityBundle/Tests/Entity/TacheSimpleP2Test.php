@@ -39,8 +39,8 @@ class TacheSimpleP2Test extends TacheSimpleTest
 
        // -2-
        $this->getManager()->createFromString(
-                 $this->p2b,
-                 'Première tache');
+                 $this->p2b->getUser(),
+                 'p2b:Première tache');
 
        // -3-
        $this->assertCount(1, $this->getManager()->findActiveByProjet($this->p2b));
@@ -52,8 +52,8 @@ class TacheSimpleP2Test extends TacheSimpleTest
        
        // -4-
        $this->getManager()->createFromString(
-                 $this->p2b,
-                 '+Première tache');
+                 $this->p2b->getUser(),
+                 '+p2b:Première tache');
 
        // -5-
        $this->assertCount(2, $this->getManager()->findActiveByProjet($this->p2b));
@@ -66,8 +66,8 @@ class TacheSimpleP2Test extends TacheSimpleTest
        
        // -6-
        $this->getManager()->createFromString(
-                 $this->p2b,
-                 '-Deuxième tache');
+                 $this->p2b->getUser(),
+                 '-p2b:Deuxième tache');
 
        // -5-
        $this->assertCount(3, $this->getManager()->findActiveByProjet($this->p2b));
@@ -90,8 +90,8 @@ class TacheSimpleP2Test extends TacheSimpleTest
 
        // -2-
        $this->getManager()->createMulti(
-                 $this->p2b,
-                 "-Deuxième tache\r\nTache Normale   \r\n+TacheHaute\r\n-Tache Basse\r\n  Tache Normae2");
+                 $this->p2b->getUser(),
+                 "-p2b:Deuxième tache\r\np2b:Tache Normale   \r\n+p2b:TacheHaute\r\n-p2b:Tache Basse\r\n p2b:Tache Normae2");
 
        // -3-
        $this->assertCount(5, $this->getManager()->findActiveByProjet($this->p2b));
@@ -114,16 +114,16 @@ class TacheSimpleP2Test extends TacheSimpleTest
    public function testFindActiveByUserGroupByPriorite() {
        // -1- Creation des tâches
        $this->getManager()->createMulti(
-                 $this->p2b,
-                 "-Deuxième tache\r\nTache Normale   \r\n+TacheHaute\r\n-Tache Basse\r\n  Tache Normae2");
+                 $this->p2b->getUser(),
+                 "-p2b:Deuxième tache\r\np2b:Tache Normale   \r\n+p2b:TacheHaute\r\n-Tache Basse\r\n  p2b:Tache Normae2");
          
        $this->getManager()->createMulti(
-                 $this->p2a,
-                 "-Deuxième tache\r\nTache Normale   \r\n+TacheHaute\r\n-Tache Basse\r\n  Tache Normae2");
+                   $this->p2a->getUser(),
+                 "-p2a:Deuxième tache\r\np2a:Tache Normale   \r\n+p2a:TacheHaute\r\n-p2a:Tache Basse\r\n  p2a:Tache Normae2");
 
        $this->getManager()->createMulti(
-                 $this->p1a,
-                 "-Deuxième tache\r\nTache Normale   \r\n+TacheHaute\r\n-Tache Basse\r\n  Tache Normae2");
+                 $this->p1a->getUser(),
+                 "-p1a:Deuxième tache\r\np1a:Tache Normale   \r\n+p1a:TacheHaute\r\n-p1a:Tache Basse\r\n  p1a:Tache Normae2");
 
 
        // -2- u2 sans filtre
@@ -163,10 +163,10 @@ class TacheSimpleP2Test extends TacheSimpleTest
   public function testTrash() {
        // -1- Creation des tâches
        $this->getManager()->createMulti(
-                 $this->p2b,
+                 $this->p2b->getUser(),
                  "-Deuxième tache\r\nTache Normale   \r\n+TacheHaute\r\n-Tache Basse\r\n  Tache Normae2");
        $this->getManager()->createMulti(
-                 $this->p1a,
+                 $this->p1a->getUser(),
                  "-Deuxième tache\r\nTache Normale   \r\n+TacheHaute\r\n-Tache Basse\r\n  Tache Normae2");
 
        $col = $this->getManager()->findActiveByUser($this->u2);
@@ -174,7 +174,7 @@ class TacheSimpleP2Test extends TacheSimpleTest
 
        // --> creation de nouvelle tâche active
        $this->getManager()->createMulti(
-                 $this->p2b,
+                 $this->p2b->getUser(),
                  "-Deuxième tache\r\nTache Normale   \r\n+TacheHaute\r\n-Tache Basse\r\n  Tache Normae2");
 
        // -2-
@@ -204,10 +204,10 @@ class TacheSimpleP2Test extends TacheSimpleTest
 
        // -1- Creation des tâches
        $this->getManager()->createMulti(
-                 $this->p2b,
+                 $this->p2b->getUser(),
                  "-Deuxième tache\r\nTache Normale   \r\n+TacheHaute\r\n-Tache Basse\r\n  Tache Normae2");
        $this->getManager()->createMulti(
-                 $this->p1a,
+                 $this->p1a->getUser(),
                  "-Deuxième tache\r\nTache Normale   \r\n+TacheHaute\r\n-Tache Basse\r\n  Tache Normae2");
 
        $col = $this->getManager()->findActiveByUser($this->u2);
@@ -215,7 +215,7 @@ class TacheSimpleP2Test extends TacheSimpleTest
 
        // --> creation de nouvelle tâche active
        $this->getManager()->createMulti(
-                 $this->p2b,
+                 $this->p2b->getUser(),
                  "-Deuxième tache\r\nTache Normale   \r\n+TacheHaute\r\n-Tache Basse\r\n  Tache Normae2");
        $col = $this->getManager()->findActiveByUser($this->u1);
        foreach($col as $t) { $t->setEtat(TacheBase::ETAT_FAIT); $this->getManager()->persist($t); }
@@ -239,10 +239,10 @@ class TacheSimpleP2Test extends TacheSimpleTest
 
        // -1- Creation des tâches
        $this->getManager()->createMulti(
-                 $this->p2b,
+                 $this->p2b->getUser(),
                  "-Deuxième tache\r\nTache Normale   \r\n+TacheHaute\r\n-Tache Basse\r\n  Tache Normae2");
        $this->getManager()->createMulti(
-                 $this->p1a,
+                 $this->p1a->getUser(),
                  "-Deuxième tache\r\nTache Normale   \r\n+TacheHaute\r\n-Tache Basse\r\n  Tache Normae2");
 
        $col = $this->getManager()->findActiveByUser($this->u2);
@@ -250,7 +250,7 @@ class TacheSimpleP2Test extends TacheSimpleTest
 
        // --> creation de nouvelle tâche active
        $this->getManager()->createMulti(
-                 $this->p2b,
+                 $this->p2b->getUser(),
                  "-Deuxième tache\r\nTache Normale   \r\n+TacheHaute\r\n-Tache Basse\r\n  Tache Normae2");
        $col = $this->getManager()->findActiveByUser($this->u1);
        foreach($col as $t) { $t->setEtat(TacheBase::ETAT_FAIT); $this->getManager()->persist($t); }

@@ -250,8 +250,7 @@ class TacheControllerTest extends ConnecteControllerTest {
 
             // -3-
             $form = $crawler->selectButton('submit')->form(array(
-                   'MultiTacheSimple[contenu]' => "+tache haute\n tache normale\n-tache basse",
-                   'MultiTacheSimple[projet]' => $this->p2->getId()));
+                   'MultiTacheSimple[contenu]' => "+tache haute\n tache normale\n-tache basse"));
             $this->client->submit($form);
             $crawler = $this->client->followRedirect(); // Ici on est redirigé vers la page d'accueil
 

@@ -149,7 +149,6 @@ class TacheSimpleManager extends BaseManager {
         else {
           // Decoupage des lignes
           $code = Projet::CalculerProjetCode($user, substr($ligne,0, $pos));
-          var_dump($code);
             $ligne = substr($ligne, $pos + 1);
             // Recherche du projet
             $projet = $mngProjet->findOneByCodeAndUser($user, $code);
