@@ -89,6 +89,7 @@ class TacheController extends BaseController
 
     // -3- Default Data
     $defaultData = array(
+        'planif' => NULL,
         'contenu'  => ''
     );
   
@@ -107,7 +108,8 @@ class TacheController extends BaseController
        // --> Appel du service 
        $count = $this->getTacheManager()->createMulti(
               $this->getUser(),
-              strip_tags($data['contenu'])
+              strip_tags($data['contenu']),
+              $data['planif']
        );
        // Retour
        $this->storeFlash( sprintf('%s:%s', $this->trans('site.task.multinewok'), $count));

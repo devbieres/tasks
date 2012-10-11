@@ -34,6 +34,13 @@
               {# form_widget(form.projet) #}
          </li>
         -->
+         <li class="error" >
+             {{ form_errors(form.planif) }}
+         </li>
+         <li class="date" >
+              {{ form_label(form.planif) }}
+              {{ form_widget(form.planif) }}
+         </li>
          <li class="error">
              {{ form_errors(form.contenu) }}
          </li>

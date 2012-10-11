@@ -27,12 +27,25 @@ class MultiTacheSimpleType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        // -1- Récupération du type de rendu pour le champs date
+        $widget = $options['date_widget'];
+        if($widget == NULL) { $widget = 'choice'; }
 
+        // -2-
         $builder
            //->add('projet', 'entity', array(
            //         'class' => 'DevBieres\Task\EntityBundle\Entity\Projet',
            //         'query_builder' => function(EntityRepository $er) use ($options) { return $er->findByUserQuery($options['user']);  },
            //     ))
+           ->add('planif', 'date', array(
+                    'label' => 'site.task.planif',
+                    'input' => 'datetime',
+                    'widget' => $widget,
+                    'required' => false,
+                    'empty_value' => '',
+                    'format' => 'yyyy-MM-dd',
+                    'attr'   => array('class' => 'formulaire_date' )
+                 ))
            ->add('contenu', 'textarea', array('label' => 'site.task.multi'));
 
     }
@@ -46,7 +59,8 @@ class MultiTacheSimpleType extends AbstractType {
     {
         // deux options
         $resolver->setDefaults(array(
-            'user' => null,
+          'user' => null,
+          'date_widget' => null
         ));
     }
 }

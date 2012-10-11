@@ -19,6 +19,7 @@ namespace DevBieres\Task\EntityBundle\Manager;
 */
 
 use DevBieres\Common\BaseBundle\Manager\CodeBaseManager;
+use DevBieres\Common\BaseBundle\Entity\CodeLibelleBase;
 use DevBieres\Task\EntityBundle\Entity\Projet;
 
 class ProjetManager extends CodeBaseManager {
@@ -43,6 +44,14 @@ class ProjetManager extends CodeBaseManager {
 
 
     /**
+     * Retourne le code calculé pour ce projet
+     */
+    public function CalculerCode($projet) {
+        return Projet::CalculerProjetCode($projet->getUser(), CodeLibelleBase::CalculerCode($projet->getLibelle()));
+    }
+
+
+    /**
      * Liste les projets de l'utilisateur
      * @param $user User l'utilisateur
      */
@@ -55,9 +64,18 @@ class ProjetManager extends CodeBaseManager {
      * @param $user l'utilisateur
      * @param $code le code
      * */
-    public function findOneByCodeAndUser($user, $code) {
-        return $this->getRepo()->findOneByCodeAndUser($user, $code);
+    public function findOneByUserAndCode($user, $code) {
+        return $this->getRepo()->findOneByUserAndCode($user, $code);
     } // Fin de findOneByCode
+
+    /**
+     * Recherche un projet par code pour l'utilisateur
+     * @param $user l'utilisateur
+     * @param $code le code
+     */
+    public function findOneByUserAndRaccourci($user, $raccourci) {
+        return $this->getRepo()->findOneByUserAndRaccourci($user, $raccourci);
+    }
 
     /**
      * Retourne le projet par defaut pour l'utilisateur (c'est pas un choix :)
@@ -65,17 +83,14 @@ class ProjetManager extends CodeBaseManager {
      */ 
     public function getDefault($user) {
 
-      // -0-
-      $code = Projet::CalculerProjetCode($user, "default");
-
       // -1-
-      // TODO : mettre en constante
-      $projet = $this->findOneByCodeAndUser($user, $code);
+      $projet = $this->findOneByUserAndRaccourci($user, "default");
       if(! is_null($projet)) { return $projet; }
 
       // -2-
       $projet = $this->getNew();
       $projet->setLibelle("Default");
+      $projet->setRaccourci("default");
       $projet->setUser($user);
       $this->persist($projet);
 

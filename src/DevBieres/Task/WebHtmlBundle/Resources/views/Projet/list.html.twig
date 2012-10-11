@@ -6,7 +6,7 @@
                       <img src="{{ asset('bundles/devbierestaskwebhtml/images/destroy.png')  }}" alt="{{ 'site.destroy'|trans }}" />
                 </a>
            </div>
-           {{ obj.libelle }} 
+           {{ obj.libelle }} <span class="raccourci" > ({{ obj.raccourci }}) </span>
      </li>
    {% else %}
      <li class="nothing" > {{ 'site.project.nothingtodo'|trans }} </li>

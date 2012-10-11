@@ -99,7 +99,7 @@ class TacheSimpleManager extends BaseManager {
      * @param $user l'utilisateur
      * @param $contenu string une chaîne contenant une liste de tache à créer
      */
-    public function createMulti($user, $contenu) {
+    public function createMulti($user, $contenu, $date = NULL) {
            // -0-
            $return = 0;
            // -1- Découpage du contenu en lignes
@@ -112,7 +112,7 @@ class TacheSimpleManager extends BaseManager {
              // --> Trim de la ligne
              $ligne = trim($ligne);
              // --> Appel du service en mode unitaire
-             $return += $this->createFromString($user, $ligne);
+             $return += $this->createFromString($user, $ligne, $date);
            }
 
            // -3-
@@ -124,7 +124,7 @@ class TacheSimpleManager extends BaseManager {
      * @param $projet Projet le projet
      * @param $contenu string une chaîne contenant une liste de tache à créer
      */
-    public function createFromString($user, $ligne, $mngPriorite = NULL, $mngProjet = NULL) {
+    public function createFromString($user, $ligne, $date = NULL, $mngPriorite = NULL, $mngProjet = NULL) {
 
         // -0-
         if(is_null($mngPriorite)) { 
@@ -148,10 +148,10 @@ class TacheSimpleManager extends BaseManager {
         if($pos === FALSE) { $projet = $mngProjet->getDefault($user); }
         else {
           // Decoupage des lignes
-          $code = Projet::CalculerProjetCode($user, substr($ligne,0, $pos));
+          $code = substr($ligne,0, $pos);
             $ligne = substr($ligne, $pos + 1);
             // Recherche du projet
-            $projet = $mngProjet->findOneByCodeAndUser($user, $code);
+            $projet = $mngProjet->findOneByUserAndRaccourci($user, $code);
             if( is_null($projet)) { $projet = $mngProjet->getDefault($user); }
         }
 
@@ -160,6 +160,7 @@ class TacheSimpleManager extends BaseManager {
         $obj->setPriorite($p);
         $obj->setProjet($projet);
         $obj->setLibelle($ligne);
+        $obj->setPlanif($date);
         $this->persist($obj, 1, array('user' => $user));
 
         // -3-

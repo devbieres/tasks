@@ -2,6 +2,8 @@ parameters:
     dvb.task.mng.priorite: DevBieres\Task\EntityBundle\Manager\PrioriteManager
     dvb.task.mng.projet: DevBieres\Task\EntityBundle\Manager\ProjetManager
     dvb.task.mng.tachesimple: DevBieres\Task\EntityBundle\Manager\TacheSimpleManager
+    dvb.task.validator.projet: DevBieres\Task\EntityBundle\Validator\ProjetUniqueValidator
+
 
 services:
     dvb.mng_priorite:
@@ -13,3 +15,9 @@ services:
     dvb.mng_tachesimple:
         class: %dvb.task.mng.tachesimple%
         arguments: [@doctrine.orm.entity_manager]
+    validator.projet.unique:
+        class: %dvb.task.validator.projet%
+        arguments: [@dvb.mng_projet]
+        tags:
+           - { name: validator.constraint_validator, alias: validator.projet.unique  }
+

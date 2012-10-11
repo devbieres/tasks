@@ -22,6 +22,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 //use Symfony\Component\Validator\ExecutionContext;
 use JMS\SerializerBundle\Annotation\Exclude;
+use DevBieres\Task\EntityBundle\Validator as MyAssert;
 
 use DevBieres\Common\BaseBundle\Entity\CodeLibelleBase;
 
@@ -29,6 +30,7 @@ use DevBieres\Common\BaseBundle\Entity\CodeLibelleBase;
  * Entite permettant de stocker des parametres
  * @ORM\Entity(repositoryClass="DevBieres\Task\EntityBundle\Repository\ProjetRepository")
  * @ORM\Table(name="dvb_task_projet")
+ * @MyAssert\ProjetUnique
  */
 class Projet extends CodeLibelleBase {
 
@@ -42,7 +44,17 @@ class Projet extends CodeLibelleBase {
    */
   protected $user;
   public function getUser() { return $this->user; }
-  public function setUser($valeur) { $this->user = $valeur; }
+    public function setUser($valeur) { $this->user = $valeur; }
+
+    /**
+     * Un projet possède un raccourci utilisé dans la saisie en masse
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\MinLength(3)
+     */
+    protected $raccourci = "";
+    public function getRaccourci() { return $this->raccourci; }
+    public function setRaccourci($value) { $this->raccourci = $value; }
 
   /**
    * Spécialisation du calcul de code
