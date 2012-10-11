@@ -38,6 +38,7 @@ class ProjetUniqueValidator extends ConstraintValidator {
 
       // -1- Récupération du user
       $user = $entity->getUser();
+      if(is_null($user)) {  $this->context->addViolationAtSubPath('user', $constraint->messageUser); return; }
 
       // -2-
       $obj = $this->mng->findOneByUserAndRaccourci($user, $entity->getRaccourci());

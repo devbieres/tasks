@@ -29,6 +29,7 @@ use Symfony\Component\Validator\Constraint;
 class ProjetUnique extends Constraint  {
 
    public $message = "site.unique";
+   public $messageUser = "site.project.userneeded";
    public $entity;
    public $property;
 

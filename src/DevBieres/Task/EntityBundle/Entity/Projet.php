@@ -50,6 +50,7 @@ class Projet extends CodeLibelleBase {
      * Un projet possède un raccourci utilisé dans la saisie en masse
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @Assert\MinLength(3)
      */
     protected $raccourci = "";

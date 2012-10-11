@@ -99,22 +99,28 @@ class ProjetTest extends BaseTestCase
     // -1-
     $o = $this->getManager()->getNew();
     $e = $this->getValidator()->validate($o);
-    $this->assertCount(2, $e);
+    $this->assertCount(4, $e);
 
     // -2-
     $o->setLibelle("test");
     $e = $this->getValidator()->validate($o);
-    $this->assertCount(1, $e);
+    $this->assertCount(3, $e);
 
     // -3-
     $o->setUser($this->u1);
     $e = $this->getValidator()->validate($o);
-    $this->assertCount(0, $e);
+    $this->assertCount(1, $e);
 
     // -4-
+    $o->setRaccourci("testrac");
+    $e = $this->getValidator()->validate($o);
+    $this->assertCount(0, $e);
+
+    // -5-
     $o->setUser(NULL);
     $e = $this->getValidator()->validate($o);
-    $this->assertCount(1, $e);
+    // Un utilisateur vide entraîne deux erreurs :)
+    $this->assertCount(2, $e);
 
   } // Fin de testValidator
 

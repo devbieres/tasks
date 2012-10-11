@@ -43,12 +43,14 @@ class ProjetControllerTest extends ConnecteControllerTest {
             // -3- recherche du formulaire
             $form = $crawler->selectButton('submit')->form(array(
                'form[libelle]'                 => 'premier projet',
+               'form[raccourci]'                 => 'projetA',
                ));
             $this->client->submit($form);
             $crawler = $this->client->followRedirect();  
             $this->assertTrue($crawler->filter('#yourproject')->count() > 0);
             $this->assertTrue($crawler->filter('li.item')->count() == 1);
             $this->assertTrue($crawler->filter('html:contains("premier projet")')->count() > 0);
+            $this->assertTrue($crawler->filter('html:contains("projetA")')->count() > 0);
 
             // -4- Suppression du projet
             $link = $crawler->filter("a[title='Supprimer']")->eq(0)->link();

@@ -56,11 +56,13 @@ class TacheSimpleTest extends BaseTestCase
     // -1.1-
     $this->p1a =  $this->getProjetManager()->getNew();
     $this->p1a->setLibelle('p1a'); 
+    $this->p1a->setRaccourci('p1a'); 
     $this->p1a->setUser($this->u1); 
     $this->getProjetManager()->persist($this->p1a);
 
     $this->p1b =  $this->getProjetManager()->getNew();
     $this->p1b->setLibelle('p1b'); 
+    $this->p1b->setRaccourci('p1b'); 
     $this->p1b->setUser($this->u1); 
     $this->getProjetManager()->persist($this->p1b);
 
@@ -71,8 +73,10 @@ class TacheSimpleTest extends BaseTestCase
 
     // -2.1-
     $this->p2a =  $this->getProjetManager()->getNew();
+    $this->p2a->setRaccourci('p2a'); 
     $this->p2a->setLibelle('p2a'); $this->p2a->setUser($this->u2); $this->getProjetManager()->persist($this->p2a);
     $this->p2b =  $this->getProjetManager()->getNew();
+    $this->p2b->setRaccourci('p2b'); 
     $this->p2b->setLibelle('p2b'); $this->p2b->setUser($this->u2); $this->getProjetManager()->persist($this->p2b);
 
 
