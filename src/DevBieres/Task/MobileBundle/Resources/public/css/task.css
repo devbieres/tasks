@@ -32,7 +32,7 @@ footer {
 
 @media screen
 and (max-width:480px) {
-   .nav_title, .action_title, .tache_projet { display:none;  }
+   .nav_title, .action_title, .tache_projet { display:none; visibility:collapse;   }
    #page_title { width:100%; margin-left:0; }
 
 }

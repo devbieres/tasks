@@ -22,7 +22,7 @@
                   >
                 {% for obj in col %}
                    <li> 
-                      <a>  {{ obj.libelle }} </a>
+                      <a>  {{ obj.libelle }} <span class="ui-li-count" > {{ obj.raccourci  }} </span></a>
                       <a href="{{ path('mobile_projet_destroy',{'projet': obj.id}) }}" data-rel="dialog"  > {{ 'site.projet.destroy'|trans }} </a>
                    </li>
                 {% else %}

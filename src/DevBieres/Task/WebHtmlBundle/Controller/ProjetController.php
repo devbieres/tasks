@@ -66,7 +66,7 @@ class ProjetController extends BaseController
     // -3-
     $form = $this->createFormBuilder($projet)
       ->add('libelle',   'text', array('label' => 'site.project.label')) //$this->trans('site.project.label')))
-      ->add('raccourci', 'text', array('label' => 'site.projet.raccourci'))
+      ->add('raccourci', 'text', array('label' => 'site.project.raccourci'))
       ->getForm();
 
     // -4-

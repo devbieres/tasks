@@ -10,6 +10,18 @@ mobile_tache_new:
     requirements:
         method: GET 
 
+mobile_tache_somenew:
+    pattern: /tache/somenew
+    defaults: { _controller: DevBieresTaskWebHtmlBundle:Tache:somenew }
+    requirements:
+        method: GET 
+
+mobile_tache_somecreate:
+    pattern: /tache/somecreate
+    defaults: { _controller: DevBieresTaskWebHtmlBundle:Tache:somenew }
+    requirements:
+        method: POST 
+
 mobile_tache_next:
     pattern: /tache/next/{id}
     defaults: { _controller: DevBieresTaskMobileBundle:MobileTache:next  }

@@ -6,6 +6,7 @@ unknown: Non planifiée(s)
 
 site:
     title: Task
+    unique: La valeur doit être unique
     nav:
        projets: Projets
        taskadd: '+1'
@@ -41,6 +42,7 @@ site:
        new: Nouveau projet (nouvelles emm***)
        label: Titre
        userneeded: Un projet a besoin d'utilisateur
+       raccourci: Raccourci
     trash:
        title: Corbeille
        nothingtodo: Vide ...
@@ -58,7 +60,6 @@ site:
     filter: Filtre
     filter_valid: Go
     filter_clear: Vider
-    unique: La valeur doit être unique
     about:
         title: A propos
         frenchlaw: Conformément aux dispositions des articles 6-III et 19 de la loi pour la Confiance dans l'Economie Numérique, nous vous communiquons les éléments suivants :

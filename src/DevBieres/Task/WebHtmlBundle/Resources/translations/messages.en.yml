@@ -1,5 +1,6 @@
 site:
     title: Tasks
+    unique: Value must be unique
     nav:
        projets: Projects
        taskadd: '+1'
@@ -36,7 +37,8 @@ site:
        nothingtodo: No project ... Time for a beer ?
        new: New project
        label: Label
-       userneeded: Project needs user 
+       userneeded: Project needs user
+       raccourci: Speed name
     trash:
        title: Trash
        nothingtodo: Trash is empty : go working
@@ -75,7 +77,6 @@ site:
          updated: Preferences updated
          screen: Web screen mode
        destroy: Delete Account
-    unique: Value must be unique
 user:
     title_connect: Connection
     title_register: New Account

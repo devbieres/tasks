@@ -14,6 +14,10 @@
                         <img src="{{ asset('bundles/devbierestaskwebhtml/images/addtask.png') }}" /> 
                         <span class="nav_title" >{{ 'site.nav.taskadd'|trans}} </span>
               </a> </li>
+              <li style="display:none" > <a href="{{ path('mobile_tache_somenew') }}" id="nav_somenewtask" title="{{ 'site.nav.taskaddsome'|trans}} " data-ajax="false" > 
+                        <img src="{{ asset('bundles/devbierestaskwebhtml/images/addtask.png') }}" /> 
+                        <span class="nav_title" >{{ 'site.nav.taskaddsome'|trans}} </span>
+              </a> </li>
               <li>{% render "DevBieresTaskWebHtmlBundle:Trash:navMenu" with { route: 'mobile_trash', att:"data-ajax=false" }  %} </li>
               <li> <a href="{{ path('mobile_projet_index') }}" id="nav_projet" title="{{ 'site.nav.projets'|trans}}" data-ajax="false"> 
                         <img src="{{ asset('bundles/devbierestaskwebhtml/images/projects.png')}}" /> 
