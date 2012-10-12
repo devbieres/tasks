@@ -12,13 +12,13 @@ mobile_tache_new:
 
 mobile_tache_somenew:
     pattern: /tache/somenew
-    defaults: { _controller: DevBieresTaskWebHtmlBundle:Tache:somenew }
+    defaults: { _controller: DevBieresTaskMobileBundle:MobileTache:somenew }
     requirements:
         method: GET 
 
 mobile_tache_somecreate:
     pattern: /tache/somecreate
-    defaults: { _controller: DevBieresTaskWebHtmlBundle:Tache:somenew }
+    defaults: { _controller: DevBieresTaskMobileBundle:MobileTache:somenew }
     requirements:
         method: POST 
 

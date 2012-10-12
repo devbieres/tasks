@@ -1,0 +1,50 @@
+{% extends "DevBieresTaskMobileBundle::layout.html.twig" %}
+
+{% block css %}
+       <link href="{{ asset('bundles/devbierescommonjquerymobile/css/mobiscroll-2.0.3.custom.min.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %} 
+{% block js %}
+       <script src="{{ asset('bundles/devbierescommonjquerymobile/js/mobiscroll-2.0.3.custom.min.js') }}" type="text/javascript" ></script>
+       <script src="{{ asset('bundles/devbierestaskmobile/js/mobile.edit.tache.task.js') }}" type="text/javascript" ></script>
+{% endblock %}
+
+
+{% block page %}
+   <div id="somenewtask" class="formulaire"  data-role="content" >
+     <form action="{{ path('mobile_tache_somecreate') }}" method="post" {{ form_enctype(form) }} data-ajax="false" >
+         <div class="error" >
+             {{ form_errors(form) }}
+         </div>
+         <div class="error" >
+                 {{ form_errors(form.planif) }}
+         </div>
+         <div>
+                {{ form_label(form.planif) }}
+                     {{ form_widget(form.planif) }}
+                     <a href="#" id="cleardate" data-role="button" data-icon="delete" data-iconpos="notext" data-inline="true"  ></a>
+         </div>
+         <div class="error">
+             {{ form_errors(form.contenu) }}
+         </div>
+         <div>
+              {{ form_label(form.contenu) }}
+         </div>
+         <div>
+              {{ form_widget(form.contenu) }}
+         </div>
+         <div>
+              <label></label>
+              <input type="submit" value="{{ 'site.valid'|trans }}" id="submit" data-theme="a" />
+         </div>
+         <div>
+              <label></label>
+              <a href="{{ path('mobile_home') }}" 
+                             data-role="button" data-rel="back" data-theme="c">
+                         {{ 'site.cancel'|trans }}
+              </a>
+         </div>
+         {{ form_rest(form) }}
+     </form>
+
+   </div>
+{% endblock %}

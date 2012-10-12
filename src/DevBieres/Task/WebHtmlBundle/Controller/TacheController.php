@@ -80,6 +80,7 @@ class TacheController extends BaseController
  
     // -1-
     $obj = $this->manageUnconnectedUser(); if($obj != null) { return $obj; }
+    $widget = $this->getDateWidget();
 
     // -2-
     if(! $this->getProjetManager()->hasOneProjet($this->getUser())) {
@@ -97,7 +98,7 @@ class TacheController extends BaseController
     $form = $this->createForm( 
               $this->getTacheManager()->getMultiTacheSimpleType(),
               $defaultData,
-              array('user' => $this->getUser())
+              array('user' => $this->getUser(), 'date_widget' => $widget)
             );
 
     // -5-

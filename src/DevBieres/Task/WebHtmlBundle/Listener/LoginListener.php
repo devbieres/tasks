@@ -77,6 +77,10 @@ class LoginListener {
          $this->dispatcher->addListener(KernelEvents::RESPONSE, array($this, 'onKernelResponse'));
     }
 
+    // -4-
+    if($detector->isMobile()) {  $this->session->set('isMobile', 1); }
+    else  { $this->session->set('isMobile',0); }
+
   } // Fin de OnSecurityContext
 
   public function onKernelResponse(FilterResponseEvent $event) {
